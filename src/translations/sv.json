@@ -62,8 +62,8 @@
     "rankedChangedAlert": "Spelläge ändrat till"
   },
   "game": {
-    "resolve": "Besluta",
-    "scrap": "Kasta",
+    "resolve": "Bestäm",
+    "scrap": "Släng",
     "view": "Titta",
     "pass": "PASSA",
     "playFromDeck": "Spela från lek",
@@ -95,13 +95,13 @@
       "four": {
         "discardTwoCards": "Släng två kort",
         "discard": "Släng",
-        "opponentHasResolved": "Din motståndare har spelat ett fyrtal. Du måste slänga två kort. Klicka för att välja kort att slänga."
+        "opponentHasResolved": "Din motståndare har spelat en fyra. Du måste slänga två kort. Klicka för att välja kort att slänga."
       },
       "five": {
         "discardAndDraw": "Släng och dra kort",
         "nice": "Snyggt!",
-        "resolveFive": "Du har spelat ett femtal. Släng ett kort och dra sedan tre nya kort.",
-        "resolveFiveNoCards": "Du har spelat ett femtal, men du har inga kort på hand att slänga. Dra tre kort utan att slänga något. Härligt!"
+        "resolveFive": "Du har spelat en femma. Släng ett kort och dra sedan tre nya kort.",
+        "resolveFiveNoCards": "Du har spelat en femma, men du har inga kort på hand att slänga. Dra tre kort utan att slänga något. Härligt!"
       },
       "scrapDialog": {
         "scrapPile": "Slängda kort",
@@ -124,11 +124,11 @@
         "target": "sikta ",
         "toCounter": "att kontra",
         "counter": "kontra",
-        "playTwo": "Vill du spela ett tvåtal för att kontra?",
+        "playTwo": "Vill du spela en tvåa för att kontra?",
         "cannotCounter": "Du kan inte kontra eftersom",
         "reasons": {
           "opponentWithQueen": "din motståndare har en dam",
-          "noTwoPresent": "du har inget tvåtal"
+          "noTwoPresent": "du har ingen tvåa"
         }
       },
       "threeDialog": {
