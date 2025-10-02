@@ -121,7 +121,7 @@
         "selectCard": "Vilka två vill du kontra? (Klicka på korten)",
         "opponentPlayed": "Din motståndare har spelat ",
         "oneOff": "som en one-off",
-        "target": "inriktning ",
+        "target": "sikta ",
         "toCounter": "att kontra",
         "counter": "kontra",
         "playTwo": "Vill du spela ett tvåtal för att kontra?",
@@ -170,228 +170,228 @@
           "goodMatch": "Bra match!",
           "continueSpectating": "Fortsätt titta?",
           "opponentLeft": "Motståndare lämnade - klicka för att gå tillbaka till start.",
-          "waitingForOpponent": "Waiting for Opponent",
-          "continueMatch": "Continue Match?",
-          "rematch?": "Rematch?",
-          "rankedIconAlt": "Ranked Match Icon (Crossed Swords)",
-          "casualIconAlt": "Casual Match Icon (Coffee Mug)",
-          "wonTheMatch": "won the match",
-          "lostTheMatch": "lost the match"
+          "waitingForOpponent": "Väntar på motståndare",
+          "continueMatch": "Fortsätt match?",
+          "rematch?": "Ny match?",
+          "rankedIconAlt": "Rankad matchikon (Crossed Swords)",
+          "casualIconAlt": "Casual matchicon (Coffee Mug)",
+          "wonTheMatch": "vann matchen",
+          "lostTheMatch": "förlorade matchen"
         }
       }
     },
     "moves": {
       "disabledMove": {
-        "topTwo": "You must play one of the top two cards from the deck",
-        "notTurn": "It's not your turn",
-        "frozenCard": "This card is frozen",
-        "emptyDeck": "Can't be played with empty deck",
-        "multipleQueens": "You can't play a {rank} while your opponent has two or more queens",
-        "noRoyals": "There are no Royals to target",
+        "topTwo": "Du måste spela ett av de två översta korten från leken",
+        "notTurn": "Det är inte din tur",
+        "frozenCard": "Detta kort är fruset",
+        "emptyDeck": "Kan inte spelas med tom lek",
+        "multipleQueens": "Du kan inte spela en {rank} när din motståndare har två eller fler drottningar",
+        "noRoyals": "Det finns inga kungligheter att sikta på",
         "noRoyalsOrPoints": "There are no point cards or Royals to target"
       },
       "points": {
-        "displayName": "Points",
-        "description": "Gain 1 point | Gain {count} points"
+        "displayName": "Poäng",
+        "description": "Få 1 poäng | Få {count} poäng"
       },
       "scuttle": {
-        "description": "Scrap a lower point card",
-        "disabled": "You can only scuttle smaller point cards",
-        "disabledNoPoints": "Your opponent has no point cards to scuttle"
+        "description": "Släng ett kort med lägre poäng",
+        "disabled": "Du kan bara scuttla kort med lägre poäng",
+        "disabledNoPoints": "Din motståndare har inga poäng-kort att scuttla"
       },
       "effects": {
-        "1": "Scrap all points",
-        "2": "Scrap target Royal or Glasses eight",
-        "3": "Choose 1 card in the Scrap and put it to your hand",
-        "4": "Your opponent discards two cards of their choice from their hand",
-        "5": "Discard 1 card, and draw up to 3",
-        "6": "Scrap all Royals and Glasses eights",
-        "7": "Play one of the top two cards of the deck and put the other back (both are revealed)",
-        "8": "Your opponent plays with an open hand (their cards are revealed to you)",
-        "9": "Return target card to its controller's hand. They can't play it next turn",
-        "10": "No effect",
-        "11": "Play on top of target point card to steal it",
-        "12": "Your other cards may only be targeted by scuttles",
-        "13": "Reduces the points you need to win. (1K: 14pts, 2K: 10pts, 3K: 5pts, 4K: 0pts)"
+        "1": "Släng alla poäng",
+        "2": "Släng vald kunglighet eller glasögon-åtta",
+        "3": "Välj 1 kort bland slängda kort och ta det till handen",
+        "4": "Din motståndare väljer två kort att slänga från sin hand",
+        "5": "Släng 1 kort och dra upp till 3 nya kort",
+        "6": "Släng alla kungligheter och glasögon-åttor",
+        "7": "Spela ett av de två översta korten på leken och lägg tillbaka det andra (båda visas för motståndaren)",
+        "8": "Din motståndare spelar med öppen hand (deras kort visas för dig)",
+        "9": "Lägg tillbaka valt kort i ägarens hand. Ägaren kan inte spela kortet nästa tur.",
+        "10": "Inga specialeffekter",
+        "11": "Lägg ovanpå valt poäng-kort för att stjäla det",
+        "12": "Dina andra kort kan bara scuttlas",
+        "13": "Minskar antalet poäng du behöver för att vinna (1K: 14 poäng, 2K: 10 poäng, 3K: 5 poäng, 4K: 0 poäng)"
       },
       "jack": {
-        "description": "Steal an opponent's point card",
-        "disabled": "You cannot jack your opponent's points while they have a queen"
+        "description": "Stjäl en motståndares poäng-kort",
+        "disabled": "Du kan inte stjäla kort med knekt om motståndaren har en dam i spel"
       },
       "glasses": {
-        "displayName": "Glasses",
-        "description": "Your opponent plays open handed"
+        "displayName": "Glasögon",
+        "description": "Din motståndare spelar med öppen hand"
       },
       "royal": {
-        "displayName": "Royal"
+        "displayName": "Kunglighet"
       }
     },
     "menus": {
       "gameMenu": {
-        "refresh": "Refresh",
-        "rules": "Rules",
-        "concede": "Concede",
-        "stalemate": "Request Stalemate",
-        "cancel": "Cancel",
-        "home": "Go Home",
-        "concedeDialog": "The game will end and your opponent will win.",
-        "stalemateDialog": "If your opponent agrees, the game will end in a stalemate. The request will cancel if the opponent declines or either player makes a move.",
-        "clipHighlight": "Clip Highlight",
-        "highlightCopied": "Highlight Link Copied"
+        "refresh": "Uppdatera",
+        "rules": "Regler",
+        "concede": "Ge upp",
+        "stalemate": "Begär remi",
+        "cancel": "Avbryt",
+        "home": "Gå tillbaka till start",
+        "concedeDialog": "Spelet avslutas och din motståndare vinner.",
+        "stalemateDialog": "Om motståndaren accepterar remi avslutas spelet oavgjort. Begäran avbryts om motståndaren avböjer eller någon av spelarna gör ett drag.",
+        "clipHighlight": "Höjdpunkt",
+        "highlightCopied": "Höjdpunktslänk kopierad"
       },
       "spectatorListMenu": {
-        "spectators": "Spectators",
-        "noSpectators": "Currently no spectators"
+        "spectators": "Åskådare",
+        "noSpectators": "Inga åskådare just nu"
       }
     },
     "score": {
-      "points": "POINTS",
-      "goal": "GOAL",
-      "kings": "0 Kings | 1 King | {count} Kings"
+      "points": "POÄNG",
+      "goal": "MÅL",
+      "kings": "0 Kungar | 1 Kung | {count} Kungar"
     },
     "turn": {
-      "yourTurn": "YOUR TURN",
-      "opponentTurn": "OPPONENT'S TURN"
+      "yourTurn": "DIN TUR",
+      "opponentTurn": "MOTSTÅNDARENS TUR"
     },
     "history": {
-      "title": "History"
+      "title": "Händelseförlopp"
     },
     "snackbar": {
       "global": {
-        "notYourTurn": "It's not your turn!",
-        "cardFrozen": "That card is frozen! You must wait a turn to play it.",
-        "playFromHand": "You can only play a card that is in your hand",
-        "blockedByQueen": "Your opponent's queen prevents you from targeting their other cards",
-        "blockedByMultipleQueens": "You cannot play a Targeted One-Off (Two, Nine) when your opponent has more than one Queen",
-        "notInMainPhase": "You can only do that in the main phase"
+        "notYourTurn": "Det är inte din tur!",
+        "cardFrozen": "Ditt kort är fruset! Du måste vänta en runda innan du kan spela det.",
+        "playFromHand": "Du kan bara spela ett kort du har på handen",
+        "blockedByQueen": "Din motståndares dam hindrar dig från att sikta på deras andra kort.",
+        "blockedByMultipleQueens": "Du kan inte sikta med en One-Off (tvåa eller nach) när din motståndare har mer än en drottning i spel.",
+        "notInMainPhase": "Du kan bara göra det i huvudfasen"
       },
       "draw": {
-        "deckIsEmpty": "The deck is empty; you cannot draw.",
-        "handLimit": "You are at the hand limit; you cannot draw.",
-        "exhaustedDeck": "Deck exhausted; revealing player hands"
+        "deckIsEmpty": "Kortleken är tom, du kan inte dra fler kort.",
+        "handLimit": "Din hand är begränsad, du kan inte dra fler kort.",
+        "exhaustedDeck": "Kortleken är tom, visar spelare händer"
       },
       "faceCards": {
-        "withoutTarget": "Only Kings, Queens, and Eights may be played as Face Cards without a target"
+        "withoutTarget": "Endast kungar, drottningar och åttor kan spelas som Face Cards utan sikte."
       },
       "points": {
-        "numberOnlyForPoints": "You can only play a number card as points."
+        "numberOnlyForPoints": "Du kan bara spela numrerade kort som poäng-kort."
       },
       "jack": {
-        "stealOnlyWithJack": "You can only steal your opponent's points with a jack",
-        "stealOnlyPointCards": "You can only steal your opponent's point cards",
-        "noJackWithQueen": "You cannot use a Jack while your opponent has a Queen."
+        "stealOnlyWithJack": "Du kan bara stjäla din motståndares kort med en knekt",
+        "stealOnlyPointCards": "YDu kan bara stjäla din motståndares poäng-kort",
+        "noJackWithQueen": "Du kan inte använda en knekt när din motståndare har en dam i spel."
       },
       "scuttle": {
-        "rankTooLow": "You can only scuttle if your card's rank is higher, or the rank is the same, and your suit is higher (Clubs < Diamonds < Hearts < Spades)",
-        "mustUsePointCard": "You can only scuttle with an ace through ten",
-        "mustTargetPointCard": "You can only scuttle a card your opponent has played for points"
+        "rankTooLow": "Du kan bara scuttla om ditt korts rank är lika högt eller högre, och om kortfärgen är högre (Klöver < Ruter < Hjärter < Spader)",
+        "mustUsePointCard": "Du kan bara scuttla med korten från ett (ess) till tio",
+        "mustTargetPointCard": "Du kan abra scuttla ett kort som din motståndare spelat för att få poäng"
       },
       "stalemate": {
-        "alreadyConsideringStalemate": "A stalemate has already been offered",
-        "noStalemateOffered": "Your opponent has not offered a stalemate",
-        "opponentConsideringStalemate": "Your opponent is considering your stalemate offer",
-        "previousStalemateRejected": "Stalemate request was already rejected this turn",
-        "wrongPhase": "You can't request a stalemate during other moves"
+        "alreadyConsideringStalemate": "Remi har redan föreslagits",
+        "noStalemateOffered": "Din motståndare har inte föreslagit remi",
+        "opponentConsideringStalemate": "Din motståndare överväger ditt förslag om remi",
+        "previousStalemateRejected": "Förslaget om remi har redan avböjts den här turen",
+        "wrongPhase": "Du kan inte begära remi under andra drag"
       },
       "oneOffs": {
-        "oneOffInPlay": "There is already a one-off in play; you cannot play any card, except a two to counter.",
-        "cantPlayWithoutATarget": "You cannot play that card as a ONE-OFF without a target",
-        "onlyTwoOrNine": "You can only play a 2, or a 9 as targeted one-offs.",
-        "emptyDeck": "You can't play that one-off unless there are cards in the deck",
+        "oneOffInPlay": "Det är redan en one-off i spel; du kan inte spela några kort, förutom att kontra med en tvåa.",
+        "cantPlayWithoutATarget": "Du kan inte spela det kortet som en ONE-OFF utan att sikta på något kort",
+        "onlyTwoOrNine": "Du kan bara spela en 2:a eller en 9:a som siktade one-offs.",
+        "emptyDeck": "Du kan bara spela den one-off:en när du har kort kvar i leken",
         "three": {
-          "scrapIsEmpty": "You can only play a 3 as a one-off if there are cards in the scrap pile",
-          "notResolvingThreePhase": "Can pick from scrap by resolving a 3",
-          "mustPickFromScrap": "You must pick a card from the scrap"
+          "scrapIsEmpty": "Du kan bara spela en 3:a som en one-off om det finns kort bland dina slängda kort.",
+          "notResolvingThreePhase": "Kan välja kort från slängda kort genom att spela en 3:a",
+          "mustPickFromScrap": "Du måste välja ett kort från dina slängda kort"
         },
         "four": {
-          "opponentHasNoCards": "You cannot play a 4 as a one-off while your opponent has no cards in hand",
-          "notYourTurn": "It's not your turn to discard",
-          "notResolvingFourPhase": "Can't discard unless your opponent played a four",
-          "mustSelectCards": "You must select two cards to discard"
+          "opponentHasNoCards": "Du kan inte spela en 4:a som en one-off när din motståndare inte har några kort på handen",
+          "notYourTurn": "Det är inte din tur att slänga kort",
+          "notResolvingFourPhase": "Du kan bara slänga kort om din motståndare spelade en fyra",
+          "mustSelectCards": "Du måste välja två kort att slänga"
         },
         "five": {
-          "selectCardToDiscard": "You must select one card to discard",
-          "incorrectCard": "Incorrect card played",
-          "wrongPhase": "You can't resolve a five right now.",
-          "fiveDeckIsEmpty": "Cannot resolve 5 one-off with an empty deck"
+          "selectCardToDiscard": "Du måste välja ett kort att slänga",
+          "incorrectCard": "Felaktigt kort spelat",
+          "wrongPhase": "Du kan inte spela en 5:a just nu",
+          "fiveDeckIsEmpty": "du kan inte spela en 5:a som en one-off med en tom lek"
         },
         "seven": {
-          "oneCardInDeck": "You cannot play a 7 as a ONE-OFF if it is the last card in the deck",
-          "pickAndPlay": "You can only play cards from the top of the deck while resolving a seven.",
-          "wrongPhase": "You can't play from the deck right now",
-          "mustBeDoubleJacks": "You can't discard from a seven unless both cards are jacks",
-          "jacksMustBeUnplayable": "You can't discard because the jacks can be played"
+          "oneCardInDeck": "Du kan inte spela en 7:a som en one-off om det är det sista kortet i din lek",
+          "pickAndPlay": "Du kan bara spela kort från toppen av leken när du spelar en 7:a",
+          "wrongPhase": "Du kan inte spela kort från leken just nu",
+          "mustBeDoubleJacks": "Du kan inte slänga från en 7:a om inte båda korten är knektar",
+          "jacksMustBeUnplayable": "Du kan inte slänga kort så länge knektarna är spelbara"
         }
       }
     }
   },
   "home": {
     "howItWorks": {
-      "button": "How it works",
-      "title": "Looking To Play?",
-      "content": "Our weekly play sessions are open to everyone:",
-      "wednesday": "Wednesday nights at 8:30pm EST",
-      "thursday": "Thursdays at 12pm EST",
-      "findMatch": "Can't find a match? Join us on",
-      "content2": "to chat with other players and to see who is available to play at any time.",
-      "playSolo": "Want to play solo? Try",
-      "playAI": "playing vs AI",
-      "mettle": "to learn the ropes and test your mettle.",
-      "learnMore": "Want to learn more? Check out our",
-      "about": "about page",
-      "about2": "to learn the rules and read about the cuttle.cards project.",
-      "okayButton": "okay"
+      "button": "Hur det funkar",
+      "title": "Vill du spela?",
+      "content": "Våra veckovisa tillfällen är öppna för alla:",
+      "wednesday": "Onsdagskvällar kl 8:30pm EST",
+      "thursday": "Torsdagar kl 12pm EST",
+      "findMatch": "Hittar du ingen match? Häng på oss",
+      "content2": "för att chatta med andra spelare och se vem som är tillgänglig för spel närsomhelst.",
+      "playSolo": "Vill du spela solo? Testa",
+      "playAI": "att spela mot AI",
+      "mettle": "för att lära dig grunderna och testa dina färdigheter.",
+      "learnMore": "Vill du veta mer? Kolla in vår",
+      "about": "om oss-sida",
+      "about2": "för att lära dig reglerna och läsa om cuttle.cards-projektet.",
+      "okayButton": "okej"
     },
     "snackbar": {
-      "cannotJoin": "Cannot join that game because it's already full",
-      "spectateTwoPlayers": "You can only spectate an ongoing game with two players",
-      "cantFindGame": "Can't find game",
-      "invalidLobbyNumber": "Invalid Lobby Number",
-      "cannotSpectate": "Cannot spectate game because you are playing",
-      "spectateNoGamestates": "Cannot spectate: game is too old"
+      "cannotJoin": "Kan inte join:a, det är fullt",
+      "spectateTwoPlayers": "Du kan bara titta på en pågående match mellan två spelare",
+      "cantFindGame": "Kan inte hitta spel",
+      "invalidLobbyNumber": "Ogiltigt lobbynummer",
+      "cannotSpectate": "Kan inte titta på någon annans spel eftersom du själv spelar just nu",
+      "spectateNoGamestates": "Kan inte titta, spelet är för gammalt"
     },
-    "gameFinder": "Game Finder",
-    "spectate": "SPECTATE",
-    "noGameslist": "No Active Games",
-    "noSpectatelist": "No Games Available to Spectate",
-    "openCreateGame": "Create a game",
-    "submitCreateGame": "Create game",
-    "players": "players",
-    "playAiContent": "Want to play solo? Try",
-    "playAiLink": "playing vs AI",
-    "playAiContent2": "to learn the ropes and test your mettle.",
-    "gameName": "Game Name",
-    "join": "Join"
+    "gameFinder": "Hitta spel",
+    "spectate": "TITTA PÅ",
+    "noGameslist": "Inga aktiva spel",
+    "noSpectatelist": "Inga spel tillgängliga att titta på",
+    "openCreateGame": "Starta ett spel",
+    "submitCreateGame": "Starta ett spel",
+    "players": "spelare",
+    "playAiContent": "Vill du spela solo? Testa att",
+    "playAiLink": "spela mot AI",
+    "playAiContent2": "för att lära dig grunderna och testa dina färdigheter.",
+    "gameName": "Spelnamn",
+    "join": "Join:a"
   },
   "rules": {
-    "introduction": "Introduction",
+    "introduction": "Introduktion",
     "actions": {
-      "title": "Actions",
-      "clubs": "Clubs",
-      "diamonds": "Diamonds",
-      "hearts": "Hearts",
-      "spades": "Spades",
-      "weakest": "Weakest",
-      "strongest": "Strongest"
+      "title": "Drag",
+      "clubs": "Klöver",
+      "diamonds": "Ruter",
+      "hearts": "Hjärter",
+      "spades": "Spader",
+      "weakest": "Svagast",
+      "strongest": "Starkast"
     },
-    "howToPlay": "How to play",
-    "cuttleTitle": "What is Cuttle?",
-    "cuttleText": "Cuttle is a two player battle card game played with a standard 52-card deck of cards. It has the strategic nuance of trading card games like Magic, with the elegant balance of a standard deck--and you can play it for free! Test your mettle in the deepest card game under the sea!",
-    "rulesTitle": "Rules of Cuttle",
+    "howToPlay": "Hur man spelar",
+    "cuttleTitle": "Vad är Cuttle?",
+    "cuttleText": "Cuttle är ett kortspel för 2 spelare som spelas med en vanlig kortlek på 52 kort. Det har den strategiska finessen från samlarkortspel som Magic, men med den eleganta balansen i en standardkortlek – och du kan spela det gratis! Sätt dina färdigheter på prov i det djupaste kortspelet under havet!",
+    "rulesTitle": "Regler för Cuttle",
     "preview": {
-      "watchVideo": "Watch Video",
-      "imgAlt": "How to play {title} in Cuttle"
+      "watchVideo": "Se video",
+      "imgAlt": "Hur man spelar {title} i Cuttle"
     },
-    "rulesReadText": "Read the official",
-    "rulesPreviewGif": "Animated preview of {title} in Cuttle",
-    "rulesWatchText": "or watch cuttle.cards video tutorial below to learn the rules and get a feel for the flow of the game.",
-    "goalTitle": "Goal",
-    "goalText": "The goal is to be the first player to have 21 or more points worth of point cards on your field. The first player to reach the goal wins immediately.",
-    "playTitle": "Play",
-    "playText-1": "One player (traditionally the dealer) is dealt 6 cards and their opponent is dealt 5. The player with 5 cards goes first.",
-    "playText-2": "On your turn you must perform exactly one of the following actions:",
-    "draw": "Draw",
-    "drawDescription": "Take one card from the deck. You may not draw past the 8-card hand limit.  If there are no cards left in the deck, you may pass.  Three consecutive passes ends the game in a stalemate",
+    "rulesReadText": "Läs det officiella",
+    "rulesPreviewGif": "Animerad förhandsvisning av {title} i Cuttle",
+    "rulesWatchText": "eller se en video-tutorial nedan för att lära dig reglerna och få en bättre känsla för spelet.",
+    "goalTitle": "Mål",
+    "goalText": "Målet är att vara den första spelaren som uppnår 21 eller fler poäng genom poäng-kort på sin spelplan. Det första spelaren som når målet vinner direkt.",
+    "playTitle": "Spela",
+    "playText-1": "En spelare (den som delar ut korten) börjar med sex kort och motståndaren med fem. Spelaren med fem kort börjar.",
+    "playText-2": "På din tur måste du genomföra exakt ett av dessa dragen:",
+    "draw": "Dra kort",
+    "drawDescription": "Dra ett kort från leken. Du får inte dra fler kort om du redan har åtta kort på handen. Om du inte har fler kort i leken kan du strunta i att dra kort.  If there are no cards left in the deck, you may pass.  Three consecutive passes ends the game in a stalemate",
     "points": "Points",
     "pointsDescription": "Play a number card from your hand. Worth its rank in points and lasts until scrapped.",
     "scuttle": "Scuttle",
