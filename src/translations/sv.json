@@ -1,0 +1,570 @@
+{
+  "global": {
+    "signup": "Registrera dig",
+    "login": "Logga in",
+    "logout": "Logga ut",
+    "rules": "Regler",
+    "play": "Spela",
+    "stats": "Statistik",
+    "user": "Användare",
+    "rank": "Rank",
+    "username": "Användarnamn",
+    "password": "Lösenord",
+    "cancel": "Avbryt",
+    "ranked": "Rankad",
+    "casual": "Casual",
+    "your": "din",
+    "close": "Stäng",
+    "click": "Klicka",
+    "playerReady": {
+      "playerDeclinedAlt": "{playerUsername} avböjde ny match (card back)",
+      "cardBackAlt": "Card back -- Väntar på {playerUsername}",
+      "readyAlt": "Card front -- {playerUsername} är redo",
+      "rematchAlt": "Card front -- {playerUsername} vill spela igen"
+    }
+  },
+  "login": {
+    "noAccount": "Saknar du konto?",
+    "haveAccount": "Har du redan ett konto?",
+    "title": "Välkommen till Cuttle.Cards",
+    "subtitle": "The card game that will have you hooked from the first hand!",
+    "formHeaderLogin": "Log In to get Started!",
+    "formHeaderSignup": "Sign up now to start playing and get ready to dive into the world of Cuttle.",
+    "quote": "\"Cuttle är ett skarpt, snabbt spel byggt helt på utmärkta mekaniker. Det är den sortens spel – om jag hade känt till det i college - som jag skulle ha slitit ut kortlekar genom att spela.\"",
+    "quoteCite": "Richard Garfield - skapare av Magic: The Gathering",
+    "content": "Cuttle är ett kortspel för 2 spelare som spelas med en vanlig kortlek på 52 kort. Det har den strategiska finessen från samlarkortspel som Magic, men med den eleganta balansen i en standardkortlek – och du kan spela det gratis! Sätt dina färdigheter på prov i det djupaste kortspelet under havet!",
+    "content2": "Bli den första som når 21 poäng i denna explosiva intellektuella kamp. Sätt in en modig offensiv medan du saboterar för din motståndare med lömska trick. Har du vad som krävs för att bli djupets härskare?",
+    "readRules": "Läs regelboken",
+    "joinDiscord": "Join:a vår discord community",
+    "loginDiscord": "Logga in med Discord",
+    "linkDiscord": "Länka Discord",
+    "discordLinked": "Discord har länkats",
+    "socials": "Kolla in våra sociala medier för mer innehåll från Cuttle!",
+    "linkAccount": "Länka ditt konto",
+    "createUsername": "Skapa ett användarnamn för ditt nya konto",
+    "snackbar": {
+      "usernameIsTaken": "Användarnamnet är redan registrerat, testa att logga in!",
+      "userNotFound": "Ingen användare med det användarnamnet kunde hittas. Testa att registrera dig!",
+      "wrongPassword": "Användarnamn och lösenord matchar inte",
+      "oAuth": {
+        "alreadyLinked": "Kontot är redan länkat till en annan användare",
+        "providerError": "Fel uppstod vid anslutning till provider",
+        "invalidProvider": "invalidProvider"
+      }
+    }
+  },
+  "lobby": {
+    "lobbyFor": "Lobby för",
+    "ready": "REDO",
+    "unready": "INTE REDO",
+    "exit": "LÄMNA",
+    "invite": "Bjud in",
+    "rankedChangedAlert": "Spelläge ändrat till"
+  },
+  "game": {
+    "resolve": "Besluta",
+    "scrap": "Kasta",
+    "view": "Titta",
+    "pass": "PASSA",
+    "playFromDeck": "Spela från lek",
+    "overlays": {
+      "waitingForGameToStart": "Väntar medan spelet startar",
+      "leaveGame": "Lämna spel",
+      "opponentMayCounter": "Moståndare kan svara",
+      "opponentMustResolve": "Moståndare måste besluta",
+      "opponentIsDiscarding": "Motståndare slänger kort",
+      "opponentSkipsDiscarding": "Motståndare hoppar över att slänga kort",
+      "opponentChoosingFromScrap": "Moståndare väljer bland slängda kort",
+      "opponentPlayingFromDeck": "Motståndare spelar från kortleken",
+      "opponentMustDiscardJack": "Motståndare måste kassera Knekt",
+      "opponentConsideringStalemate": "Motståndare överväger remi",
+      "gameUnavailable": {
+        "title": "Hoppsan!",
+        "content": "Det verkar som att detta spel inte är tillgängligt."
+      }
+    },
+    "dialogs": {
+      "reauthentication": {
+        "reconnectToGame": "Anslut till spel på nytt",
+        "youHaveDisconnected": "Du har kopplats bort på grund av inaktivitet. Logga in igen för att återuppta din session.",
+        "username": "Användarnamn",
+        "password": "Lösenord",
+        "leaveGame": "Lämna spel",
+        "login": "Logga in"
+      },
+      "four": {
+        "discardTwoCards": "Släng två kort",
+        "discard": "Släng",
+        "opponentHasResolved": "Din motståndare har spelat ett fyrtal. Du måste slänga två kort. Klicka för att välja kort att slänga."
+      },
+      "five": {
+        "discardAndDraw": "Släng och dra kort",
+        "nice": "Snyggt!",
+        "resolveFive": "Du har spelat ett femtal. Släng ett kort och dra sedan tre nya kort.",
+        "resolveFiveNoCards": "Du har spelat ett femtal, men du har inga kort på hand att slänga. Dra tre kort utan att slänga något. Härligt!"
+      },
+      "scrapDialog": {
+        "scrapPile": "Slängda kort",
+        "noCards": "Det finns inga slängda kort."
+      },
+      "cardListSortable": {
+        "sort": {
+          "label": "Sortera",
+          "chronologically": "Kronologiskt",
+          "rank": "Utifrån rank"
+        }
+      },
+      "counterDialogs": {
+        "counterTitle": "Chans till kontring",
+        "chooseTwoTitle": "Välj två",
+        "cannotCounterTitle": "Kan inte kontra",
+        "selectCard": "Vilka två vill du kontra? (Klicka på korten)",
+        "opponentPlayed": "Din motståndare har spelat ",
+        "oneOff": "som en one-off",
+        "target": "inriktning ",
+        "toCounter": "att kontra",
+        "counter": "kontra",
+        "playTwo": "Vill du spela ett tvåtal för att kontra?",
+        "cannotCounter": "Du kan inte kontra eftersom",
+        "reasons": {
+          "opponentWithQueen": "din motståndare har en dam",
+          "noTwoPresent": "du har inget tvåtal"
+        }
+      },
+      "threeDialog": {
+        "title": "Välj ett bland de slängda korten"
+      },
+      "opponentRequestedStalemateDialog": {
+        "title": "Acceptera remi?",
+        "opponentHasRequested": "Din motståndare har begärt remi. Om du accepterar, avslutas spelet oavgjort.",
+        "reject": "Avböj begäran",
+        "accept": "Acceptera begäran"
+      },
+      "sevenDoubleJacksDialog": {
+        "title": "Välj ett kort",
+        "cannotMove": "Hoppsan! Det verkar som att du inte kan spela. Välj en knekt att kasta.",
+        "resolve": "Fixa"
+      },
+      "gameOverDialog": {
+        "game": "Spel",
+        "you": "Du",
+        "youWin": "Du vinner",
+        "youWinTheMatch": "Fick dem!",
+        "won": "vann",
+        "youLose": "Du förlorar",
+        "youLoseTheMatch": "Utklassad...",
+        "lost": "förlora",
+        "draw": "Remi",
+        "p1Wins": "Spelare 1 vinner",
+        "p2Wins": "Spelare 2 vinner",
+        "match": "Matcha",
+        "matchAgainst": "Matcha mot",
+        "yourGameAgainst": "ditt spel mot",
+        "finished": "Avslutat",
+        "inProgress": "Pågående",
+        "goHome": "Gå tillbaka till start",
+        "rematch": "Ny match",
+        "matchStatus": {
+          "playerLeft": "Spelare lämnade - klicka för att gå tillbaka till start.",
+          "waitingForPlayers": "Väntar på spelare",
+          "goodMatch": "Bra match!",
+          "continueSpectating": "Fortsätt titta?",
+          "opponentLeft": "Motståndare lämnade - klicka för att gå tillbaka till start.",
+          "waitingForOpponent": "Waiting for Opponent",
+          "continueMatch": "Continue Match?",
+          "rematch?": "Rematch?",
+          "rankedIconAlt": "Ranked Match Icon (Crossed Swords)",
+          "casualIconAlt": "Casual Match Icon (Coffee Mug)",
+          "wonTheMatch": "won the match",
+          "lostTheMatch": "lost the match"
+        }
+      }
+    },
+    "moves": {
+      "disabledMove": {
+        "topTwo": "You must play one of the top two cards from the deck",
+        "notTurn": "It's not your turn",
+        "frozenCard": "This card is frozen",
+        "emptyDeck": "Can't be played with empty deck",
+        "multipleQueens": "You can't play a {rank} while your opponent has two or more queens",
+        "noRoyals": "There are no Royals to target",
+        "noRoyalsOrPoints": "There are no point cards or Royals to target"
+      },
+      "points": {
+        "displayName": "Points",
+        "description": "Gain 1 point | Gain {count} points"
+      },
+      "scuttle": {
+        "description": "Scrap a lower point card",
+        "disabled": "You can only scuttle smaller point cards",
+        "disabledNoPoints": "Your opponent has no point cards to scuttle"
+      },
+      "effects": {
+        "1": "Scrap all points",
+        "2": "Scrap target Royal or Glasses eight",
+        "3": "Choose 1 card in the Scrap and put it to your hand",
+        "4": "Your opponent discards two cards of their choice from their hand",
+        "5": "Discard 1 card, and draw up to 3",
+        "6": "Scrap all Royals and Glasses eights",
+        "7": "Play one of the top two cards of the deck and put the other back (both are revealed)",
+        "8": "Your opponent plays with an open hand (their cards are revealed to you)",
+        "9": "Return target card to its controller's hand. They can't play it next turn",
+        "10": "No effect",
+        "11": "Play on top of target point card to steal it",
+        "12": "Your other cards may only be targeted by scuttles",
+        "13": "Reduces the points you need to win. (1K: 14pts, 2K: 10pts, 3K: 5pts, 4K: 0pts)"
+      },
+      "jack": {
+        "description": "Steal an opponent's point card",
+        "disabled": "You cannot jack your opponent's points while they have a queen"
+      },
+      "glasses": {
+        "displayName": "Glasses",
+        "description": "Your opponent plays open handed"
+      },
+      "royal": {
+        "displayName": "Royal"
+      }
+    },
+    "menus": {
+      "gameMenu": {
+        "refresh": "Refresh",
+        "rules": "Rules",
+        "concede": "Concede",
+        "stalemate": "Request Stalemate",
+        "cancel": "Cancel",
+        "home": "Go Home",
+        "concedeDialog": "The game will end and your opponent will win.",
+        "stalemateDialog": "If your opponent agrees, the game will end in a stalemate. The request will cancel if the opponent declines or either player makes a move.",
+        "clipHighlight": "Clip Highlight",
+        "highlightCopied": "Highlight Link Copied"
+      },
+      "spectatorListMenu": {
+        "spectators": "Spectators",
+        "noSpectators": "Currently no spectators"
+      }
+    },
+    "score": {
+      "points": "POINTS",
+      "goal": "GOAL",
+      "kings": "0 Kings | 1 King | {count} Kings"
+    },
+    "turn": {
+      "yourTurn": "YOUR TURN",
+      "opponentTurn": "OPPONENT'S TURN"
+    },
+    "history": {
+      "title": "History"
+    },
+    "snackbar": {
+      "global": {
+        "notYourTurn": "It's not your turn!",
+        "cardFrozen": "That card is frozen! You must wait a turn to play it.",
+        "playFromHand": "You can only play a card that is in your hand",
+        "blockedByQueen": "Your opponent's queen prevents you from targeting their other cards",
+        "blockedByMultipleQueens": "You cannot play a Targeted One-Off (Two, Nine) when your opponent has more than one Queen",
+        "notInMainPhase": "You can only do that in the main phase"
+      },
+      "draw": {
+        "deckIsEmpty": "The deck is empty; you cannot draw.",
+        "handLimit": "You are at the hand limit; you cannot draw.",
+        "exhaustedDeck": "Deck exhausted; revealing player hands"
+      },
+      "faceCards": {
+        "withoutTarget": "Only Kings, Queens, and Eights may be played as Face Cards without a target"
+      },
+      "points": {
+        "numberOnlyForPoints": "You can only play a number card as points."
+      },
+      "jack": {
+        "stealOnlyWithJack": "You can only steal your opponent's points with a jack",
+        "stealOnlyPointCards": "You can only steal your opponent's point cards",
+        "noJackWithQueen": "You cannot use a Jack while your opponent has a Queen."
+      },
+      "scuttle": {
+        "rankTooLow": "You can only scuttle if your card's rank is higher, or the rank is the same, and your suit is higher (Clubs < Diamonds < Hearts < Spades)",
+        "mustUsePointCard": "You can only scuttle with an ace through ten",
+        "mustTargetPointCard": "You can only scuttle a card your opponent has played for points"
+      },
+      "stalemate": {
+        "alreadyConsideringStalemate": "A stalemate has already been offered",
+        "noStalemateOffered": "Your opponent has not offered a stalemate",
+        "opponentConsideringStalemate": "Your opponent is considering your stalemate offer",
+        "previousStalemateRejected": "Stalemate request was already rejected this turn",
+        "wrongPhase": "You can't request a stalemate during other moves"
+      },
+      "oneOffs": {
+        "oneOffInPlay": "There is already a one-off in play; you cannot play any card, except a two to counter.",
+        "cantPlayWithoutATarget": "You cannot play that card as a ONE-OFF without a target",
+        "onlyTwoOrNine": "You can only play a 2, or a 9 as targeted one-offs.",
+        "emptyDeck": "You can't play that one-off unless there are cards in the deck",
+        "three": {
+          "scrapIsEmpty": "You can only play a 3 as a one-off if there are cards in the scrap pile",
+          "notResolvingThreePhase": "Can pick from scrap by resolving a 3",
+          "mustPickFromScrap": "You must pick a card from the scrap"
+        },
+        "four": {
+          "opponentHasNoCards": "You cannot play a 4 as a one-off while your opponent has no cards in hand",
+          "notYourTurn": "It's not your turn to discard",
+          "notResolvingFourPhase": "Can't discard unless your opponent played a four",
+          "mustSelectCards": "You must select two cards to discard"
+        },
+        "five": {
+          "selectCardToDiscard": "You must select one card to discard",
+          "incorrectCard": "Incorrect card played",
+          "wrongPhase": "You can't resolve a five right now.",
+          "fiveDeckIsEmpty": "Cannot resolve 5 one-off with an empty deck"
+        },
+        "seven": {
+          "oneCardInDeck": "You cannot play a 7 as a ONE-OFF if it is the last card in the deck",
+          "pickAndPlay": "You can only play cards from the top of the deck while resolving a seven.",
+          "wrongPhase": "You can't play from the deck right now",
+          "mustBeDoubleJacks": "You can't discard from a seven unless both cards are jacks",
+          "jacksMustBeUnplayable": "You can't discard because the jacks can be played"
+        }
+      }
+    }
+  },
+  "home": {
+    "howItWorks": {
+      "button": "How it works",
+      "title": "Looking To Play?",
+      "content": "Our weekly play sessions are open to everyone:",
+      "wednesday": "Wednesday nights at 8:30pm EST",
+      "thursday": "Thursdays at 12pm EST",
+      "findMatch": "Can't find a match? Join us on",
+      "content2": "to chat with other players and to see who is available to play at any time.",
+      "playSolo": "Want to play solo? Try",
+      "playAI": "playing vs AI",
+      "mettle": "to learn the ropes and test your mettle.",
+      "learnMore": "Want to learn more? Check out our",
+      "about": "about page",
+      "about2": "to learn the rules and read about the cuttle.cards project.",
+      "okayButton": "okay"
+    },
+    "snackbar": {
+      "cannotJoin": "Cannot join that game because it's already full",
+      "spectateTwoPlayers": "You can only spectate an ongoing game with two players",
+      "cantFindGame": "Can't find game",
+      "invalidLobbyNumber": "Invalid Lobby Number",
+      "cannotSpectate": "Cannot spectate game because you are playing",
+      "spectateNoGamestates": "Cannot spectate: game is too old"
+    },
+    "gameFinder": "Game Finder",
+    "spectate": "SPECTATE",
+    "noGameslist": "No Active Games",
+    "noSpectatelist": "No Games Available to Spectate",
+    "openCreateGame": "Create a game",
+    "submitCreateGame": "Create game",
+    "players": "players",
+    "playAiContent": "Want to play solo? Try",
+    "playAiLink": "playing vs AI",
+    "playAiContent2": "to learn the ropes and test your mettle.",
+    "gameName": "Game Name",
+    "join": "Join"
+  },
+  "rules": {
+    "introduction": "Introduction",
+    "actions": {
+      "title": "Actions",
+      "clubs": "Clubs",
+      "diamonds": "Diamonds",
+      "hearts": "Hearts",
+      "spades": "Spades",
+      "weakest": "Weakest",
+      "strongest": "Strongest"
+    },
+    "howToPlay": "How to play",
+    "cuttleTitle": "What is Cuttle?",
+    "cuttleText": "Cuttle is a two player battle card game played with a standard 52-card deck of cards. It has the strategic nuance of trading card games like Magic, with the elegant balance of a standard deck--and you can play it for free! Test your mettle in the deepest card game under the sea!",
+    "rulesTitle": "Rules of Cuttle",
+    "preview": {
+      "watchVideo": "Watch Video",
+      "imgAlt": "How to play {title} in Cuttle"
+    },
+    "rulesReadText": "Read the official",
+    "rulesPreviewGif": "Animated preview of {title} in Cuttle",
+    "rulesWatchText": "or watch cuttle.cards video tutorial below to learn the rules and get a feel for the flow of the game.",
+    "goalTitle": "Goal",
+    "goalText": "The goal is to be the first player to have 21 or more points worth of point cards on your field. The first player to reach the goal wins immediately.",
+    "playTitle": "Play",
+    "playText-1": "One player (traditionally the dealer) is dealt 6 cards and their opponent is dealt 5. The player with 5 cards goes first.",
+    "playText-2": "On your turn you must perform exactly one of the following actions:",
+    "draw": "Draw",
+    "drawDescription": "Take one card from the deck. You may not draw past the 8-card hand limit.  If there are no cards left in the deck, you may pass.  Three consecutive passes ends the game in a stalemate",
+    "points": "Points",
+    "pointsDescription": "Play a number card from your hand. Worth its rank in points and lasts until scrapped.",
+    "scuttle": "Scuttle",
+    "scuttleDescription": "Scrap an opponent's point card with a bigger one from your hand. Ties are broken by the suit:",
+    "royal": "Royal",
+    "royalDescription": "Play a royal to the field for a persistent benefit -- as long as it stays in play",
+    "oneoff": "One-Off",
+    "oneoffDescription": "Scrap a number card for an effect based on the rank of the card.",
+    "glasses": "Glasses",
+    "glassesDescription": "Play an Eight to reveal your opponent's hand (lasts until scrapped).",
+    "royals": {
+      "title": "Royals",
+      "text": "Royals (Kings, Queens, and Jacks) may be played to the field for a persistent benefit that remains in effect until the card is scrapped. Each Royal gives a different effect.",
+      "king": "King",
+      "kingDescription": "Reduce the number of points you need to win (21, 14, 10, 5, 0 points with 0, 1, 2, 3, 4 Kings).",
+      "queen": "Queen",
+      "queenDescription": "Protects your other cards from being targeted by the effects of other cards. This protects your cards against 2's (both effects), 9's, and Jacks.",
+      "queenDescription2": "Does not protect against aces, sixes or scuttling.",
+      "jack": "Jack",
+      "jackDescription": "Play on an opponent's point card to steal it. Point card returns to opponent if the Jack is scrapped or if another Jack is used to steal it back.",
+      "eight": "Eight",
+      "eightDescription": "Play a 'Glasses Eight' to reveal your opponent's hand. This counts as a Royal and lasts until scrapped."
+    },
+    "oneoffs": {
+      "title": "One-Offs",
+      "text": "Number cards (except 8's and 10's) can be played for a One-Off effect, which scraps the card for an effect based on the rank of the card played. Whenever a one-off is played, the other player may counter it using a two to cancel the effect.",
+      "ace": "Ace",
+      "aceDescription": "Scrap all point cards on the field.",
+      "two": "Two - Multi Use Effect Card",
+      "twoE1Description": "Effect 1: Counter target One-Off Effect. Counters may be played during your opponent's turn.",
+      "twoE2Description": "Effect 2: Scrap target Royal or Glasses Eight.",
+      "three": "Three",
+      "threeDescription": "Choose a card from the scrap pile and put it in your hand.",
+      "four": "Four",
+      "fourDescription": "Your opponent discards two cards of their choice.",
+      "five": "Five",
+      "fiveDescription": "Discard one card then draw up to three cards from the deck up to the 8 card hand limit.",
+      "six": "Six",
+      "sixDescription": "Scrap all Royals and Glasses Eights on the field.",
+      "seven": "Seven",
+      "sevenDescription": "Reveal the top two cards of the deck to both players and choose one to play however you choose.",
+      "nine": "Nine",
+      "nineDescription": "Return a card from your opponent's field to their hand. They cannot play it next turn.",
+      "ten": "Ten",
+      "tenDescription": "No effect."
+    },
+    "readyToPlay": {
+      "readyToPlay": "Ready to Play?",
+      "signUp": "Sign Up to Play Online",
+      "findGame": "Find a Game"
+    },
+    "multiplayerTitle": "Multiplayer Variants",
+    "multiplayerText1": "Presently only 2-player cuttle is available at ",
+    "multiplayerText2": "however Cuttle can be played with 2-4 players. 3 and 4-player Cuttle each have slight variations on the rules to optimize the game balance while changing the pace and the feel. Give them a try next time you're playing Cuttle in a group!",
+    "3Players": {
+      "title": "3 Player Cuttle: Cutthroat",
+      "text": "Cutthroat is a brutally fast-paced 1v1v1 version of Cuttle, full of betrayal and pivotal moments!",
+      "rules": "The rules are the same as above with the following changes:",
+      "rule1": "The win condition is reduced. Players need 14 points to win by default, 9 points with one King in play, 5 points with two Kings in play, and having 3 Kings in play immediately wins (goal becomes zero).",
+      "rule2": "To start play, deal each player 5 cards and the player to the left of the dealer goes first. Which player is the dealer rotates clockwise each game.",
+      "rule3": "Shuffle two Jokers into the deck. Jokers count as Royals with the effect \"Steal target Royal\".",
+      "rule4": "The hand limit is reduced to 7 (from 8)."
+    },
+    "4Players": {
+      "title": "4 Player Cuttle: 2v2",
+      "text": "4 player Cuttle is a 2v2 team game. Each player sits across from their partner. Your team wins if either you or your teammate reach your respective goals, but players do not share cards on their hand or field (points are counted separately and your Royals do not directly affect your partner).",
+      "rules": "The rules are otherwise the same as 1v1 Cuttle, with play proceeding clockwise from the left of the dealer, with the following other changes:",
+      "rule1": "Each player is dealt 5 cards, play starts left of the dealer and proceeds clockwise from there.",
+      "rule2": "Shuffle two Jokers into the deck. Jokers count as Royals with the effect \"Steal target Royal\". Similar to Jacks, they may transfer control of a Royal from any player to any other player.",
+      "rule3": "The hand limit is reduced to 7 (from 8).",
+      "rule4": "Jacks may be played to transfer control of any point card to any other player. You may therefore \"steal\" points from yourself (or anyone else) in order to give them to your partner, potentially winning on your turn with their points (their goal is still determined by the count of their own Kings on the field).",
+      "rule5": "Nines can be played for an alternative, similar effect. Whenever an opponent plays a Royal, you may immediately play a Nine in response to return that card to its owner's hand immediately, preventing its effect from taking place. Doing so may be done out of turn and does not take your turn, but does not prevent the target's owner from playing the card again on their next turn. Alternatively, you may still play a Nine for its original one-off effect on your turn (taking your turn to do so) to return a card to its controller's hand and prevent them from playing that card on their next turn."
+    },
+    "faq": {
+      "title": "FAQ",
+      "twoCounter": "Can I play a two to counter a point card? What about a scuttle?",
+      "twoCounterAnswer": "Nope! Twos can only counter One-Offs. You can play a two to destroy a Royal or Glasses Eight, but this takes your turn, unlike countering.",
+      "queenProtectTwo": "Do Queens protect against countering with a two?",
+      "queenProtectTwoAnswer": "Yes! Queens protect against targeting, when a card applies a unique effect to one specific card. This means your other cards (not the Queen, herself) are protected against Twos (either effect), Nines, and Jacks.",
+      "queenProtectScuttle": "Do Queens protect against scuttling? What about Aces & Sixes?",
+      "queenProtectScuttleAnswer": "No! Scuttling doesn't count as targeting, and neither do the board-wiping effects of Aces or Sixes. Queens only protect against the effects of Twos, Nines, and Jacks.",
+      "twoOnTwo": "Can I counter a Two with a Two?",
+      "twoOnTwoAnswer": "Heck yeah! Playing a Two to counter is a One-Off, which can be countered with a two. Stacked counters make for exciting plays and pivotal strategic moments.",
+      "kingWin": "Can I win by playing a King?",
+      "kingWinAnswer": "Yes! If you meet the required number of points, you win immediately. This means if you play a King when you already have enough points to meet the new limit, you win on that turn.",
+      "aceDestruction": "If I play an Ace or a Six, are my cards destroyed as well?",
+      "aceDestructionAnswer": "Yes. Aces and Sixes destroy all Point Cards and all Royals plus Glasses Eights, respectively. That includes any that you have out. Try to avoid destroying too many of your own cards!",
+      "revealNoPoints": "My Seven revealed two Jacks and my opponent has no points. What happens?",
+      "revealNoPointsAnswer": "If playing both cards revealed by a Seven is impossible (namely revealing two Jacks and your opponent has no point cards in play), choose one card to discard and place the other back on top of the deck.",
+      "revealOneLeft": "What if I play a Seven and there is only one card left in the deck?",
+      "revealOneLeftAnswer": "Reveal just the one card and continue play like normal. Similar to the above situation, if you reveal a Jack and your opponent does not have any point cards in play, that Jack is scrapped.",
+      "emptyHandFive": "What happens when I play a five with an otherwise empty hand?",
+      "emptyHandFiveAnswer": "If you have no other cards in hand when you play a 5, you simply skip discarding and draw three cards. This can be a powerful, but risky play. If it works, you end up with two more cards than you started with that turn, but if it is countered, you could have no cards at all!",
+      "deckExhaust": "What happens when the deck is exhausted?",
+      "deckExhaustAnswer": "When there are no cards left in the deck, players may pass on their turn instead of drawing. If there are three consecutive passes i.e. player 1 passes, player 2 passes, then player 1 passes again, the game ends in a stalemate and neither player wins.",
+      "whereToPlay": "Where can I play Cuttle?",
+      "whereToPlayAnswer": "You can play Cuttle anywhere you have a deck of cards and a friend. If you want to play online, there is only one place: cuttle.cards"
+    },
+    "tournaments": {
+      "title": "Tournaments",
+      "competitiveCuttle1": "Competitive Cuttle is divided into 4 seasons per year,one per suit: Clubs, Diamonds, Hearts, and Spades. At the end of each season, the top 8 players play a double elimination championship tournament and the champions are permanently accoladed on the site.",
+      "competitiveCuttle2": "Each Season is divided into 13 weeks. For each week, we count the number of best 2/3 rankedmatches each player wins against unique opponents (ignoring stalemates) and assign players points based on their weekly standing.",
+      "championPlayer": "Champion Player",
+      "secondPlacePlayer": "Second Place Player",
+      "thirdPlacePlayer": "Third Place Player",
+      "exampleImgExplanation": "Example of stats / tournament page",
+      "scoring": {
+        "numPoints": "1 Point | {count} Points",
+        "firstPlace": "The player with the most wins gets 5 points for the week",
+        "secondPlace": "The player with the 2nd most wins gets 4 points for the week",
+        "thirdPlace": "The player with the 3rd most wins gets 3 points for the week",
+        "oneWin": "Each other player who won at least one match gets 2 points for the week",
+        "completedMatch": "Each other player who completed a match without winning gets 1 point for the week"
+      }
+    }
+  },
+  "stats": {
+    "error": {
+      "oops": "Oops!",
+      "message": "There was a problem loading the leaderboard. Refresh the page or select another season to try again."
+    },
+    "siteUsage": "Site Usage",
+    "weeklyRankings": "Weekly Rankings",
+    "season": {
+      "select": "Select Season",
+      "champions": "Season Champions",
+      "tournamentBracket": "here to see the official tournament bracket",
+      "tournamentFootage": "here to watch the official tournament footage",
+      "playByPlay": "with play-by-play commentary."
+    },
+    "winRate": "Win Rate",
+    "wins": "Wins",
+    "losses": "Losses",
+    "results": "Results",
+    "week": "Week",
+    "selectMetric": "Select Metric",
+    "selectWeeks": "Select Weeks",
+    "seasonTotal": "Season Total",
+    "pointsAndWins": "Points and Wins",
+    "pointsOnly": "Points Only",
+    "winsOnly": "Wins Only",
+    "statsScoring": {
+      "title": "Ranked Scoring",
+      "button": "How are ranks determined?",
+      "displayName": "1 Point | {count} Points",
+      "seasonDescription1a": "Competitive Cuttle is divided into 4 seasons per year, one per suit: Clubs, Diamonds, Hearts, and Spades. At the end of each season, the top 8 players play a double elimination championship tournament and the",
+      "seasonDescription1b": "champions are permanently accoladed on the site.",
+      "award1": "Champion player",
+      "award2": "Second Place Player",
+      "award3": "Third Place Player",
+      "seasonDescription2": "Each Season is divided into 13 weeks. For each week, we count the number of best 2/3 ranked matches each player wins against unique opponents (ignoring stalemates) and assign players points based on their weekly standing.",
+      "points": {
+        "5": "The player with the most wins gets 5 points for the week",
+        "4": "The player with the 2nd most wins gets 4 points for the week",
+        "3": "The player with the 3rd most wins gets 3 points for the week",
+        "2": "Each other player who won at least one match gets 2 points for the week",
+        "1": "Each other player who completed a match without winning gets 1 point for the week"
+      },
+      "seasonDescription3": "You can view the statistics and rankings for each season on this page. At the end of each season, the top 8 players compete in a double elimination championship tournament. At the end of the year, the top 8 players from the Season Championships compete in the Cuttle World Championship! Do you have what it takes to become",
+      "lordOfDeep": "Lord of the Deep?",
+      "gotIt": "Got It!"
+    }
+  },
+  "error": {
+    "404": {
+      "title": "404 Not Found"
+    }
+  },
+  "announcement": {
+    "activatorText": "Clubs 2025 Season Championship TODAY!",
+    "title": "Clubs 2025 Championship",
+    "heading": "Championship Today!",
+    "paragraph": "The Clubs 2025 Cuttle Season Championship is Today, April 26th at 12:30pm EST! Watch the top 8 players from the past season of ranked play compete in a double elimination showdown for the title of Clubs 2025 Cuttle Season Champion! Watch it live at ",
+    "twitchLink": "twitch.tv/cuttle_cards"
+  }
+}
