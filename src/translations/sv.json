@@ -1,0 +1,570 @@
+{
+  "global": {
+    "signup": "Registrera dig",
+    "login": "Logga in",
+    "logout": "Logga ut",
+    "rules": "Regler",
+    "play": "Spela",
+    "stats": "Statistik",
+    "user": "Användare",
+    "rank": "Rank",
+    "username": "Användarnamn",
+    "password": "Lösenord",
+    "cancel": "Avbryt",
+    "ranked": "Rankad",
+    "casual": "Casual",
+    "your": "din",
+    "close": "Stäng",
+    "click": "Klicka",
+    "playerReady": {
+      "playerDeclinedAlt": "{playerUsername} avböjde ny match (card back)",
+      "cardBackAlt": "Card back -- Väntar på {playerUsername}",
+      "readyAlt": "Card front -- {playerUsername} är redo",
+      "rematchAlt": "Card front -- {playerUsername} vill spela igen"
+    }
+  },
+  "login": {
+    "noAccount": "Saknar du konto?",
+    "haveAccount": "Har du redan ett konto?",
+    "title": "Välkommen till Cuttle.Cards",
+    "subtitle": "Kortspelet som får dig på kroken från första draget!",
+    "formHeaderLogin": "Logga in för att börja spela!",
+    "formHeaderSignup": "Registrera dig för att börja spela och gör dig redo för att djupdyka i Cuttle-världen.",
+    "quote": "\"Cuttle är ett skarpt, snabbt spel byggt helt på utmärkta mekaniker. Det är den sortens spel – om jag hade känt till det i college - som jag skulle ha slitit ut kortlekar genom att spela.\"",
+    "quoteCite": "Richard Garfield - skapare av Magic: The Gathering",
+    "content": "Cuttle är ett kortspel för 2 spelare som spelas med en vanlig kortlek på 52 kort. Det har den strategiska finessen från samlarkortspel som Magic, men med den eleganta balansen i en standardkortlek – och du kan spela det gratis! Sätt dina färdigheter på prov i det djupaste kortspelet under havet!",
+    "content2": "Bli den första som når 21 poäng i denna explosiva intellektuella kamp. Sätt in en modig offensiv medan du saboterar för din motståndare med lömska trick. Har du vad som krävs för att bli djupets härskare?",
+    "readRules": "Läs regelboken",
+    "joinDiscord": "Join:a vår discord community",
+    "loginDiscord": "Logga in med Discord",
+    "linkDiscord": "Länka Discord",
+    "discordLinked": "Discord har länkats",
+    "socials": "Kolla in våra sociala medier för mer innehåll från Cuttle!",
+    "linkAccount": "Länka ditt konto",
+    "createUsername": "Skapa ett användarnamn för ditt nya konto",
+    "snackbar": {
+      "usernameIsTaken": "Användarnamnet är redan registrerat, testa att logga in!",
+      "userNotFound": "Ingen användare med det användarnamnet kunde hittas. Testa att registrera dig!",
+      "wrongPassword": "Användarnamn och lösenord matchar inte",
+      "oAuth": {
+        "alreadyLinked": "Kontot är redan länkat till en annan användare",
+        "providerError": "Fel uppstod vid anslutning till provider",
+        "invalidProvider": "invalidProvider"
+      }
+    }
+  },
+  "lobby": {
+    "lobbyFor": "Lobby för",
+    "ready": "REDO",
+    "unready": "INTE REDO",
+    "exit": "LÄMNA",
+    "invite": "Bjud in",
+    "rankedChangedAlert": "Spelläge ändrat till"
+  },
+  "game": {
+    "resolve": "Bestäm",
+    "scrap": "Släng",
+    "view": "Titta",
+    "pass": "PASSA",
+    "playFromDeck": "Spela från lek",
+    "overlays": {
+      "waitingForGameToStart": "Väntar medan spelet startar",
+      "leaveGame": "Lämna spel",
+      "opponentMayCounter": "Moståndare kan svara",
+      "opponentMustResolve": "Moståndare måste besluta",
+      "opponentIsDiscarding": "Motståndare slänger kort",
+      "opponentSkipsDiscarding": "Motståndare hoppar över att slänga kort",
+      "opponentChoosingFromScrap": "Moståndare väljer bland slängda kort",
+      "opponentPlayingFromDeck": "Motståndare spelar från kortleken",
+      "opponentMustDiscardJack": "Motståndare måste kassera Knekt",
+      "opponentConsideringStalemate": "Motståndare överväger remi",
+      "gameUnavailable": {
+        "title": "Hoppsan!",
+        "content": "Det verkar som att detta spel inte är tillgängligt."
+      }
+    },
+    "dialogs": {
+      "reauthentication": {
+        "reconnectToGame": "Anslut till spel på nytt",
+        "youHaveDisconnected": "Du har kopplats bort på grund av inaktivitet. Logga in igen för att återuppta din session.",
+        "username": "Användarnamn",
+        "password": "Lösenord",
+        "leaveGame": "Lämna spel",
+        "login": "Logga in"
+      },
+      "four": {
+        "discardTwoCards": "Släng två kort",
+        "discard": "Släng",
+        "opponentHasResolved": "Din motståndare har spelat en fyra. Du måste slänga två kort. Klicka för att välja kort att slänga."
+      },
+      "five": {
+        "discardAndDraw": "Släng och dra kort",
+        "nice": "Snyggt!",
+        "resolveFive": "Du har spelat en femma. Släng ett kort och dra sedan tre nya kort.",
+        "resolveFiveNoCards": "Du har spelat en femma, men du har inga kort på hand att slänga. Dra tre kort utan att slänga något. Härligt!"
+      },
+      "scrapDialog": {
+        "scrapPile": "Slängda kort",
+        "noCards": "Det finns inga slängda kort."
+      },
+      "cardListSortable": {
+        "sort": {
+          "label": "Sortera",
+          "chronologically": "Kronologiskt",
+          "rank": "Utifrån rank"
+        }
+      },
+      "counterDialogs": {
+        "counterTitle": "Chans till kontring",
+        "chooseTwoTitle": "Välj två",
+        "cannotCounterTitle": "Kan inte kontra",
+        "selectCard": "Vilka två vill du kontra? (Klicka på korten)",
+        "opponentPlayed": "Din motståndare har spelat ",
+        "oneOff": "som en one-off",
+        "target": "sikta ",
+        "toCounter": "att kontra",
+        "counter": "kontra",
+        "playTwo": "Vill du spela en tvåa för att kontra?",
+        "cannotCounter": "Du kan inte kontra eftersom",
+        "reasons": {
+          "opponentWithQueen": "din motståndare har en dam",
+          "noTwoPresent": "du har ingen tvåa"
+        }
+      },
+      "threeDialog": {
+        "title": "Välj ett bland de slängda korten"
+      },
+      "opponentRequestedStalemateDialog": {
+        "title": "Acceptera remi?",
+        "opponentHasRequested": "Din motståndare har begärt remi. Om du accepterar, avslutas spelet oavgjort.",
+        "reject": "Avböj begäran",
+        "accept": "Acceptera begäran"
+      },
+      "sevenDoubleJacksDialog": {
+        "title": "Välj ett kort",
+        "cannotMove": "Hoppsan! Det verkar som att du inte kan spela. Välj en knekt att kasta.",
+        "resolve": "Fixa"
+      },
+      "gameOverDialog": {
+        "game": "Spel",
+        "you": "Du",
+        "youWin": "Du vinner",
+        "youWinTheMatch": "Fick dem!",
+        "won": "vann",
+        "youLose": "Du förlorar",
+        "youLoseTheMatch": "Utklassad...",
+        "lost": "förlora",
+        "draw": "Remi",
+        "p1Wins": "Spelare 1 vinner",
+        "p2Wins": "Spelare 2 vinner",
+        "match": "Matcha",
+        "matchAgainst": "Matcha mot",
+        "yourGameAgainst": "ditt spel mot",
+        "finished": "Avslutat",
+        "inProgress": "Pågående",
+        "goHome": "Gå tillbaka till start",
+        "rematch": "Ny match",
+        "matchStatus": {
+          "playerLeft": "Spelare lämnade - klicka för att gå tillbaka till start.",
+          "waitingForPlayers": "Väntar på spelare",
+          "goodMatch": "Bra match!",
+          "continueSpectating": "Fortsätt titta?",
+          "opponentLeft": "Motståndare lämnade - klicka för att gå tillbaka till start.",
+          "waitingForOpponent": "Väntar på motståndare",
+          "continueMatch": "Fortsätt match?",
+          "rematch?": "Ny match?",
+          "rankedIconAlt": "Rankad matchikon (Crossed Swords)",
+          "casualIconAlt": "Casual matchicon (Coffee Mug)",
+          "wonTheMatch": "vann matchen",
+          "lostTheMatch": "förlorade matchen"
+        }
+      }
+    },
+    "moves": {
+      "disabledMove": {
+        "topTwo": "Du måste spela ett av de två översta korten från leken",
+        "notTurn": "Det är inte din tur",
+        "frozenCard": "Detta kort är fruset",
+        "emptyDeck": "Kan inte spelas med tom lek",
+        "multipleQueens": "Du kan inte spela en {rank} när din motståndare har två eller fler drottningar",
+        "noRoyals": "Det finns inga kungligheter att sikta på",
+        "noRoyalsOrPoints": "There are no point cards or Royals to target"
+      },
+      "points": {
+        "displayName": "Poäng",
+        "description": "Få 1 poäng | Få {count} poäng"
+      },
+      "scuttle": {
+        "description": "Släng ett kort med lägre poäng",
+        "disabled": "Du kan bara scuttla kort med lägre poäng",
+        "disabledNoPoints": "Din motståndare har inga poäng-kort att scuttla"
+      },
+      "effects": {
+        "1": "Släng alla poäng",
+        "2": "Släng vald kunglighet eller glasögon-åtta",
+        "3": "Välj 1 kort bland slängda kort och ta det till handen",
+        "4": "Din motståndare väljer två kort att slänga från sin hand",
+        "5": "Släng 1 kort och dra upp till 3 nya kort",
+        "6": "Släng alla kungligheter och glasögon-åttor",
+        "7": "Spela ett av de två översta korten på leken och lägg tillbaka det andra (båda visas för motståndaren)",
+        "8": "Din motståndare spelar med öppen hand (deras kort visas för dig)",
+        "9": "Lägg tillbaka valt kort i ägarens hand. Ägaren kan inte spela kortet nästa tur.",
+        "10": "Inga specialeffekter",
+        "11": "Lägg ovanpå valt poäng-kort för att stjäla det",
+        "12": "Dina andra kort kan bara scuttlas",
+        "13": "Minskar antalet poäng du behöver för att vinna (1K: 14 poäng, 2K: 10 poäng, 3K: 5 poäng, 4K: 0 poäng)"
+      },
+      "jack": {
+        "description": "Stjäl en motståndares poäng-kort",
+        "disabled": "Du kan inte stjäla kort med knekt om motståndaren har en dam i spel"
+      },
+      "glasses": {
+        "displayName": "Glasögon",
+        "description": "Din motståndare spelar med öppen hand"
+      },
+      "royal": {
+        "displayName": "Kunglighet"
+      }
+    },
+    "menus": {
+      "gameMenu": {
+        "refresh": "Uppdatera",
+        "rules": "Regler",
+        "concede": "Ge upp",
+        "stalemate": "Begär remi",
+        "cancel": "Avbryt",
+        "home": "Gå tillbaka till start",
+        "concedeDialog": "Spelet avslutas och din motståndare vinner.",
+        "stalemateDialog": "Om motståndaren accepterar remi avslutas spelet oavgjort. Begäran avbryts om motståndaren avböjer eller någon av spelarna gör ett drag.",
+        "clipHighlight": "Höjdpunkt",
+        "highlightCopied": "Höjdpunktslänk kopierad"
+      },
+      "spectatorListMenu": {
+        "spectators": "Åskådare",
+        "noSpectators": "Inga åskådare just nu"
+      }
+    },
+    "score": {
+      "points": "POÄNG",
+      "goal": "MÅL",
+      "kings": "0 Kungar | 1 Kung | {count} Kungar"
+    },
+    "turn": {
+      "yourTurn": "DIN TUR",
+      "opponentTurn": "MOTSTÅNDARENS TUR"
+    },
+    "history": {
+      "title": "Händelseförlopp"
+    },
+    "snackbar": {
+      "global": {
+        "notYourTurn": "Det är inte din tur!",
+        "cardFrozen": "Ditt kort är fruset! Du måste vänta en runda innan du kan spela det.",
+        "playFromHand": "Du kan bara spela ett kort du har på handen",
+        "blockedByQueen": "Din motståndares dam hindrar dig från att sikta på deras andra kort.",
+        "blockedByMultipleQueens": "Du kan inte sikta med en One-Off (tvåa eller nach) när din motståndare har mer än en drottning i spel.",
+        "notInMainPhase": "Du kan bara göra det i huvudfasen"
+      },
+      "draw": {
+        "deckIsEmpty": "Kortleken är tom, du kan inte dra fler kort.",
+        "handLimit": "Din hand är begränsad, du kan inte dra fler kort.",
+        "exhaustedDeck": "Kortleken är tom, visar spelare händer"
+      },
+      "faceCards": {
+        "withoutTarget": "Endast kungar, drottningar och åttor kan spelas som Face Cards utan sikte."
+      },
+      "points": {
+        "numberOnlyForPoints": "Du kan bara spela numrerade kort som poäng-kort."
+      },
+      "jack": {
+        "stealOnlyWithJack": "Du kan bara stjäla din motståndares kort med en knekt",
+        "stealOnlyPointCards": "YDu kan bara stjäla din motståndares poäng-kort",
+        "noJackWithQueen": "Du kan inte använda en knekt när din motståndare har en dam i spel."
+      },
+      "scuttle": {
+        "rankTooLow": "Du kan bara scuttla om ditt korts rank är lika högt eller högre, och om kortfärgen är högre (Klöver < Ruter < Hjärter < Spader)",
+        "mustUsePointCard": "Du kan bara scuttla med korten från ett (ess) till tio",
+        "mustTargetPointCard": "Du kan abra scuttla ett kort som din motståndare spelat för att få poäng"
+      },
+      "stalemate": {
+        "alreadyConsideringStalemate": "Remi har redan föreslagits",
+        "noStalemateOffered": "Din motståndare har inte föreslagit remi",
+        "opponentConsideringStalemate": "Din motståndare överväger ditt förslag om remi",
+        "previousStalemateRejected": "Förslaget om remi har redan avböjts den här turen",
+        "wrongPhase": "Du kan inte begära remi under andra drag"
+      },
+      "oneOffs": {
+        "oneOffInPlay": "Det är redan en one-off i spel; du kan inte spela några kort, förutom att kontra med en tvåa.",
+        "cantPlayWithoutATarget": "Du kan inte spela det kortet som en ONE-OFF utan att sikta på något kort",
+        "onlyTwoOrNine": "Du kan bara spela en 2:a eller en 9:a som siktade one-offs.",
+        "emptyDeck": "Du kan bara spela den one-off:en när du har kort kvar i leken",
+        "three": {
+          "scrapIsEmpty": "Du kan bara spela en 3:a som en one-off om det finns kort bland dina slängda kort.",
+          "notResolvingThreePhase": "Kan välja kort från slängda kort genom att spela en 3:a",
+          "mustPickFromScrap": "Du måste välja ett kort från dina slängda kort"
+        },
+        "four": {
+          "opponentHasNoCards": "Du kan inte spela en 4:a som en one-off när din motståndare inte har några kort på handen",
+          "notYourTurn": "Det är inte din tur att slänga kort",
+          "notResolvingFourPhase": "Du kan bara slänga kort om din motståndare spelade en fyra",
+          "mustSelectCards": "Du måste välja två kort att slänga"
+        },
+        "five": {
+          "selectCardToDiscard": "Du måste välja ett kort att slänga",
+          "incorrectCard": "Felaktigt kort spelat",
+          "wrongPhase": "Du kan inte spela en 5:a just nu",
+          "fiveDeckIsEmpty": "du kan inte spela en 5:a som en one-off med en tom lek"
+        },
+        "seven": {
+          "oneCardInDeck": "Du kan inte spela en 7:a som en one-off om det är det sista kortet i din lek",
+          "pickAndPlay": "Du kan bara spela kort från toppen av leken när du spelar en 7:a",
+          "wrongPhase": "Du kan inte spela kort från leken just nu",
+          "mustBeDoubleJacks": "Du kan inte slänga från en 7:a om inte båda korten är knektar",
+          "jacksMustBeUnplayable": "Du kan inte slänga kort så länge knektarna är spelbara"
+        }
+      }
+    }
+  },
+  "home": {
+    "howItWorks": {
+      "button": "Hur det funkar",
+      "title": "Vill du spela?",
+      "content": "Våra veckovisa tillfällen är öppna för alla:",
+      "wednesday": "Onsdagskvällar kl 8:30pm EST",
+      "thursday": "Torsdagar kl 12pm EST",
+      "findMatch": "Hittar du ingen match? Häng på oss",
+      "content2": "för att chatta med andra spelare och se vem som är tillgänglig för spel närsomhelst.",
+      "playSolo": "Vill du spela solo? Testa",
+      "playAI": "att spela mot AI",
+      "mettle": "för att lära dig grunderna och testa dina färdigheter.",
+      "learnMore": "Vill du veta mer? Kolla in vår",
+      "about": "om oss-sida",
+      "about2": "för att lära dig reglerna och läsa om cuttle.cards-projektet.",
+      "okayButton": "okej"
+    },
+    "snackbar": {
+      "cannotJoin": "Kan inte join:a, det är fullt",
+      "spectateTwoPlayers": "Du kan bara titta på en pågående match mellan två spelare",
+      "cantFindGame": "Kan inte hitta spel",
+      "invalidLobbyNumber": "Ogiltigt lobbynummer",
+      "cannotSpectate": "Kan inte titta på någon annans spel eftersom du själv spelar just nu",
+      "spectateNoGamestates": "Kan inte titta, spelet är för gammalt"
+    },
+    "gameFinder": "Hitta spel",
+    "spectate": "TITTA PÅ",
+    "noGameslist": "Inga aktiva spel",
+    "noSpectatelist": "Inga spel tillgängliga att titta på",
+    "openCreateGame": "Starta ett spel",
+    "submitCreateGame": "Starta ett spel",
+    "players": "spelare",
+    "playAiContent": "Vill du spela solo? Testa att",
+    "playAiLink": "spela mot AI",
+    "playAiContent2": "för att lära dig grunderna och testa dina färdigheter.",
+    "gameName": "Spelnamn",
+    "join": "Join:a"
+  },
+  "rules": {
+    "introduction": "Introduktion",
+    "actions": {
+      "title": "Drag",
+      "clubs": "Klöver",
+      "diamonds": "Ruter",
+      "hearts": "Hjärter",
+      "spades": "Spader",
+      "weakest": "Svagast",
+      "strongest": "Starkast"
+    },
+    "howToPlay": "Hur man spelar",
+    "cuttleTitle": "Vad är Cuttle?",
+    "cuttleText": "Cuttle är ett kortspel för 2 spelare som spelas med en vanlig kortlek på 52 kort. Det har den strategiska finessen från samlarkortspel som Magic, men med den eleganta balansen i en standardkortlek – och du kan spela det gratis! Sätt dina färdigheter på prov i det djupaste kortspelet under havet!",
+    "rulesTitle": "Regler för Cuttle",
+    "preview": {
+      "watchVideo": "Se video",
+      "imgAlt": "Hur man spelar {title} i Cuttle"
+    },
+    "rulesReadText": "Läs det officiella",
+    "rulesPreviewGif": "Animerad förhandsvisning av {title} i Cuttle",
+    "rulesWatchText": "eller se en video-tutorial nedan för att lära dig reglerna och få en bättre känsla för spelet.",
+    "goalTitle": "Mål",
+    "goalText": "Målet är att vara den första spelaren som uppnår 21 eller fler poäng genom poäng-kort på sin spelplan. Det första spelaren som når målet vinner direkt.",
+    "playTitle": "Spela",
+    "playText-1": "En spelare (den som delar ut korten) börjar med sex kort och motståndaren med fem. Spelaren med fem kort börjar.",
+    "playText-2": "På din tur måste du genomföra exakt ett av dessa dragen:",
+    "draw": "Dra kort",
+    "drawDescription": "Dra ett kort från leken. Om du redan har åtta kort på handen får du inte dra fler kort. Om du inte har fler kort i leken kan du passa turen till motståndaren. Tre pass i rad avslutar spelet oavgjort",
+    "points": "Points",
+    "pointsDescription": "Spela ett numrerat kort från din hand. Det är värt sin rank i poäng och ligger kvar tills det slängs.",
+    "scuttle": "Scuttle",
+    "scuttleDescription": "Förstör en motståndares poäng-kort genom att spela ett högre kort från din hand. Högst kort av två med samma rank baseras på färgtillhörighet:",
+    "royal": "Kungligheter",
+    "royalDescription": "Spela en kunglighet för en bestående fördel så länge korten ligger kvar i spel",
+    "oneoff": "One-Off",
+    "oneoffDescription": "Släng ett numrerat kort för en effekt baserat på kortets rank.",
+    "glasses": "Glasögon",
+    "glassesDescription": "Spel en 8:a för att avslöja motståndarens hand (effekten består så länge kortet ligger kvar i spel).",
+    "royals": {
+      "title": "Kungligheter",
+      "text": "Kungligheter (kung, drottning, knekt) kan spelas för en bestående fördel så länge kortet ligger kvar i spel. Varje kunglighet har var sina effekter.",
+      "king": "Kung",
+      "kingDescription": "Reducera antalet poäng som behövs för att vinna (21, 14, 10, 5, 0 poäng för 0, 1, 2, 3, 4 kungar).",
+      "queen": "Drottning",
+      "queenDescription": "Skyddar dina kort från andra korts effekter: 2:or (båda effekterna), 9:or och knektar.",
+      "queenDescription2": "Skyddar inte mot ess, 6:or eller scuttling.",
+      "jack": "Knekt",
+      "jackDescription": "Spela för att stjäla motståndarens poäng-kort. Poäng-kortet återvänder till motståndaren om knekten slängs eller om en annan knekt stjäl tillbaka kortet.",
+      "eight": "Eight",
+      "eightDescription": "Spela en \"glasögon-åtta\" för att titta på korten i din motståndares hand. Kortet räknas som en kunglighet och effekten består så länge kortet ligger kvar i spel."
+    },
+    "oneoffs": {
+      "title": "One-Offs",
+      "text": "Numrerade kort (utom 8:or och 10:or) kan spelas för en one-off-effekt baserat på rank och färgtillhörighet. Närhelt en one-off spelas kan motståndaren kontra effekten genom att spela en 2:a.",
+      "ace": "Ess",
+      "aceDescription": "Släng alla poäng-kort som ligger i spel.",
+      "two": "Tvåor – multi-effekt",
+      "twoE1Description": "Effekt 1: Kontra en one-off effekt. Kontringar får spelas i motståndarens tur.",
+      "twoE2Description": "Effekt 2: Släng vald kunglighet eller glasögon-åtta.",
+      "three": "Treor",
+      "threeDescription": "Välj ett av de slängda korten och ta det till handen.",
+      "four": "Fyror",
+      "fourDescription": "Din motståndare väljer två från sin hand kort att slänga.",
+      "five": "Femmor",
+      "fiveDescription": "Släng ett kort, dra sedan upp till tre nya kort från din lek, utan att du får fler än åtta kort på handen.",
+      "six": "Sexor",
+      "sixDescription": "Släng alla kungligheter och glasögon-åttor som ligger i spel.",
+      "seven": "Sjuor",
+      "sevenDescription": "Visa de två översta korten på leken för dig och din motståndare och välj ett att spela hur du vill (som poäng eller för en effekt).",
+      "nine": "Nior",
+      "nineDescription": "Välj ett kort på motståndarens spelplan som den måste ta tillbaka till handen. Motståndaren kan inte spela korten förrän nästa tur.",
+      "ten": "Tior",
+      "tenDescription": "Inga effekter."
+    },
+    "readyToPlay": {
+      "readyToPlay": "Redo att spela?",
+      "signUp": "Registrera dig för att spela online",
+      "findGame": "Hitta ett spel"
+    },
+    "multiplayerTitle": "Multiplayer",
+    "multiplayerText1": "Just nu Cuttle är bara tillgängligt mellan två spelare ",
+    "multiplayerText2": "men Cuttle kan spelas mellan två till fyra spelare. Cuttle mellan tre till fyra spelare har vissa regelvariartioner för att optimera spelets balans och känsla. Testa nästa gång ni spelar Cuttle i grupp!",
+    "3Players": {
+      "title": "Cuttle för tre spelare: Cutthroat",
+      "text": "Cutthroat är en brutalt snabb variant av Cuttle, full av förräderi och avgörande ögonblick!",
+      "rules": "Reglerna är samma som ovan med följande ändringar:",
+      "rule1": "Villkoren för vinst är reducerade. Spelare behöver uppnå 14 poäng för att vinna per default, nio poäng med en kung i spel, fem poäng med två kungar i spel, och med tre kungar i spel vinner man direkt (målet reduceras till noll poäng).",
+      "rule2": "För att börja spela, ges varje spelare fem kort och spelaren till vänster om den som delar ut korten börjar. Vem som delar ut kort roterar medurs för varje nytt spel.",
+      "rule3": "Blanda in två jokrar i leken. Jokrar räknas som kungligheter med effekten \"stjäl vald kunglighet\".",
+      "rule4": "Högst antal kort på handen reduceras till sju (från åtta)."
+    },
+    "4Players": {
+      "title": "Cuttle för fyra spelare: 2v2",
+      "text": "Fyrspelar-Cuttle är ett spel två mot två. Varje spelar sitter mittemot sin parter. Ens team vinner om antingen man själv eller ens partner når sitt respektive mål, men spelare delar inte kort på handen eller i spel (poäng räknas separat och ens kungligheter påverkar inte varandra).",
+      "rules": "Reglerna är i övrigt samma som i vanlig Cuttle, med turtagning i medurs riktning från vänster om den som delar ut korten, med följande ändringar:",
+      "rule1": "Varje spelare får fem kort, spelaren till vänster om den som delar ut kort börjar och turordningen därefter går medurs.",
+      "rule2": "Blanda in två jokrar i leken. Jokrar räknas som kungligheter och har effekten \"stjäl vald kunglighet\". Likt knektar kan de ta kontroll över en kunglighet från en spelare till en annan.",
+      "rule3": "Högst antal kort på handen reduceras till sju (från åtta).",
+      "rule4": "Knektar får spelas för att flytta kontrollen av ett kort från en spelare till en annan. Du kan alltså \"stjäla\" poäng från dig själv (eller någon annan) för att ge dem till din partner, potentiellt sett vinna i din tur med deras poäng (deras mål bestäms fortsatt av hur många kungar de har i spel).",
+      "rule5": "Nior kan spelas för en alternativ, liknande effekt. Närhelst en annan spelare spelar en kunglighet kan du omedelbart spela en nia som svar och tvinga den andra spelaren att ta tillbaka kortet till handen innan det hinner få effekt. Du kan spela nian i motståndarens tur eller din egen tur, men det hindrar inte den andra spelaren från att spela kortet igen i sin tur. Alternativt kan du spela nian med dess vanliga one-off-effekt i din tur för att tvinga en spelare att ta tillbaka sitt kort till handen samt hindra den från att spela kortet igen i sin nästa tur."
+    },
+    "faq": {
+      "title": "Vanliga frågor",
+      "twoCounter": "Kan jag spela en tvåa för att kontra ett poäng-kort? Vad händer med scuttle?",
+      "twoCounterAnswer": "Nix! Tvåor kan bara kontra one-offs. Du kan spela en tvåa för att förstöra en kunglighet eller en glasögon-åtta, men det sker i din tur, till skillnad från en kontring.",
+      "queenProtectTwo": "Skyddar drottningar från kontringar med tvåor?",
+      "queenProtectTwoAnswer": "Ja! Drottningar skyddar dina kort mot andra korts effekter, vilket betyder att de också är skyddade från tvåor (båda effekterna). Dina kort är också skyddade mot effekter från nior och knektar. Drottningen själv är dock inte skyddad.",
+      "queenProtectScuttle": "Skyddar drottningar från scuttling? Vad händer med ess och sexor?",
+      "queenProtectScuttleAnswer": "Nej! Scuttling räknas inte som en effekt. Inte heller kort som förstör alla kort i spel (rensar brädet), likt ess och sexor, räknas. Drottningar skyddar bara mot effekter från tvåor, nior och knektar.",
+      "twoOnTwo": "Kan jag kontra en tvåa med en tvåa?",
+      "twoOnTwoAnswer": "Jajamän! Att spela en tvåa för att kontra något är en one-off, som kan kontras med en tvåa. Flera kontringar på varandra innebär spännande drag och avgörande strategiska ögonblick.",
+      "kingWin": "Kan jag vinna genom att spela en kung?",
+      "kingWinAnswer": "Ja! Om du uppnår tillräckligt många poäng vinner du direkt. Det betyder att om du spelar en kung när du redan har tillräckligt med poäng för att nå det nya målet som kungen som kommer i spel sänker det till så vinner du.",
+      "aceDestruction": "Om jag spelar ett ess eller en sexa, förstörs mina egna kort också?",
+      "aceDestructionAnswer": "Ja. Ess och sexor förstör alla poäng-kort och alla kungligheter samt glasögon-åttor som ligger i spel, inklusiva dina egna. Försök undvika att förstöra för många av dina egna kort!",
+      "revealNoPoints": "Min sjua visade två knektar och mina motståndare har inga poäng. Vad händer?",
+      "revealNoPointsAnswer": "Om det är omöjligt att spela båda korten som avslöjas när en sjua spelas (två knektar när din motståndare inte har några kort kvar i leken) får du välja ett kort att slänga och ett kort att lägga tillbaka överst på leken.",
+      "revealOneLeft": "Vad händer om jag spelar en sjua och det bara finns ett kort kvar i leken?",
+      "revealOneLeftAnswer": "Visa bara det enda kortet och fortsätt spela som vanligt. Om du avslöjar en knekt och motståndaren inte har några kort i spel, slängs knekten.",
+      "emptyHandFive": "Vad händer om jag spelar en femma med en i övrigt tom hand?",
+      "emptyHandFiveAnswer": "Om du inte har några fler kort på handen när du spelar en femma struntar du helt enkelt i att slänga några kort och drar bara tre nya kort. Detta kan vara kraftfullt med riskabelt. Om det fungerar har du dragit två extra kort i din tur, men om ditt drag kontras har du inga kort kvar på handen!",
+      "deckExhaust": "Vad händer när kortleken tar slut?",
+      "deckExhaustAnswer": "När det inte längre finns några kort kvar i leken kan spelare passa turen istället för att dra kort. Om det sker tre turer i rad – t.ex. spelare 1 passar, spelare 2 passar, spelare 1 passar igen – avslutas matchen oavgjord.",
+      "whereToPlay": "Var kan jag spela Cuttle?",
+      "whereToPlayAnswer": "Du kan spela Cuttle varsomhelst där det finns en kortlek och en vän. Om du vill spela online finns det bara en plats: cuttle.cards"
+    },
+    "tournaments": {
+      "title": "Turneringar",
+      "competitiveCuttle1": "Tävlingsinriktad Cuttle är indelad i fyra säsonger per år, en per färgtillhörighet: Klöver, Ruter, Hjärter och Spader. Vid slutet av varje säsong möts de åtta bästa spelarna i en elimineringsturnering och mästarna blir permanent hedrade på sidan.",
+      "competitiveCuttle2": "Varje säsong är indelad i tretton veckor. Varje vecka räknar vi antalet 2/3 rankade matcher vardera spelare vinner mot unika motståndare (utan att räkna oavgjorda matcher) och delar ut poäng till spelare baserat på deras veckorankning.",
+      "championPlayer": "Champion-spelare",
+      "secondPlacePlayer": "Andra plats-spelare",
+      "thirdPlacePlayer": "Tredje plats-spelare",
+      "exampleImgExplanation": "Exempel på stats / turneringssida",
+      "scoring": {
+        "numPoints": "1 poäng | {count} poäng",
+        "firstPlace": "Spelaren med flest vinster under en vecka får fem poäng",
+        "secondPlace": "Spelaren med näst flest vinster under en vecka får fyra poäng",
+        "thirdPlace": "Spelaren med tredje flest vinster under en vecka får tre poäng",
+        "oneWin": "Varje spelare som vunnit åtminstone en match under en vecka får två poäng",
+        "completedMatch": "Varje spelare som spelade åtminstone en match under en vecka men utan att vinna får en poäng"
+      }
+    }
+  },
+  "stats": {
+    "error": {
+      "oops": "Hoppsan!",
+      "message": "Det uppstod ett problem när poängtavlan skulle laddas. Uppdatera sidan eller välj en annan säsong och försök igen."
+    },
+    "siteUsage": "Site Usage",
+    "weeklyRankings": "Veckovisa rankningar",
+    "season": {
+      "select": "Välj säsong",
+      "champions": "Säsongsmästare",
+      "tournamentBracket": "här för att se den officiella turneringsgrupperingen",
+      "tournamentFootage": "här för att se officiellt inspelat material från turnering",
+      "playByPlay": "med play-by-play kommentarer."
+    },
+    "winRate": "Vinstfrekvens",
+    "wins": "Vinster",
+    "losses": "Förluster",
+    "results": "Resultat",
+    "week": "Vecka",
+    "selectMetric": "Välj mätvärde",
+    "selectWeeks": "Välj veckor",
+    "seasonTotal": "Säsongstotal",
+    "pointsAndWins": "Poäng och vinster",
+    "pointsOnly": "Endast poäng",
+    "winsOnly": "Endast vinster",
+    "statsScoring": {
+      "title": "Rankningspoäng",
+      "button": "Hur bestäms rankning?",
+      "displayName": "1 poäng | {count} poäng",
+      "seasonDescription1a": "ävlingsinriktad Cuttle är indelad i fyra säsonger per år, en per färgtillhörighet: Klöver, Ruter, Hjärter och Spader. Vid slutet av varje säsong möts de åtta bästa spelarna i en elimineringsturnering och",
+      "seasonDescription1b": "mästarna blir permanent hedrade på sidan.",
+      "award1": "Mästare",
+      "award2": "Andra plats",
+      "award3": "Tredje plats",
+      "seasonDescription2": "Varje säsong är indelad i tretton veckor. Varje vecka räknar vi antalet 2/3 rankade matcher vardera spelare vinner mot unika motståndare (utan att räkna oavgjorda matcher) och delar ut poäng till spelare baserat på deras veckorankning.",
+      "points": {
+        "5": "Spelaren med flest vinster under en vecka får fem poäng",
+        "4": "Spelaren med näst flest vinster under en vecka får fyra poäng",
+        "3": "Spelaren med tredje flest vinster under en vecka får tre poäng",
+        "2": "Varje spelare som vunnit åtminstone en match under en vecka får två poäng",
+        "1": "Varje spelare som spelade åtminstone en match under en vecka men utan att vinna får en poäng"
+      },
+      "seasonDescription3": "På den här sidan kan du se statistik och rakning för varje säsong. Vid varje säsongsslut möts de åtta bästa spelarna i en mästerskapsturnering. Vid årsslutet möts de åtta bästa spelarna från säsongernas turneringar i Cuttle världsmästerskap! Har du vad som krävs för att bli",
+      "lordOfDeep": "djupets härskare?",
+      "gotIt": "Got It!"
+    }
+  },
+  "error": {
+    "404": {
+      "title": "404 Sidan hittades inte"
+    }
+  },
+  "announcement": {
+    "activatorText": "Klöver 2025 säsongsmästerskap IDAG!",
+    "title": "Klöver 2025 mästerskap",
+    "heading": "Mästerskap idag!",
+    "paragraph": "Klöver 2025 Cuttle säsongsmästerskap går av stapeln idag, 26 april kl 12:30pm EST! Se senaste säsongens åtta bästa spelare tävla om titeln Klöver 2025 Cuttle säsongsmästare! Se det live på ",
+    "twitchLink": "twitch.tv/cuttle_cards"
+  }
+}

@@ -8,6 +8,7 @@ import en from '@/translations/en.json';
 import es from '@/translations/es.json';
 import fr from '@/translations/fr.json';
 import de from '@/translations/de.json';
+import sv from '@/translations/sv.json';
 import ukr from '@/translations/ukr.json';
 
 const messages = {
@@ -15,12 +16,13 @@ const messages = {
   es,
   fr,
   de,
+  sv,
   ukr,
 };
 
 const preferredLocale = getLocalStorage('preferredLocale');
 const fallbackLocale = 'en';
-const locale = Object.keys(messages).includes(preferredLocale) ? preferredLocale : fallbackLocale; 
+const locale = Object.keys(messages).includes(preferredLocale) ? preferredLocale : fallbackLocale;
 
 const i18n = createI18n({
   legacy: false,
