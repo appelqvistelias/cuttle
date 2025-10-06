@@ -226,7 +226,33 @@
         "displayName": "Kunglighet"
       },
       "log": {
-        "deal": "{player} delade ut korten; {opponent} börjar"
+        "deal": "{player} delade ut korten; {opponent} börjar",
+        "draw": "{player} drog ett kort",
+        "points": "{player} spelade {card} för poäng",
+        "scuttle": "{player} scuttled {opponent}s {targetCard} med {playedCard}",
+        "face_card": "{player} spelade {card} som ett face-kort",
+        "jack": "{player} stal {opponent}s {targetCard} med {playedCard}",
+        "one_off": "{player} spelade {card} som en one-off på {targetCard}",
+        "counter": "{player} spelade {card} för att kontra {targetCard}",
+        "fizzle": "{card} kontrades, alla kort som spelades den här turen slängs",
+        "resolve": "{card} lades; {opponent} berörd",
+        "resolve_three": "{player} tog tillbaka {targetCard} från slängda kort",
+        "resolve_four": "{player} slängde {discardedCard}",
+        "resolve_five": "{player} slängde {discardedCard} och drog {numCardsDrawn} nya kort",
+        "seven_points": "{player} spelade {card} från toppen av leken för poäng",
+        "seven_scuttle": "{player} scuttlade {opponent}s {targetCard} med {playedCard} från toppen av leken",
+        "seven_face_card": "{player} spelade {card} från toppen av leken som ett face-kort",
+        "seven_jack": "{player} stal {opponent}s {targetCard} med {playedCard} från toppen av leken",
+        "seven_discard": "{player} slängde {card} från toppen av leken",
+        "seven_untargeted_one_off": "{player} spelade {card} från toppen av leken som ett one-off",
+        "seven_targeted_one_off": "{player} spelade {card} från toppen av leken som ett one-off mot {targetCard}",
+        "pass": "{player} passade turen",
+        "concede": "{player} gav upp",
+        "stalemate_request": "{player} begärde remi",
+        "stalemate_accept": "{player} accepterade {opponent}s förfrågan om remi",
+        "stalemate_reject": "{player} avslog {opponent}s förfrågan om remi",
+        "load_fixture": "{player} satte spelet i ett custom state",
+        "unknown": "Ett okänt drag uppstod"
       }
     },
     "menus": {

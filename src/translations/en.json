@@ -226,7 +226,33 @@
         "displayName": "Royal"
       },
       "log": {
-        "deal": "{player} dealt; {opponent} will go first"
+        "deal": "{player} dealt; {opponent} will go first",
+        "draw": "{player} drew a card",
+        "points": "{player} played the {card} for points",
+        "scuttle": "{player} scuttled {opponent}'s {targetCard} with {playedCard}",
+        "face_card": "{player} played {card} as a face card",
+        "jack": "{player} stole {opponent}'s {targetCard} with {playedCard}",
+        "one_off": "{player} played {card} as a one-off targeting {targetCard}",
+        "counter": "{player} played {card} to counter {targetCard}",
+        "fizzle": "{card} is countered, all cards played this turn are scrapped",
+        "resolve": "{card} resolves; {opponent} affected",
+        "resolve_three": "{player} took {targetCard} from Scrap pile",
+        "resolve_four": "{player} discarded {discardedCard}",
+        "resolve_five": "{player} discarded {discardedCard} and drew {numCardsDrawn} cards",
+        "seven_points": "{player} played {card} from top of deck for points",
+        "seven_scuttle": "{player} scuttled {opponent}'s {targetCard} with {playedCard} from top of deck",
+        "seven_face_card": "{player} played {card} from top of deck as face card",
+        "seven_jack": "{player} stole {opponent}'s {targetCard} with {playedCard} from top of deck",
+        "seven_discard": "{player} discarded {card} from top of deck",
+        "seven_untargeted_one_off": "{player} played {card} from top of deck as a one-off",
+        "seven_targeted_one_off": "{player} played {card} from top of deck as a one-off targeting {targetCard}",
+        "pass": "{player} passed",
+        "concede": "{player} conceded",
+        "stalemate_request": "{player} requested a stalemate",
+        "stalemate_accept": "{player} accepted {opponent}'s stalemate offer",
+        "stalemate_reject": "{player} rejected {opponent}'s stalemate offer",
+        "load_fixture": "{player} set the game into a custom state",
+        "unknown": "An unknown move occurred"
       }
     },
     "menus": {
