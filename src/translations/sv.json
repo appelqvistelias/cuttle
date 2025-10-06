@@ -224,6 +224,9 @@
       },
       "royal": {
         "displayName": "Kunglighet"
+      },
+      "log": {
+        "deal": "{player} delade ut korten; {opponent} börjar"
       }
     },
     "menus": {
