@@ -735,6 +735,10 @@ export const useGameStore = defineStore('game', () => {
     requestRematch,
     requestJoinRematch,
     addSpectator,
+    currentMode,
+    isNormalMode,
+    isBeginnerMode,
+    isExpertMode
   };
 });
 // End game store

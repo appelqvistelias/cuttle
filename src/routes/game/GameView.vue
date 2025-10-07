@@ -430,8 +430,8 @@
       <GameDialogs @clear-selection="clearSelection" @handle-error="handleError" />
       <PlaybackControls v-if="gameHistoryStore.showPlaybackControls" />
     </template>
-    <div>
-     {{gameStore.currentMode}}
+    <div v-if="gameStore.currentMode == 'normal'">
+      {{ gameStore.currentMode }}
     </div>
   </div>
 </template>
