@@ -109,6 +109,13 @@ export const useGameStore = defineStore('game', () => {
   const iWantToContinueSpectating = ref(false);
   const status = ref(GameStatus.ARCHIVED);
 
+  // Game modes
+
+  const currentMode = ref('normal');
+  const isBeginnerMode = computed(() => currentMode.value === 'beginner');
+  const isNormalMode = computed(() => currentMode.value === 'normal');
+  const isExpertMode = computed(() => currentMode.value === 'expert');
+
   // Stores
   const authStore = useAuthStore();
   const gameHistoryStore = useGameHistoryStore();
