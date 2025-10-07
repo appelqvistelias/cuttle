@@ -19,6 +19,45 @@
         <v-list-item data-cy="rules-open" prepend-icon="mdi-information" @click="shownDialog = 'rules'">
           {{ t('game.menus.gameMenu.rules') }}
         </v-list-item>
+
+        <!-- MODE SELECTOR -->
+        <v-list-item>
+          <div class="mode-selector-container">
+            <v-btn
+              color="surface-1"
+              variant="outlined"
+              class="mode-button"
+              :class="{ 'active-mode': gameStore.isBeginnerMode }"
+              @click="gameStore.setCurrentMode('beginner')"
+            >
+              <v-icon class="mr-2" size="small" icon="mdi-school" />
+              Beginner
+            </v-btn>
+
+            <v-btn
+              color="surface-1"
+              variant="outlined"
+              class="mode-button"
+              :class="{ 'active-mode': gameStore.isNormalMode }"
+              @click="gameStore.setCurrentMode('normal')"
+            >
+              <v-icon class="mr-2" size="small" icon="mdi-account" />
+              Normal
+            </v-btn>
+
+            <v-btn
+              color="surface-1"
+              variant="outlined"
+              class="mode-button"
+              :class="{ 'active-mode': gameStore.isExpertMode }"
+              @click="gameStore.setCurrentMode('expert')"
+            >
+              <v-icon class="mr-2" size="small" icon="mdi-trophy" />
+              Expert
+            </v-btn>
+          </div>
+        </v-list-item>
+
         <!-- Stop Spectating -->
         <v-list-item
           v-if="isSpectating"
@@ -37,7 +76,11 @@
           >
             {{ t('game.menus.gameMenu.concede') }}
           </v-list-item>
-          <v-list-item data-cy="stalemate-initiate" prepend-icon="mdi-handshake" @click="shownDialog = 'stalemate'">
+          <v-list-item
+            data-cy="stalemate-initiate"
+            prepend-icon="mdi-handshake"
+            @click="shownDialog = 'stalemate'"
+          >
             {{ t('game.menus.gameMenu.stalemate') }}
           </v-list-item>
         </template>
@@ -102,12 +145,13 @@ import { useGameHistoryStore } from '@/stores/gameHistory';
 import BaseDialog from '@/components/BaseDialog.vue';
 import RulesDialog from '@/routes/game/components/dialogs/components/RulesDialog.vue';
 import TheLanguageSelector from '@/components/TheLanguageSelector.vue';
+
 export default {
   name: 'GameMenu',
   components: {
     BaseDialog,
     RulesDialog,
-    TheLanguageSelector
+    TheLanguageSelector,
   },
   props: {
     isSpectating: {
@@ -115,22 +159,22 @@ export default {
       required: true,
     },
   },
-  emits: [ 'handle-error' ],
+  emits: ['handle-error'],
   setup() {
     const { t } = useI18n();
     return { t };
   },
   data() {
     return {
-      shownDialog:'',
-      showGameMenu: false,      
+      shownDialog: '',
+      showGameMenu: false,
       loading: false,
       clipCopiedToClipboard: false,
     };
   },
   computed: {
     ...mapStores(useAuthStore, useGameStore, useGameHistoryStore),
-    showEndGameDialog:{
+    showEndGameDialog: {
       get() {
         return this.showConcedeDialog || this.showStalemateDialog;
       },
@@ -143,12 +187,12 @@ export default {
       },
     },
     dialogTitle() {
-      return this.t( this.showConcedeDialog ? 'game.menus.gameMenu.concede' : 'game.menus.gameMenu.stalemate');
+      return this.t(this.showConcedeDialog ? 'game.menus.gameMenu.concede' : 'game.menus.gameMenu.stalemate');
     },
     dialogText() {
-      return this.t(this.showConcedeDialog
-        ? 'game.menus.gameMenu.concedeDialog'
-        : 'game.menus.gameMenu.stalemateDialog');
+      return this.t(
+        this.showConcedeDialog ? 'game.menus.gameMenu.concedeDialog' : 'game.menus.gameMenu.stalemateDialog',
+      );
     },
     buttonSize() {
       return this.$vuetify.display.mdAndDown ? 'small' : 'medium';
@@ -159,19 +203,19 @@ export default {
       },
       set(val) {
         this.shownDialog = val ? 'rules' : '';
-      }
+      },
     },
-    showConcedeDialog(){ 
+    showConcedeDialog() {
       return this.shownDialog === 'concede';
     },
-    showStalemateDialog(){
+    showStalemateDialog() {
       return this.shownDialog === 'stalemate';
-    }
+    },
   },
   watch: {
     showGameMenu() {
       this.clipCopiedToClipboard = false;
-    }
+    },
   },
   methods: {
     closeMenu() {
@@ -222,12 +266,34 @@ export default {
     },
     async refresh() {
       await this.authStore.reconnectSocket();
-    }
-  }
+    },
+  },
 };
 </script>
+
 <style lang="scss" scoped>
 .menu-button {
   width: 100%;
+}
+
+.mode-selector-container {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+  padding: 8px 0;
+}
+
+.mode-button {
+  flex: 1;
+  min-width: 90px;
+  font-size: 0.85rem;
+}
+
+.active-mode {
+  background-color: rgba(var(--v-theme-surface-1), 0.2) !important;
+  border-width: 2px !important;
+  font-weight: 600;
 }
 </style>

@@ -50,7 +50,7 @@ class GameCard {
         12: 'Q',
         13: 'K',
       }[card.rank] ?? card.rank;
-    const str_suit = [ '♣️', '♦️', '♥️', '♠️' ][card.suit];
+    const str_suit = ['♣️', '♦️', '♥️', '♠️'][card.suit];
     this.createdAt = card.createdAt;
     this.updatedAt = card.updatedAt;
     this.id = card.id;
@@ -129,18 +129,26 @@ export const useGameStore = defineStore('game', () => {
     return pNum > -1 ? pNum : null;
   });
   const player = computed(() => players.value[myPNum.value]);
-  const playerPointTotal = computed(() => player.value?.points?.reduce((total, card) => total + card.rank, 0) || 0);
+  const playerPointTotal = computed(
+    () => player.value?.points?.reduce((total, card) => total + card.rank, 0) || 0,
+  );
   const playerQueenCount = computed(() => queenCount(player.value));
   const playerUsername = computed(() => player.value?.username ?? null);
-  const opponent = computed(() => players.value.length < 2 ? null : players.value[(myPNum.value + 1) % 2]);
-  const opponentIsReady = computed(() => opponent.value ? (myPNum.value === 0 ? p1Ready.value : p0Ready.value) : null);
+  const opponent = computed(() => (players.value.length < 2 ? null : players.value[(myPNum.value + 1) % 2]));
+  const opponentIsReady = computed(() =>
+    opponent.value ? (myPNum.value === 0 ? p1Ready.value : p0Ready.value) : null,
+  );
   const opponentUsername = computed(() => opponent.value?.username ?? null);
-  const opponentPointTotal = computed(() => opponent.value?.points?.reduce((total, card) => total + card.rank, 0) || 0);
+  const opponentPointTotal = computed(
+    () => opponent.value?.points?.reduce((total, card) => total + card.rank, 0) || 0,
+  );
   const opponentQueenCount = computed(() => queenCount(opponent.value));
   const playerWins = computed(() => gameIsOver.value && winnerPNum.value === myPNum.value);
   const resolvingSeven = computed(() => phase.value === GamePhase.RESOLVING_SEVEN);
   const isPlayersTurn = computed(() => turn.value % 2 === myPNum.value);
-  const hasGlassesEight = computed(() => player.value?.faceCards?.filter((card) => card.rank === 8).length > 0 ?? false);
+  const hasGlassesEight = computed(
+    () => player.value?.faceCards?.filter((card) => card.rank === 8).length > 0 ?? false,
+  );
   const iWantRematch = computed(() => {
     if (myPNum.value === null) {
       return false;
@@ -156,7 +164,9 @@ export const useGameStore = defineStore('game', () => {
     return key.value;
   });
   const opponentDeclinedRematch = computed(() => opponentWantsRematch.value === false);
-  const someoneDeclinedRematch = computed(() => iWantRematch.value === false || opponentDeclinedRematch.value);
+  const someoneDeclinedRematch = computed(
+    () => iWantRematch.value === false || opponentDeclinedRematch.value,
+  );
   const waitingForOpponentToCounter = computed(() => {
     const counteringPhase = phase.value === GamePhase.COUNTERING;
     const numTwosIsEven = twos.value.length % 2 === 0;
@@ -167,7 +177,9 @@ export const useGameStore = defineStore('game', () => {
     const numTwosIsEven = twos.value.length % 2 === 0;
     return counteringPhase && isPlayersTurn.value !== numTwosIsEven;
   });
-  const waitingForOpponentToPickFromScrap = computed(() => phase.value === GamePhase.RESOLVING_THREE && !isPlayersTurn.value);
+  const waitingForOpponentToPickFromScrap = computed(
+    () => phase.value === GamePhase.RESOLVING_THREE && !isPlayersTurn.value,
+  );
   const pickingFromScrap = computed(() => phase.value === GamePhase.RESOLVING_THREE && isPlayersTurn.value);
   const showResolveFour = computed(() => phase.value === GamePhase.RESOLVING_FOUR && !isPlayersTurn.value);
   const waitingForOpponentToDiscard = computed(() => {
@@ -182,9 +194,15 @@ export const useGameStore = defineStore('game', () => {
   });
   const showResolveFive = computed(() => phase.value === GamePhase.RESOLVING_FIVE && isPlayersTurn.value);
   const playingFromDeck = computed(() => phase.value === GamePhase.RESOLVING_SEVEN && isPlayersTurn.value);
-  const waitingForOpponentToPlayFromDeck = computed(() => phase.value === GamePhase.RESOLVING_SEVEN && !isPlayersTurn.value);
-  const waitingForOpponentToStalemate = computed(() => phase.value === GamePhase.CONSIDERING_STALEMATE && lastEventPlayedBy.value === myPNum.value);
-  const consideringOpponentStalemateRequest = computed(() => phase.value === GamePhase.CONSIDERING_STALEMATE && lastEventPlayedBy.value !== myPNum.value);
+  const waitingForOpponentToPlayFromDeck = computed(
+    () => phase.value === GamePhase.RESOLVING_SEVEN && !isPlayersTurn.value,
+  );
+  const waitingForOpponentToStalemate = computed(
+    () => phase.value === GamePhase.CONSIDERING_STALEMATE && lastEventPlayedBy.value === myPNum.value,
+  );
+  const consideringOpponentStalemateRequest = computed(
+    () => phase.value === GamePhase.CONSIDERING_STALEMATE && lastEventPlayedBy.value !== myPNum.value,
+  );
   const topCard = computed(() => deck.value[0] ?? null);
   const secondCard = computed(() => deck.value[1] ?? null);
 
@@ -206,7 +224,10 @@ export const useGameStore = defineStore('game', () => {
     p0Ready.value = newGame.p0Ready ?? p0Ready.value;
     p1Ready.value = newGame.p1Ready ?? p1Ready.value;
     passes.value = newGame.passes ?? passes.value;
-    players.value = newGame.players?.map((player) => setPlayers(player, myPNum.value, hasGlassesEight.value, gameHistoryStore.isSpectating)) ?? players.value;
+    players.value =
+      newGame.players?.map((player) =>
+        setPlayers(player, myPNum.value, hasGlassesEight.value, gameHistoryStore.isSpectating),
+      ) ?? players.value;
     spectatingUsers.value = newGame.spectatingUsers ?? spectatingUsers.value;
     twos.value = newGame.twos?.map((card) => createGameCard(card)) ?? twos.value;
     oneOff.value = createGameCard(newGame.oneOff) ?? null;
@@ -227,6 +248,10 @@ export const useGameStore = defineStore('game', () => {
   }
   function removeSpectator(username) {
     spectatingUsers.value = spectatingUsers.value.filter((spectator) => spectator !== username);
+  }
+
+  function setCurrentMode(mode) {
+    currentMode.value = mode;
   }
   function resetState() {
     id.value = null;
@@ -306,7 +331,7 @@ export const useGameStore = defineStore('game', () => {
       updateGame(game);
       return;
     }
-    const [ playedCard ] = scuttlingPlayer.hand.splice(playedCardIndex, 1);
+    const [playedCard] = scuttlingPlayer.hand.splice(playedCardIndex, 1);
     const targetCard = scuttledPlayer.points[targetCardIndex];
     targetCard.scuttledBy = playedCard;
     await sleep(1000);
@@ -395,18 +420,15 @@ export const useGameStore = defineStore('game', () => {
   }
   async function requestSubscribe(gameId) {
     return new Promise((resolve, reject) => {
-      io.socket.post(
-        `/api/game/${gameId}/join`,
-        (res, jwres) => {
-          if (jwres.statusCode === 200) {
-            resetState();
-            updateGame(res.game);
-            return resolve(res);
-          }
-          const message = res.message ?? 'error subscribing';
-          return reject(new Error(message));
-        },
-      );
+      io.socket.post(`/api/game/${gameId}/join`, (res, jwres) => {
+        if (jwres.statusCode === 200) {
+          resetState();
+          updateGame(res.game);
+          return resolve(res);
+        }
+        const message = res.message ?? 'error subscribing';
+        return reject(new Error(message));
+      });
     });
   }
   function requestGameState(gameId, gameStateIndex = -1, route = null) {
@@ -441,7 +463,7 @@ export const useGameStore = defineStore('game', () => {
         return;
       }
       const message = err?.message ?? err ?? `Unable to spectate game ${gameId}`;
-      throw(new Error(message));
+      throw new Error(message);
     }
   }
   async function requestSpectateLeave() {
@@ -566,7 +588,14 @@ export const useGameStore = defineStore('game', () => {
     await makeSocketRequest('seven/untargetedOneOff', { moveType: MoveType.SEVEN_ONE_OFF, cardId, index });
   }
   async function requestPlayTargetedOneOffSeven({ cardId, index, targetId, pointId, targetType }) {
-    await makeSocketRequest('seven/targetedOneOff', { moveType: MoveType.SEVEN_ONE_OFF, cardId, targetId, pointId, targetType, index });
+    await makeSocketRequest('seven/targetedOneOff', {
+      moveType: MoveType.SEVEN_ONE_OFF,
+      cardId,
+      targetId,
+      pointId,
+      targetType,
+      index,
+    });
   }
   async function requestPass() {
     const moveType = MoveType.PASS;
@@ -738,7 +767,8 @@ export const useGameStore = defineStore('game', () => {
     currentMode,
     isNormalMode,
     isBeginnerMode,
-    isExpertMode
+    isExpertMode,
+    setCurrentMode,
   };
 });
 // End game store
