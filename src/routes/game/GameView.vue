@@ -7,7 +7,11 @@
 
     <!-- Authenticated View -->
     <template v-else>
-      <div id="game-menu-wrapper" class="d-flex flex-column flex-sm-row align-center" :style="menuWrapperStyle">
+      <div
+        id="game-menu-wrapper"
+        class="d-flex flex-column flex-sm-row align-center"
+        :style="menuWrapperStyle"
+      >
         <SpectatorListMenu :spectating-users="spectatingUsers" :vuetify-display="$vuetify" />
         <GameMenu :is-spectating="isSpectating" @handle-error="handleError" />
         <v-icon
@@ -108,7 +112,7 @@
                     class="opponent-hand-wrapper transition-all"
                   >
                     <GameCard
-                      v-for="(card) in gameStore.opponent.hand"
+                      v-for="card in gameStore.opponent.hand"
                       :key="card.id"
                       :suit="isBeingDiscarded(card) ? card.suit : undefined"
                       :rank="isBeingDiscarded(card) ? card.rank : undefined"
@@ -143,9 +147,7 @@
             @click="drawCard"
           >
             <template v-if="!gameStore.resolvingSeven">
-              <v-card-actions class="c-deck-count">
-                ({{ deckLength }})
-              </v-card-actions>
+              <v-card-actions class="c-deck-count"> ({{ deckLength }}) </v-card-actions>
               <h1 v-if="deckLength === 0" id="empty-deck-text">
                 {{ t('game.pass') }}
               </h1>
@@ -303,12 +305,7 @@
             </h3>
             <v-divider />
             <div id="history-logs" ref="logsContainer" class="d-flex flex-column">
-              <p
-                v-for="(log, index) in logs"
-                :key="index"
-                class="my-2"
-                data-cy="history-log"
-              >
+              <p v-for="(log, index) in logs" :key="index" class="my-2" data-cy="history-log">
                 {{ log }}
               </p>
             </div>
@@ -383,7 +380,7 @@
                   :is-hand-card="true"
                   :data-player-hand-card="`${card.rank}-${card.suit}`"
                   @click="selectCard(index)"
-                  @mouseover="hoverCard(index)" 
+                  @mouseover="hoverCard(index)"
                   @mouseleave="clearHover()"
                 />
               </TransitionGroup>
@@ -419,8 +416,17 @@
         @target="beginTargeting"
       />
       <OneOffHoverOverlay
-        v-if="hoveredCard"
-        :model-value="!targeting && (!!hoveredCard )"
+        v-if="hoveredCard && gameStore.isBeginnerMode"
+        :model-value="!targeting && !!hoveredCard"
+        :selected-card="hoveredCard"
+        :is-players-turn="gameStore.isPlayersTurn"
+        :opponent-queen-count="gameStore.opponentQueenCount"
+        :frozen-id="gameStore.player.frozenId"
+        :scrim="false"
+      />
+      <OneOffHoverOverlay
+        v-if="hoveredCard && gameStore.isExpertMode"
+        :model-value="!targeting && !!hoveredCard"
         :selected-card="hoveredCard"
         :is-players-turn="gameStore.isPlayersTurn"
         :opponent-queen-count="gameStore.opponentQueenCount"
@@ -502,7 +508,7 @@ export default {
     },
     menuWrapperStyle() {
       return {
-        zIndex: this.isSpectating ? 2411 : 3 // Allows spectators to access game menu wrapper in any moment
+        zIndex: this.isSpectating ? 2411 : 3, // Allows spectators to access game menu wrapper in any moment
       };
     },
 
@@ -692,10 +698,10 @@ export default {
               opponentJackIds.push(card.attachments[card.attachments.length - 1].id);
             }
           });
-          return [ ...opponentFaceCardIds, ...opponentJackIds ];
+          return [...opponentFaceCardIds, ...opponentJackIds];
         }
         case 1:
-          return [ this.gameStore.opponent.faceCards.find((card) => card.rank === 12).id ];
+          return [this.gameStore.opponent.faceCards.find((card) => card.rank === 12).id];
         default:
           return [];
       }
@@ -715,10 +721,10 @@ export default {
           return this.gameStore.opponent.points.map((validTarget) => validTarget.id);
         case 'targetedOneOff': {
           // Twos and nines can target face cards
-          let res = [ ...this.validFaceCardTargetIds ];
+          let res = [...this.validFaceCardTargetIds];
           // Nines can additionally target points if opponent has no queens
           if (selectedCard.rank === 9 && this.gameStore.opponentQueenCount === 0) {
-            res = [ ...res, ...this.gameStore.opponent.points.map((validTarget) => validTarget.id) ];
+            res = [...res, ...this.gameStore.opponent.points.map((validTarget) => validTarget.id)];
           }
           return res;
         }
@@ -771,7 +777,7 @@ export default {
       if (this.gameStore.id && oldTopCard && !newTopCard) {
         this.showCustomSnackbarMessage('game.snackbar.draw.exhaustedDeck');
       }
-    }
+    },
   },
   async mounted() {
     if (!this.authStore.authenticated) {
@@ -821,8 +827,12 @@ export default {
         this.selectionIndex = index;
       }
     },
-    hoverCard(index) { this.hoveredIndex = index; },
-    clearHover() { this.hoveredIndex = null; },
+    hoverCard(index) {
+      this.hoveredIndex = index;
+    },
+    clearHover() {
+      this.hoveredIndex = null;
+    },
     selectTopCard() {
       if (!this.gameStore.waitingForOpponentToPlayFromDeck) {
         this.secondCardIsSelected = false;
@@ -924,16 +934,14 @@ export default {
         const { resolvingSeven } = this.gameStore;
         const deckIndex = this.topCardIsSelected ? 0 : 1;
         if (!resolvingSeven) {
-          await this.gameStore
-            .requestPlayFaceCard(this.selectedCard.id);
+          await this.gameStore.requestPlayFaceCard(this.selectedCard.id);
         } else {
-          await this.gameStore
-            .requestPlayFaceCardSeven({
-              cardId: this.cardSelectedFromDeck.id,
-              index: deckIndex,
-            });
+          await this.gameStore.requestPlayFaceCardSeven({
+            cardId: this.cardSelectedFromDeck.id,
+            index: deckIndex,
+          });
         }
-      } catch(messageKey){
+      } catch (messageKey) {
         this.handleError(messageKey);
       } finally {
         this.clearSelection();
@@ -1119,8 +1127,8 @@ export default {
       }
     },
     isBeingDiscarded(card) {
-      return this.gameStore.lastEventDiscardedCards?.some(discardedCard => discardedCard.id === card.id); 
-    }
+      return this.gameStore.lastEventDiscardedCards?.some((discardedCard) => discardedCard.id === card.id);
+    },
   },
 };
 </script>
