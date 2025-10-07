@@ -305,7 +305,8 @@
             </h3>
             <v-divider />
             <div id="history-logs" ref="logsContainer" class="d-flex flex-column">
-              <p v-for="(log, index) in logs" :key="index" class="my-2" data-cy="history-log">
+              <p v-for="(log, index) in logs" :key="index" class="my-2" 
+                data-cy="history-log">
                 {{ log }}
               </p>
             </div>
@@ -425,17 +426,8 @@
         :frozen-id="gameStore.player.frozenId"
         :scrim="false"
       />
-      <OneOffHoverOverlay
-        v-if="hoveredCard && gameStore.isExpertMode"
-        :model-value="!targeting && !!hoveredCard"
-        :selected-card="hoveredCard"
-        :is-players-turn="gameStore.isPlayersTurn"
-        :opponent-queen-count="gameStore.opponentQueenCount"
-        :frozen-id="gameStore.player.frozenId"
-        :scrim="false"
-      />
       <ExpertModeOverlay 
-        v-if="hoveredCard"
+        v-if="hoveredCard && gameStore.isExpertMode"
         :model-value="!targeting && (!!hoveredCard )"
         :selected-card="hoveredCard"
         :is-players-turn="gameStore.isPlayersTurn"
@@ -713,10 +705,10 @@ export default {
               opponentJackIds.push(card.attachments[card.attachments.length - 1].id);
             }
           });
-          return [...opponentFaceCardIds, ...opponentJackIds];
+          return [ ...opponentFaceCardIds, ...opponentJackIds ];
         }
         case 1:
-          return [this.gameStore.opponent.faceCards.find((card) => card.rank === 12).id];
+          return [ this.gameStore.opponent.faceCards.find((card) => card.rank === 12).id ];
         default:
           return [];
       }
@@ -736,10 +728,10 @@ export default {
           return this.gameStore.opponent.points.map((validTarget) => validTarget.id);
         case 'targetedOneOff': {
           // Twos and nines can target face cards
-          let res = [...this.validFaceCardTargetIds];
+          let res = [ ...this.validFaceCardTargetIds ];
           // Nines can additionally target points if opponent has no queens
           if (selectedCard.rank === 9 && this.gameStore.opponentQueenCount === 0) {
-            res = [...res, ...this.gameStore.opponent.points.map((validTarget) => validTarget.id)];
+            res = [ ...res, ...this.gameStore.opponent.points.map((validTarget) => validTarget.id) ];
           }
           return res;
         }
@@ -847,11 +839,9 @@ export default {
       setTimeout(() => {
         if (!this.isMouseOverOverlay) {
           this.hoveredIndex = null;
-        } 
-      }, 50); // Small delay
-    clearHover() {
-      this.hoveredIndex = null;
-    },
+        }
+      }, 50);
+    }, // Small delay
     selectTopCard() {
       if (!this.gameStore.waitingForOpponentToPlayFromDeck) {
         this.secondCardIsSelected = false;

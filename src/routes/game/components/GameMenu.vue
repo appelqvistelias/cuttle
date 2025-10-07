@@ -159,7 +159,7 @@ export default {
       required: true,
     },
   },
-  emits: ['handle-error'],
+  emits: [ 'handle-error' ],
   setup() {
     const { t } = useI18n();
     return { t };
