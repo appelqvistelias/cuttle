@@ -383,6 +383,8 @@
                   :is-hand-card="true"
                   :data-player-hand-card="`${card.rank}-${card.suit}`"
                   @click="selectCard(index)"
+                  @mouseover="hoverCard(index)" 
+                  @mouseleave="clearHover()"
                 />
               </TransitionGroup>
             </div>
@@ -416,6 +418,15 @@
         @points="playPoints"
         @target="beginTargeting"
       />
+      <OneOffHoverOverlay
+        v-if="hoveredCard"
+        :model-value="!targeting && (!!hoveredCard )"
+        :selected-card="hoveredCard"
+        :is-players-turn="gameStore.isPlayersTurn"
+        :opponent-queen-count="gameStore.opponentQueenCount"
+        :frozen-id="gameStore.player.frozenId"
+        :scrim="false"
+      />
       <GameDialogs @clear-selection="clearSelection" @handle-error="handleError" />
       <PlaybackControls v-if="gameHistoryStore.showPlaybackControls" />
     </template>
@@ -440,6 +451,7 @@ import TargetSelectionOverlay from '@/routes/game/components/TargetSelectionOver
 import ScrapDialog from '@/routes/game/components/dialogs/components/ScrapDialog.vue';
 import SpectatorListMenu from '@/routes/game/components/SpectatorListMenu.vue';
 import PlaybackControls from './components/PlaybackControls.vue';
+import OneOffHoverOverlay from './components/OneOffHoverOverlay.vue';
 
 export default {
   name: 'GameView',
@@ -456,6 +468,7 @@ export default {
     BaseSnackbar,
     SpectatorListMenu,
     PlaybackControls,
+    OneOffHoverOverlay,
   },
   setup() {
     const { t } = useI18n();
@@ -476,6 +489,7 @@ export default {
       topCardIsSelected: false,
       secondCardIsSelected: false,
       showHistoryDrawer: false,
+      hoveredIndex: null,
     };
   },
   computed: {
@@ -645,6 +659,9 @@ export default {
     selectedCard() {
       return this.selectionIndex !== null ? this.gameStore.player.hand[this.selectionIndex] : null;
     },
+    hoveredCard() {
+      return this.hoveredIndex !== null ? this.gameStore.player.hand[this.hoveredIndex] : null;
+    },
     turnText() {
       return this.t(this.gameStore.isPlayersTurn ? 'game.turn.yourTurn' : 'game.turn.opponentTurn');
     },
@@ -801,6 +818,8 @@ export default {
         this.selectionIndex = index;
       }
     },
+    hoverCard(index) { this.hoveredIndex = index; },
+    clearHover() { this.hoveredIndex = null; },
     selectTopCard() {
       if (!this.gameStore.waitingForOpponentToPlayFromDeck) {
         this.secondCardIsSelected = false;
