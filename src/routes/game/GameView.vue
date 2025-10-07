@@ -377,6 +377,7 @@
                   :is-selected="selectedCard && card.id === selectedCard.id"
                   :is-frozen="card.isFrozen"
                   class="mt-2 transition-all"
+                  :class="{ 'card-hovered': hoveredIndex === index }"
                   :is-hand-card="true"
                   :data-player-hand-card="`${card.rank}-${card.suit}`"
                   @click="selectCard(index)"
@@ -1139,6 +1140,17 @@ export default {
 /////////////////
 .transition-all {
   transition: all 1s;
+}
+
+.card-hovered {
+  transform: translateY(-12px);
+  transition: transform 0.2s ease-out;
+}
+
+/* Se till att transition fungerar för alla kort */
+.game-card,
+.your-card-class {
+  transition: transform 0.2s ease-out;
 }
 // All list transitions leave with position absolute
 .slide-below-leave-active,
