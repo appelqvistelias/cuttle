@@ -434,6 +434,17 @@
         :frozen-id="gameStore.player.frozenId"
         :scrim="false"
       />
+      <ExpertModeOverlay 
+        v-if="hoveredCard"
+        :model-value="!targeting && (!!hoveredCard )"
+        :selected-card="hoveredCard"
+        :is-players-turn="gameStore.isPlayersTurn"
+        :opponent-queen-count="gameStore.opponentQueenCount"
+        :frozen-id="gameStore.player.frozenId"
+        :scrim="false"
+        @mouseenter="isMouseOverOverlay = true"
+        @mouseleave="isMouseOverOverlay = false; hoveredIndex = null"
+      />
       <GameDialogs @clear-selection="clearSelection" @handle-error="handleError" />
       <PlaybackControls v-if="gameHistoryStore.showPlaybackControls" />
     </template>
@@ -462,6 +473,7 @@ import ScrapDialog from '@/routes/game/components/dialogs/components/ScrapDialog
 import SpectatorListMenu from '@/routes/game/components/SpectatorListMenu.vue';
 import PlaybackControls from './components/PlaybackControls.vue';
 import OneOffHoverOverlay from './components/OneOffHoverOverlay.vue';
+import ExpertModeOverlay from './components/ExpertModeOverlay.vue';
 
 export default {
   name: 'GameView',
@@ -479,6 +491,7 @@ export default {
     SpectatorListMenu,
     PlaybackControls,
     OneOffHoverOverlay,
+    ExpertModeOverlay
   },
   setup() {
     const { t } = useI18n();
@@ -500,6 +513,7 @@ export default {
       secondCardIsSelected: false,
       showHistoryDrawer: false,
       hoveredIndex: null,
+      isMouseOverOverlay: false
     };
   },
   computed: {
@@ -828,9 +842,13 @@ export default {
         this.selectionIndex = index;
       }
     },
-    hoverCard(index) {
-      this.hoveredIndex = index;
-    },
+    hoverCard(index) { this.hoveredIndex = index; },
+    clearHover() {
+      setTimeout(() => {
+        if (!this.isMouseOverOverlay) {
+          this.hoveredIndex = null;
+        } 
+      }, 50); // Small delay
     clearHover() {
       this.hoveredIndex = null;
     },
