@@ -431,8 +431,6 @@
       <PlaybackControls v-if="gameHistoryStore.showPlaybackControls" />
     </template>
   </div>
-
-  <div>Hovered index: {{ hoveredIndex }}</div>
 </template>
 
 <script>
