@@ -1,25 +1,26 @@
 <template>
-  <v-tooltip :disabled="!disabledExplanation">
+  <v-tooltip :disabled="!disabledExplanation" location="bottom">
     <template v-slot:activator="{ props }">
-      <v-btn
-        v-bind="props"  
-        ripple
-        :disabled="disabled"
-        :class="{ pointer: !disabled }"
-        class="move-choice-button mx-4"
-        :width="buttonWidth"
-        :data-move-choice="eventName"
-        :aria-label="`Choose Move: ${moveName}`"
-        @click.stop="console.log('Button clicked!', eventName); $emit('choose-move')"
-        @mouseenter="console.log('disabledExplanation:', disabledExplanation)"
-      >
-        <v-icon
-          v-if="iconName"
-          size="x-large"
-          :icon="iconName" 
-          aria-hidden="true"
-        />
-      </v-btn>
+      <span v-bind="props">
+        <v-btn
+          v-bind="props"  
+          ripple
+          :disabled="disabled"
+          :class="{ pointer: !disabled }"
+          class="move-choice-button mx-4"
+          :width="buttonWidth"
+          :data-move-choice="eventName"
+          :aria-label="`Choose Move: ${moveName}`"
+          @click.stop="$emit('choose-move')"
+        >
+          <v-icon
+            v-if="iconName"
+            size="x-large"
+            :icon="iconName" 
+            aria-hidden="true"
+          />
+        </v-btn>
+      </span>
     </template>
     {{ disabledExplanation }}
   </v-tooltip>
