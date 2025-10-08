@@ -1,5 +1,5 @@
 <template>
-  <v-tooltip disabled="!disabledExplanation">
+  <v-tooltip :disabled="!disabledExplanation">
     <template v-slot:activator="{ props }">
       <v-btn
         v-bind="props"  
@@ -10,7 +10,8 @@
         :width="buttonWidth"
         :data-move-choice="eventName"
         :aria-label="`Choose Move: ${moveName}`"
-        @click.stop="$emit('choose-move')"
+        @click.stop="console.log('Button clicked!', eventName); $emit('choose-move')"
+        @mouseenter="console.log('disabledExplanation:', disabledExplanation)"
       >
         <v-icon
           v-if="iconName"

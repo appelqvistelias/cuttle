@@ -410,6 +410,7 @@
       <GameOverlays
         :targeting="targeting"
         :selected-card="selectedCard"
+        :hovered-card="hoveredCard"
         :card-selected-from-deck="cardSelectedFromDeck"
         @clear-selection="clearSelection"
         @face-card="playFaceCard"
@@ -425,17 +426,6 @@
         :opponent-queen-count="gameStore.opponentQueenCount"
         :frozen-id="gameStore.player.frozenId"
         :scrim="false"
-      />
-      <ExpertModeOverlay 
-        v-if="hoveredCard && gameStore.isExpertMode"
-        :model-value="!targeting && (!!hoveredCard )"
-        :selected-card="hoveredCard"
-        :is-players-turn="gameStore.isPlayersTurn"
-        :opponent-queen-count="gameStore.opponentQueenCount"
-        :frozen-id="gameStore.player.frozenId"
-        :scrim="false"
-        @mouseenter="isMouseOverOverlay = true"
-        @mouseleave="isMouseOverOverlay = false; hoveredIndex = null"
       />
       <GameDialogs @clear-selection="clearSelection" @handle-error="handleError" />
       <PlaybackControls v-if="gameHistoryStore.showPlaybackControls" />
@@ -465,7 +455,6 @@ import ScrapDialog from '@/routes/game/components/dialogs/components/ScrapDialog
 import SpectatorListMenu from '@/routes/game/components/SpectatorListMenu.vue';
 import PlaybackControls from './components/PlaybackControls.vue';
 import OneOffHoverOverlay from './components/OneOffHoverOverlay.vue';
-import ExpertModeOverlay from './components/ExpertModeOverlay.vue';
 
 export default {
   name: 'GameView',
@@ -483,7 +472,6 @@ export default {
     SpectatorListMenu,
     PlaybackControls,
     OneOffHoverOverlay,
-    ExpertModeOverlay
   },
   setup() {
     const { t } = useI18n();
@@ -678,11 +666,14 @@ export default {
     hoveredCard() {
       return this.hoveredIndex !== null ? this.gameStore.player.hand[this.hoveredIndex] : null;
     },
+    activeCard() {
+      return this.selectedCard || this.hoveredCard;
+    },
     turnText() {
       return this.t(this.gameStore.isPlayersTurn ? 'game.turn.yourTurn' : 'game.turn.opponentTurn');
     },
     validScuttleIds() {
-      const selectedCard = this.gameStore.resolvingSeven ? this.cardSelectedFromDeck : this.selectedCard;
+      const selectedCard = this.gameStore.resolvingSeven ? this.cardSelectedFromDeck : this.activeCard;
       if (!selectedCard) {
         return [];
       }
@@ -717,7 +708,7 @@ export default {
       if (!this.gameStore.isPlayersTurn) {
         return [];
       }
-      const selectedCard = this.gameStore.resolvingSeven ? this.cardSelectedFromDeck : this.selectedCard;
+      const selectedCard = this.gameStore.resolvingSeven ? this.cardSelectedFromDeck : this.activeCard;
       if (!selectedCard) {
         return [];
       }
@@ -840,7 +831,7 @@ export default {
         if (!this.isMouseOverOverlay) {
           this.hoveredIndex = null;
         }
-      }, 50);
+      }, 5000);
     }, // Small delay
     selectTopCard() {
       if (!this.gameStore.waitingForOpponentToPlayFromDeck) {
@@ -919,11 +910,12 @@ export default {
       }
     },
     async playPoints() {
+      console.log('GameView playPoints called!');
       this.clearOverlays();
       try {
         const { resolvingSeven } = this.gameStore;
         if (!resolvingSeven) {
-          await this.gameStore.requestPlayPoints(this.selectedCard.id);
+          await this.gameStore.requestPlayPoints(this.activeCard.id);
         } else {
           const deckIndex = this.topCardIsSelected ? 0 : 1;
           await this.gameStore.requestPlayPointsSeven({
@@ -943,7 +935,7 @@ export default {
         const { resolvingSeven } = this.gameStore;
         const deckIndex = this.topCardIsSelected ? 0 : 1;
         if (!resolvingSeven) {
-          await this.gameStore.requestPlayFaceCard(this.selectedCard.id);
+          await this.gameStore.requestPlayFaceCard(this.activeCard.id);
         } else {
           await this.gameStore.requestPlayFaceCardSeven({
             cardId: this.cardSelectedFromDeck.id,
@@ -970,7 +962,7 @@ export default {
       } else {
         this.gameStore
           .requestScuttle({
-            cardId: this.selectedCard.id,
+            cardId: this.activeCard.id,
             targetId: this.gameStore.opponent.points[targetIndex].id,
           })
           .then(this.clearSelection)
@@ -1011,7 +1003,7 @@ export default {
       } else {
         this.gameStore
           .requestPlayTargetedOneOff({
-            cardId: this.selectedCard.id,
+            cardId: this.activeCard.id,
             targetId: target.id,
             pointId: jackedPointId,
             targetType,
@@ -1035,7 +1027,7 @@ export default {
       } else {
         this.gameStore
           .requestPlayJack({
-            cardId: this.selectedCard.id,
+            cardId: this.activeCard.id,
             targetId: target.id,
           })
           .then(this.clearSelection)
@@ -1043,7 +1035,7 @@ export default {
       }
     },
     targetOpponentPointCard(targetIndex) {
-      if (!this.selectedCard && !this.topCardIsSelected && !this.secondCardIsSelected) {
+      if (!this.activeCard && !this.topCardIsSelected && !this.secondCardIsSelected) {
         return;
       }
       let cardRank;
@@ -1053,10 +1045,10 @@ export default {
         }
         cardRank = this.cardSelectedFromDeck.rank;
       } else {
-        if (!this.selectedCard) {
+        if (!this.activeCard) {
           return;
         }
-        cardRank = this.selectedCard.rank;
+        cardRank = this.activeCard.rank;
       }
       switch (cardRank) {
         case 1:
@@ -1092,10 +1084,10 @@ export default {
         }
         cardToPlay = this.cardSelectedFromDeck;
       } else {
-        if (!this.selectedCard) {
+        if (!this.activeCard) {
           return;
         }
-        cardToPlay = this.selectedCard;
+        cardToPlay = this.activeCard;
       }
 
       const targetType = targetIndex < 0 ? 'jack' : 'faceCard';
@@ -1121,12 +1113,12 @@ export default {
           .then(this.clearSelection)
           .catch(this.handleError);
       }
-      if (!this.selectedCard) {
+      if (!this.activeCard) {
         return;
       }
 
       this.gameStore
-        .requestPlayOneOff(this.selectedCard.id)
+        .requestPlayOneOff(this.activeCard.id)
         .then(this.clearSelection)
         .catch(this.handleError);
     },

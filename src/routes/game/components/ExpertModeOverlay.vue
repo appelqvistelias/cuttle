@@ -14,7 +14,8 @@
         :disabled="move.disabled"
         :disabled-explanation="move.disabledExplanation"
         :button-width="cardWidth"
-        @choose-move="$emit(move.eventName, move)"
+        @choose-move="console.log('Overlay received choose-move, emitting:', move.eventName);
+                      $emit(move.eventName, move)"
       />
     </div>
   </v-overlay>
@@ -188,7 +189,7 @@ export default {
       let disabledExplanation = '';
       if (!this.allMovesAreDisabled) {
         ableToJack = this.opponentQueenCount === 0;
-        disabledExplanation = this.t('game.moves.jack.disabled');
+        // disabledExplanation = this.t('game.moves.jack.disabled');
       } else {
         disabledExplanation = this.disabledText;
       }
