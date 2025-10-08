@@ -191,6 +191,7 @@ export default {
           return '';
       }
     },
+    // these could be inefficiently implemented. Might consider refractor this part.
     moveButtons() {
       if (!this.rank) return [];
 
