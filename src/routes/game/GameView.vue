@@ -389,10 +389,10 @@
             </div>
           </div>
           <TargetSelectionOverlay
-            v-if="targeting && (selectedCard || cardSelectedFromDeck)"
+            v-if="targeting && (activeCard || cardSelectedFromDeck)"
             id="player-hand-targeting"
             key="target-selection-overlay"
-            :selected-card="selectedCard || cardSelectedFromDeck"
+            :selected-card="activeCard || cardSelectedFromDeck"
             :is-players-turn="gameStore.isPlayersTurn"
             :move-display-name="targetingMoveDisplayName"
             @cancel="clearSelection"
@@ -493,7 +493,6 @@ export default {
       secondCardIsSelected: false,
       showHistoryDrawer: false,
       hoveredIndex: null,
-      isMouseOverOverlay: false
     };
   },
   computed: {

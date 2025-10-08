@@ -14,8 +14,7 @@
         :disabled="move.disabled"
         :disabled-explanation="move.disabledExplanation"
         :button-width="cardWidth"
-        @choose-move="console.log('Overlay received choose-move, emitting:', move.eventName);
-                      $emit(move.eventName, move)"
+        @choose-move="$emit(move.eventName, move)"
       />
     </div>
   </v-overlay>
