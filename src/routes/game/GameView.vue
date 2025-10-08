@@ -305,8 +305,7 @@
             </h3>
             <v-divider />
             <div id="history-logs" ref="logsContainer" class="d-flex flex-column">
-              <p v-for="(log, index) in logs" :key="index" class="my-2" 
-                data-cy="history-log">
+              <p v-for="(log, index) in logs" :key="index" class="my-2" data-cy="history-log">
                 {{ log }}
               </p>
             </div>
@@ -363,8 +362,10 @@
                       :is-frozen="card.isFrozen"
                       class="mt-2 transition-all"
                       :is-hand-card="true"
+                      :show-move-buttons="gameStore.isExpertMode"
                       :data-player-hand-card="`${card.rank}-${card.suit}`"
                       @click="selectCard(index)"
+                      @card-action="handleCardAction(card, index, $event)"
                     />
                   </v-slide-group-item>
                 </v-slide-group>
@@ -380,8 +381,10 @@
                   class="mt-2 transition-all"
                   :class="{ 'card-hovered': hoveredIndex === index }"
                   :is-hand-card="true"
+                  :show-move-buttons="gameStore.isExpertMode"
                   :data-player-hand-card="`${card.rank}-${card.suit}`"
                   @click="selectCard(index)"
+                  @card-action="handleCardAction(card, index, $event)"
                   @mouseover="hoverCard(index)"
                   @mouseleave="clearHover()"
                 />
@@ -426,17 +429,6 @@
         :frozen-id="gameStore.player.frozenId"
         :scrim="false"
       />
-      <ExpertModeOverlay 
-        v-if="hoveredCard && gameStore.isExpertMode"
-        :model-value="!targeting && (!!hoveredCard )"
-        :selected-card="hoveredCard"
-        :is-players-turn="gameStore.isPlayersTurn"
-        :opponent-queen-count="gameStore.opponentQueenCount"
-        :frozen-id="gameStore.player.frozenId"
-        :scrim="false"
-        @mouseenter="isMouseOverOverlay = true"
-        @mouseleave="isMouseOverOverlay = false; hoveredIndex = null"
-      />
       <GameDialogs @clear-selection="clearSelection" @handle-error="handleError" />
       <PlaybackControls v-if="gameHistoryStore.showPlaybackControls" />
     </template>
@@ -465,7 +457,6 @@ import ScrapDialog from '@/routes/game/components/dialogs/components/ScrapDialog
 import SpectatorListMenu from '@/routes/game/components/SpectatorListMenu.vue';
 import PlaybackControls from './components/PlaybackControls.vue';
 import OneOffHoverOverlay from './components/OneOffHoverOverlay.vue';
-import ExpertModeOverlay from './components/ExpertModeOverlay.vue';
 
 export default {
   name: 'GameView',
@@ -483,7 +474,6 @@ export default {
     SpectatorListMenu,
     PlaybackControls,
     OneOffHoverOverlay,
-    ExpertModeOverlay
   },
   setup() {
     const { t } = useI18n();
@@ -505,7 +495,7 @@ export default {
       secondCardIsSelected: false,
       showHistoryDrawer: false,
       hoveredIndex: null,
-      isMouseOverOverlay: false
+      isMouseOverOverlay: false,
     };
   },
   computed: {
@@ -705,10 +695,10 @@ export default {
               opponentJackIds.push(card.attachments[card.attachments.length - 1].id);
             }
           });
-          return [ ...opponentFaceCardIds, ...opponentJackIds ];
+          return [...opponentFaceCardIds, ...opponentJackIds];
         }
         case 1:
-          return [ this.gameStore.opponent.faceCards.find((card) => card.rank === 12).id ];
+          return [this.gameStore.opponent.faceCards.find((card) => card.rank === 12).id];
         default:
           return [];
       }
@@ -728,10 +718,10 @@ export default {
           return this.gameStore.opponent.points.map((validTarget) => validTarget.id);
         case 'targetedOneOff': {
           // Twos and nines can target face cards
-          let res = [ ...this.validFaceCardTargetIds ];
+          let res = [...this.validFaceCardTargetIds];
           // Nines can additionally target points if opponent has no queens
           if (selectedCard.rank === 9 && this.gameStore.opponentQueenCount === 0) {
-            res = [ ...res, ...this.gameStore.opponent.points.map((validTarget) => validTarget.id) ];
+            res = [...res, ...this.gameStore.opponent.points.map((validTarget) => validTarget.id)];
           }
           return res;
         }
@@ -834,14 +824,16 @@ export default {
         this.selectionIndex = index;
       }
     },
-    hoverCard(index) { this.hoveredIndex = index; },
+    hoverCard(index) {
+      this.hoveredIndex = index;
+    },
     clearHover() {
       setTimeout(() => {
         if (!this.isMouseOverOverlay) {
           this.hoveredIndex = null;
         }
       }, 50);
-    }, // Small delay
+    },
     selectTopCard() {
       if (!this.gameStore.waitingForOpponentToPlayFromDeck) {
         this.secondCardIsSelected = false;
@@ -852,6 +844,32 @@ export default {
       if (!this.gameStore.waitingForOpponentToPlayFromDeck) {
         this.topCardIsSelected = false;
         this.secondCardIsSelected = !this.secondCardIsSelected;
+      }
+    },
+    handleCardAction(card, index, action) {
+      // Välj kortet först
+      this.selectCard(index);
+
+      // Utför action baserat på vilken knapp som klickades
+      switch (action) {
+        case 'points':
+          this.playPoints();
+          break;
+        case 'scuttle':
+          this.beginTargeting({ eventName: 'scuttle', displayName: 'Scuttle' });
+          break;
+        case 'oneOff':
+          this.playOneOff();
+          break;
+        case 'targetedOneOff':
+          this.beginTargeting({ eventName: 'targetedOneOff', displayName: 'One-Off' });
+          break;
+        case 'faceCard':
+          this.playFaceCard();
+          break;
+        case 'jack':
+          this.beginTargeting({ eventName: 'jack', displayName: 'Jack' });
+          break;
       }
     },
     /**

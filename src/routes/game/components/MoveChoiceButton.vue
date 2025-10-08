@@ -2,7 +2,7 @@
   <v-tooltip disabled="!disabledExplanation">
     <template v-slot:activator="{ props }">
       <v-btn
-        v-bind="props"  
+        v-bind="props"
         ripple
         :disabled="disabled"
         :class="{ pointer: !disabled }"
@@ -12,12 +12,7 @@
         :aria-label="`Choose Move: ${moveName}`"
         @click.stop="$emit('choose-move')"
       >
-        <v-icon
-          v-if="iconName"
-          size="x-large"
-          :icon="iconName" 
-          aria-hidden="true"
-        />
+        <v-icon v-if="iconName" size="x-large" :icon="iconName" aria-hidden="true" />
       </v-btn>
     </template>
     {{ disabledExplanation }}
@@ -51,7 +46,7 @@ export default {
       default: '30%',
     },
   },
-  emits: [ 'choose-move' ],
+  emits: ['choose-move'],
   computed: {
     /**
      * Returns string name of which icon to display
@@ -83,9 +78,9 @@ export default {
 .move-choice-button {
   background-color: rgba(var(--v-theme-surface-1));
   color: rgba(var(--v-theme-surface-2)) !important;
-  border: 2px solid rgba(var(--v-theme-surface-2));;
+  border: 2px solid rgba(var(--v-theme-surface-2));
   transition: all 0.5s ease;
-  opacity: .95;
+  opacity: 0.95;
   border-radius: 5px;
 }
 .move-choice-button:hover {
