@@ -34,7 +34,6 @@
       <img v-else :src="`/img/cards/card-${suit}-${rank}.svg`" :alt="cardName" class="face-card" />
     </Transition>
 
-    <!-- Knappar som visas ENDAST i expert mode -->
     <div v-if="isHandCard && showMoveButtons" class="card-action-buttons">
       <v-btn
         v-for="button in moveButtons"
@@ -197,37 +196,30 @@ export default {
 
       const buttons = [];
 
-      // Points (alla kort 1-10)
       if (this.rank <= 10) {
         buttons.push({ icon: 'mdi-numeric', action: 'points', color: '' });
       }
 
-      // Scuttle (1-10, ej royal)
       if (this.rank <= 10) {
         buttons.push({ icon: 'mdi-skull-crossbones', action: 'scuttle', color: '' });
       }
 
-      // One-Off (1-7)
       if (this.rank >= 1 && this.rank <= 7) {
         buttons.push({ icon: 'mdi-delete', action: 'oneOff', color: '' });
       }
 
-      // Targeted One-Off (2, 9)
       if (this.rank === 2 || this.rank === 9) {
         buttons.push({ icon: 'mdi-target', action: 'targetedOneOff', color: '' });
       }
 
-      // Glasses (8)
       if (this.rank === 8) {
         buttons.push({ icon: 'mdi-sunglasses', action: 'faceCard', color: '' });
       }
 
-      // Jack (11)
       if (this.rank === 11) {
         buttons.push({ icon: 'mdi-crown', action: 'jack', color: '' });
       }
 
-      // Royal (12, 13)
       if (this.rank === 12 || this.rank === 13) {
         buttons.push({ icon: 'mdi-crown', action: 'faceCard', color: '' });
       }
@@ -274,7 +266,6 @@ export default {
   }
 }
 
-/* LÄGG TILL DETTA - minimal positionering för knapparna */
 .card-action-buttons {
   position: absolute;
   bottom: 40%;
@@ -285,18 +276,19 @@ export default {
   background: rgba(0, 0, 0, 0.7);
   z-index: 20;
   justify-content: center;
-  width: calc(100% - 16px); /* Kortets bredd minus 16px margin (8px på varje sida) */
-  padding: 4px; /* Lite padding inuti boxen */
-  border-radius: 4px; /* Rundade hörn */
+  width: calc(100% - 16px);
+  padding: 4px;
+  border-radius: 4px;
 }
 
 :deep(.v-btn) {
-  min-width: 24px !important; /* Smalare bredd */
+  min-width: 24px !important;
   width: 24px !important;
-  height: 24px !important; /* Samma höjd för att få en fyrkant */
+  height: 24px !important;
   padding: 0 !important;
-  border-radius: 2px !important; /* Lite rundade hörn */
+  border-radius: 2px !important;
 }
+
 .player-card-icon {
   position: absolute;
   top: 0;
@@ -363,14 +355,12 @@ export default {
   position: absolute;
 }
 
-// slide-below (enter and leave below)
 .slide-below-enter-from,
 .slide-below-leave-to {
   opacity: 0;
   transform: translateY(32px);
 }
 
-// slide-above (enter and leave above)
 .slide-above-enter-from,
 .slide-above-leave-to {
   opacity: 0;
