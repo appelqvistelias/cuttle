@@ -233,7 +233,7 @@ export default {
           return '';
       }
     },
-    // Kopierat från ExpertModeOverlay
+
     allMovesAreDisabled() {
       return (
         !this.isPlayersTurn ||
