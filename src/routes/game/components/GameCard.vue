@@ -18,14 +18,10 @@
       aria-hidden="false"
       role="img"
     />
-    <v-overlay
-      :model-value="isValidTarget"
-      contained
-      class="valid-move target-overlay"
-    />
+    <v-overlay :model-value="isValidTarget" contained class="valid-move target-overlay" />
     <Transition :name="scuttledByTransition">
       <template v-if="scuttledBy">
-        <img :class="scuttledByClass" :src="`/img/cards/card-${scuttledBy.suit}-${scuttledBy.rank}.svg`">
+        <img :class="scuttledByClass" :src="`/img/cards/card-${scuttledBy.suit}-${scuttledBy.rank}.svg`" />
       </template>
     </Transition>
     <Transition name="card-flip">
@@ -33,20 +29,25 @@
         v-if="isGlasses"
         :src="`/img/cards/glasses-${suitName.toLowerCase()}.png`"
         :alt="`Glasses - $${cardName}`"
-      >
-      <img
-        v-else-if="isBack"
-        src="/img/cards/card-back.png"
-        class="opponent-card-back"
-        alt="card back"
-      >
-      <img
-        v-else
-        :src="`/img/cards/card-${suit}-${rank}.svg`"
-        :alt="cardName"
-        class="face-card"
-      >
+      />
+      <img v-else-if="isBack" src="/img/cards/card-back.png" class="opponent-card-back" alt="card back" />
+      <img v-else :src="`/img/cards/card-${suit}-${rank}.svg`" :alt="cardName" class="face-card" />
     </Transition>
+
+    <!-- Knappar som visas ENDAST i expert mode -->
+    <div v-if="isHandCard && showMoveButtons" class="card-action-buttons">
+      <v-btn
+        v-for="button in moveButtons"
+        :key="button.icon"
+        size="x-small"
+        icon
+        variant="flat"
+        :color="button.color"
+        @click.stop="$emit('card-action', button.action)"
+      >
+        <v-icon :icon="button.icon" size="small" />
+      </v-btn>
+    </div>
   </v-card>
 </template>
 
@@ -93,13 +94,22 @@ export default {
     controlledBy: {
       type: String,
       default: '',
-      validator: (val) => [ '', 'player', 'opponent' ].includes(val),
+      validator: (val) => ['', 'player', 'opponent'].includes(val),
     },
     highElevation: {
       type: Boolean,
       default: false,
     },
+    isHandCard: {
+      type: Boolean,
+      default: false,
+    },
+    showMoveButtons: {
+      type: Boolean,
+      default: false,
+    },
   },
+  emits: ['card-action'],
   computed: {
     suitName() {
       switch (this.suit) {
@@ -182,9 +192,52 @@ export default {
           return '';
       }
     },
+    moveButtons() {
+      if (!this.rank) return [];
+
+      const buttons = [];
+
+      // Points (alla kort 1-10)
+      if (this.rank <= 10) {
+        buttons.push({ icon: 'mdi-numeric', action: 'points', color: '' });
+      }
+
+      // Scuttle (1-10, ej royal)
+      if (this.rank <= 10) {
+        buttons.push({ icon: 'mdi-skull-crossbones', action: 'scuttle', color: '' });
+      }
+
+      // One-Off (1-7)
+      if (this.rank >= 1 && this.rank <= 7) {
+        buttons.push({ icon: 'mdi-delete', action: 'oneOff', color: '' });
+      }
+
+      // Targeted One-Off (2, 9)
+      if (this.rank === 2 || this.rank === 9) {
+        buttons.push({ icon: 'mdi-target', action: 'targetedOneOff', color: '' });
+      }
+
+      // Glasses (8)
+      if (this.rank === 8) {
+        buttons.push({ icon: 'mdi-sunglasses', action: 'faceCard', color: '' });
+      }
+
+      // Jack (11)
+      if (this.rank === 11) {
+        buttons.push({ icon: 'mdi-crown', action: 'jack', color: '' });
+      }
+
+      // Royal (12, 13)
+      if (this.rank === 12 || this.rank === 13) {
+        buttons.push({ icon: 'mdi-crown', action: 'faceCard', color: '' });
+      }
+
+      return buttons;
+    },
   },
 };
 </script>
+
 <style scoped lang="scss">
 .player-card {
   position: relative;
@@ -220,12 +273,37 @@ export default {
     }
   }
 }
+
+/* LÄGG TILL DETTA - minimal positionering för knapparna */
+.card-action-buttons {
+  position: absolute;
+  bottom: 40%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 2px;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 20;
+  justify-content: center;
+  width: calc(100% - 16px); /* Kortets bredd minus 16px margin (8px på varje sida) */
+  padding: 4px; /* Lite padding inuti boxen */
+  border-radius: 4px; /* Rundade hörn */
+}
+
+:deep(.v-btn) {
+  min-width: 24px !important; /* Smalare bredd */
+  width: 24px !important;
+  height: 24px !important; /* Samma höjd för att få en fyrkant */
+  padding: 0 !important;
+  border-radius: 2px !important; /* Lite rundade hörn */
+}
 .player-card-icon {
   position: absolute;
   top: 0;
   right: 0;
   z-index: 1;
 }
+
 .opponent-card-back {
   border-radius: 5px;
 }
@@ -236,6 +314,7 @@ export default {
     border-radius: 10px;
   }
 }
+
 .jack {
   height: 50%;
   margin-bottom: -50%;
@@ -252,10 +331,11 @@ export default {
     position: relative;
   }
 }
+
 .target-overlay {
   cursor: pointer;
   background-color: rgb(var(--v-theme-accent-lighten1));
-  opacity: .6;
+  opacity: 0.6;
 }
 
 .frozen {
@@ -282,12 +362,14 @@ export default {
 .in-below-out-left-leave-active {
   position: absolute;
 }
+
 // slide-below (enter and leave below)
 .slide-below-enter-from,
 .slide-below-leave-to {
   opacity: 0;
   transform: translateY(32px);
 }
+
 // slide-above (enter and leave above)
 .slide-above-enter-from,
 .slide-above-leave-to {
@@ -295,13 +377,15 @@ export default {
   transform: translateY(-32px);
 }
 
-.card-flip-enter-active{
+.card-flip-enter-active {
   transition: all 1s;
 }
-.card-flip-enter-from{
+
+.card-flip-enter-from {
   transform: rotateY(-90deg);
 }
-.card-flip-enter-to{
+
+.card-flip-enter-to {
   transform: rotateY(0deg);
 }
 
