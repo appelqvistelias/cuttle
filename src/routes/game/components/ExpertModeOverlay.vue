@@ -193,7 +193,7 @@ export default {
       let disabledExplanation = '';
       if (!this.allMovesAreDisabled) {
         ableToJack = this.opponentQueenCount === 0;
-        disabledExplanation = this.t('game.moves.jack.disabled');
+        // disabledExplanation = this.t('game.moves.jack.disabled');
       } else {
         disabledExplanation = this.disabledText;
       }

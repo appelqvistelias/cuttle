@@ -397,10 +397,10 @@
             </div>
           </div>
           <TargetSelectionOverlay
-            v-if="targeting && (selectedCard || cardSelectedFromDeck)"
+            v-if="targeting && (activeCard || cardSelectedFromDeck)"
             id="player-hand-targeting"
             key="target-selection-overlay"
-            :selected-card="selectedCard || cardSelectedFromDeck"
+            :selected-card="activeCard || cardSelectedFromDeck"
             :is-players-turn="gameStore.isPlayersTurn"
             :move-display-name="targetingMoveDisplayName"
             @cancel="clearSelection"
@@ -418,6 +418,7 @@
       <GameOverlays
         :targeting="targeting"
         :selected-card="selectedCard"
+        :hovered-card="hoveredCard"
         :card-selected-from-deck="cardSelectedFromDeck"
         @clear-selection="clearSelection"
         @face-card="playFaceCard"
@@ -673,11 +674,14 @@ export default {
     hoveredCard() {
       return this.hoveredIndex !== null ? this.gameStore.player.hand[this.hoveredIndex] : null;
     },
+    activeCard() {
+      return this.selectedCard || this.hoveredCard;
+    },
     turnText() {
       return this.t(this.gameStore.isPlayersTurn ? 'game.turn.yourTurn' : 'game.turn.opponentTurn');
     },
     validScuttleIds() {
-      const selectedCard = this.gameStore.resolvingSeven ? this.cardSelectedFromDeck : this.selectedCard;
+      const selectedCard = this.gameStore.resolvingSeven ? this.cardSelectedFromDeck : this.activeCard;
       if (!selectedCard) {
         return [];
       }
@@ -712,7 +716,7 @@ export default {
       if (!this.gameStore.isPlayersTurn) {
         return [];
       }
-      const selectedCard = this.gameStore.resolvingSeven ? this.cardSelectedFromDeck : this.selectedCard;
+      const selectedCard = this.gameStore.resolvingSeven ? this.cardSelectedFromDeck : this.activeCard;
       if (!selectedCard) {
         return [];
       }
@@ -837,8 +841,8 @@ export default {
         if (!this.isMouseOverOverlay) {
           this.hoveredIndex = null;
         }
-      }, 50);
-    },
+      }, 5000);
+    }, // Small delay
     selectTopCard() {
       if (!this.gameStore.waitingForOpponentToPlayFromDeck) {
         this.secondCardIsSelected = false;
@@ -942,11 +946,12 @@ export default {
       }
     },
     async playPoints() {
+      console.log('GameView playPoints called!');
       this.clearOverlays();
       try {
         const { resolvingSeven } = this.gameStore;
         if (!resolvingSeven) {
-          await this.gameStore.requestPlayPoints(this.selectedCard.id);
+          await this.gameStore.requestPlayPoints(this.activeCard.id);
         } else {
           const deckIndex = this.topCardIsSelected ? 0 : 1;
           await this.gameStore.requestPlayPointsSeven({
@@ -966,7 +971,7 @@ export default {
         const { resolvingSeven } = this.gameStore;
         const deckIndex = this.topCardIsSelected ? 0 : 1;
         if (!resolvingSeven) {
-          await this.gameStore.requestPlayFaceCard(this.selectedCard.id);
+          await this.gameStore.requestPlayFaceCard(this.activeCard.id);
         } else {
           await this.gameStore.requestPlayFaceCardSeven({
             cardId: this.cardSelectedFromDeck.id,
@@ -993,7 +998,7 @@ export default {
       } else {
         this.gameStore
           .requestScuttle({
-            cardId: this.selectedCard.id,
+            cardId: this.activeCard.id,
             targetId: this.gameStore.opponent.points[targetIndex].id,
           })
           .then(this.clearSelection)
@@ -1034,7 +1039,7 @@ export default {
       } else {
         this.gameStore
           .requestPlayTargetedOneOff({
-            cardId: this.selectedCard.id,
+            cardId: this.activeCard.id,
             targetId: target.id,
             pointId: jackedPointId,
             targetType,
@@ -1058,7 +1063,7 @@ export default {
       } else {
         this.gameStore
           .requestPlayJack({
-            cardId: this.selectedCard.id,
+            cardId: this.activeCard.id,
             targetId: target.id,
           })
           .then(this.clearSelection)
@@ -1066,7 +1071,7 @@ export default {
       }
     },
     targetOpponentPointCard(targetIndex) {
-      if (!this.selectedCard && !this.topCardIsSelected && !this.secondCardIsSelected) {
+      if (!this.activeCard && !this.topCardIsSelected && !this.secondCardIsSelected) {
         return;
       }
       let cardRank;
@@ -1076,10 +1081,10 @@ export default {
         }
         cardRank = this.cardSelectedFromDeck.rank;
       } else {
-        if (!this.selectedCard) {
+        if (!this.activeCard) {
           return;
         }
-        cardRank = this.selectedCard.rank;
+        cardRank = this.activeCard.rank;
       }
       switch (cardRank) {
         case 1:
@@ -1115,10 +1120,10 @@ export default {
         }
         cardToPlay = this.cardSelectedFromDeck;
       } else {
-        if (!this.selectedCard) {
+        if (!this.activeCard) {
           return;
         }
-        cardToPlay = this.selectedCard;
+        cardToPlay = this.activeCard;
       }
 
       const targetType = targetIndex < 0 ? 'jack' : 'faceCard';
@@ -1144,12 +1149,12 @@ export default {
           .then(this.clearSelection)
           .catch(this.handleError);
       }
-      if (!this.selectedCard) {
+      if (!this.activeCard) {
         return;
       }
 
       this.gameStore
-        .requestPlayOneOff(this.selectedCard.id)
+        .requestPlayOneOff(this.activeCard.id)
         .then(this.clearSelection)
         .catch(this.handleError);
     },
