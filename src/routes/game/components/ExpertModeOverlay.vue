@@ -61,7 +61,7 @@ export default {
       default: null,
     },
   },
-  emits: [ 'points', 'faceCard', 'scuttle', 'jack', 'oneOff', 'targetedOneOff', 'cancel' ],
+  emits: ['points', 'faceCard', 'scuttle', 'jack', 'oneOff', 'targetedOneOff', 'cancel'],
   setup() {
     const { t } = useI18n();
     return { t };
@@ -72,7 +72,8 @@ export default {
     allMovesAreDisabled() {
       return (
         !this.isPlayersTurn ||
-        this.frozenId === this.selectedCard.id || this.selectedCard.isFrozen ||
+        this.frozenId === this.selectedCard.id ||
+        this.selectedCard.isFrozen ||
         (this.playingFromDeck && !this.cardSelectedFromDeck)
       );
     },
@@ -81,7 +82,9 @@ export default {
       if (this.playingFromDeck && !this.cardSelectedFromDeck) {
         return this.t('game.moves.disabledMove.topTwo');
       } else if (this.allMovesAreDisabled) {
-        return this.t(!this.isPlayersTurn ? 'game.moves.disabledMove.notTurn' : 'game.moves.disabledMove.frozenCard');
+        return this.t(
+          !this.isPlayersTurn ? 'game.moves.disabledMove.notTurn' : 'game.moves.disabledMove.frozenCard',
+        );
       }
       return '';
     },
@@ -134,11 +137,11 @@ export default {
           }
           break;
       }
-      
+
       return {
         displayName: 'One-Off',
         eventName: 'oneOff',
-        moveDescription: this.t(`game.moves.effects[${this.selectedCard.rank}]`) ,
+        moveDescription: this.t(`game.moves.effects[${this.selectedCard.rank}]`),
         disabled: oneOffDisabled,
         disabledExplanation: oneOffDisabledExplanation,
       };
@@ -150,7 +153,9 @@ export default {
       if (!this.allMovesAreDisabled) {
         if (this.opponentQueenCount >= 2) {
           oneOffDisabled = true;
-          oneOffDisabledExplanation = this.t('game.moves.disabledMove.multipleQueens', { rank: this.selectedCard.rank });
+          oneOffDisabledExplanation = this.t('game.moves.disabledMove.multipleQueens', {
+            rank: this.selectedCard.rank,
+          });
         } else {
           let validTargetExists;
           // Twos
@@ -178,7 +183,7 @@ export default {
       return {
         displayName: 'One-Off',
         eventName: 'targetedOneOff',
-        moveDescription: this.t(`game.moves.effects[${this.selectedCard.rank}]`) ,
+        moveDescription: this.t(`game.moves.effects[${this.selectedCard.rank}]`),
         disabled: oneOffDisabled,
         disabledExplanation: oneOffDisabledExplanation,
       };
@@ -213,10 +218,10 @@ export default {
         case 5:
         case 6:
         case 7:
-          return [ this.pointsMove, this.scuttleMove, this.oneOffMove ];
+          return [this.pointsMove, this.scuttleMove, this.oneOffMove];
         case 2:
         case 9:
-          return [ this.pointsMove, this.scuttleMove, this.targetedOneOffMove ];
+          return [this.pointsMove, this.scuttleMove, this.targetedOneOffMove];
         case 8:
           return [
             this.pointsMove,
@@ -231,16 +236,16 @@ export default {
             },
           ];
         case 10:
-          return [ this.pointsMove, this.scuttleMove ];
+          return [this.pointsMove, this.scuttleMove];
         case 11:
-          return [ this.jackMove ];
+          return [this.jackMove];
         case 12:
         case 13:
           return [
             {
               displayName: this.t('game.moves.royal.displayName'),
               eventName: 'faceCard',
-              moveDescription: this.t(`game.moves.effects[${this.selectedCard.rank}]`) ,
+              moveDescription: this.t(`game.moves.effects[${this.selectedCard.rank}]`),
               disabled: this.allMovesAreDisabled,
               disabledExplanation: this.disabledText,
             },
