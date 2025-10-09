@@ -62,8 +62,8 @@
     "rankedChangedAlert": "Spelläge ändrat till"
   },
   "game": {
-    "resolve": "Bestäm",
-    "scrap": "Släng",
+    "resolve": "Låt gå",
+    "scrap": "Slängda kort",
     "view": "Titta",
     "pass": "PASSA",
     "playFromDeck": "Spela från lek",
@@ -71,7 +71,7 @@
       "waitingForGameToStart": "Väntar medan spelet startar",
       "leaveGame": "Lämna spel",
       "opponentMayCounter": "Moståndare kan svara",
-      "opponentMustResolve": "Moståndare måste besluta",
+      "opponentMustResolve": "Moståndare måste svara",
       "opponentIsDiscarding": "Motståndare slänger kort",
       "opponentSkipsDiscarding": "Motståndare hoppar över att slänga kort",
       "opponentChoosingFromScrap": "Moståndare väljer bland slängda kort",
@@ -116,29 +116,29 @@
       },
       "counterDialogs": {
         "counterTitle": "Chans till kontring",
-        "chooseTwoTitle": "Välj två",
+        "chooseTwoTitle": "Välj tvåa",
         "cannotCounterTitle": "Kan inte kontra",
-        "selectCard": "Vilka två vill du kontra? (Klicka på korten)",
+        "selectCard": "Med vilken tvåa vill du kontra? (Klicka på kortet)",
         "opponentPlayed": "Din motståndare har spelat ",
         "oneOff": "som en one-off",
-        "target": "sikta ",
-        "toCounter": "att kontra",
+        "target": "mot din ",
+        "toCounter": "för att kontra",
         "counter": "kontra",
         "playTwo": "Vill du spela en tvåa för att kontra?",
-        "cannotCounter": "Du kan inte kontra eftersom",
+        "cannotCounter": "Du kan inte kontra, ",
         "reasons": {
           "opponentWithQueen": "din motståndare har en dam",
           "noTwoPresent": "du har ingen tvåa"
         }
       },
       "threeDialog": {
-        "title": "Välj ett bland de slängda korten"
+        "title": "Välj ett av de slängda korten"
       },
       "opponentRequestedStalemateDialog": {
         "title": "Acceptera remi?",
         "opponentHasRequested": "Din motståndare har begärt remi. Om du accepterar, avslutas spelet oavgjort.",
-        "reject": "Avböj begäran",
-        "accept": "Acceptera begäran"
+        "reject": "Avböj",
+        "accept": "Acceptera"
       },
       "sevenDoubleJacksDialog": {
         "title": "Välj ett kort",
@@ -149,10 +149,10 @@
         "game": "Spel",
         "you": "Du",
         "youWin": "Du vinner",
-        "youWinTheMatch": "Fick dem!",
+        "youWinTheMatch": "Du fick dem!",
         "won": "vann",
         "youLose": "Du förlorar",
-        "youLoseTheMatch": "Utklassad...",
+        "youLoseTheMatch": "Du förlorade...",
         "lost": "förlora",
         "draw": "Remi",
         "p1Wins": "Spelare 1 vinner",
@@ -174,7 +174,7 @@
           "continueMatch": "Fortsätt match?",
           "rematch?": "Ny match?",
           "rankedIconAlt": "Rankad matchikon (Crossed Swords)",
-          "casualIconAlt": "Casual matchicon (Coffee Mug)",
+          "casualIconAlt": "Casual matchikon (Coffee Mug)",
           "wonTheMatch": "vann matchen",
           "lostTheMatch": "förlorade matchen"
         }
@@ -188,7 +188,7 @@
         "emptyDeck": "Kan inte spelas med tom lek",
         "multipleQueens": "Du kan inte spela en {rank} när din motståndare har två eller fler drottningar",
         "noRoyals": "Det finns inga kungligheter att sikta på",
-        "noRoyalsOrPoints": "There are no point cards or Royals to target"
+        "noRoyalsOrPoints": "Det finns inga poäng-kort eller kungligheter att sikta på"
       },
       "points": {
         "displayName": "Poäng",
@@ -202,9 +202,9 @@
       "effects": {
         "1": "Släng alla poäng",
         "2": "Släng vald kunglighet eller glasögon-åtta",
-        "3": "Välj 1 kort bland slängda kort och ta det till handen",
-        "4": "Din motståndare väljer två kort att slänga från sin hand",
-        "5": "Släng 1 kort och dra upp till 3 nya kort",
+        "3": "Välj ett kort bland slängda kort och ta det till handen",
+        "4": "Motståndaren väljer två kort att slänga från sin hand",
+        "5": "Släng ett kort och dra upp till tre nya kort",
         "6": "Släng alla kungligheter och glasögon-åttor",
         "7": "Spela ett av de två översta korten på leken och lägg tillbaka det andra (båda visas för motståndaren)",
         "8": "Din motståndare spelar med öppen hand (deras kort visas för dig)",
@@ -254,7 +254,7 @@
       "opponentTurn": "MOTSTÅNDARENS TUR"
     },
     "history": {
-      "title": "Händelseförlopp"
+      "title": "Förlopp"
     },
     "snackbar": {
       "global": {
@@ -391,13 +391,13 @@
     "playText-1": "En spelare (den som delar ut korten) börjar med sex kort och motståndaren med fem. Spelaren med fem kort börjar.",
     "playText-2": "På din tur måste du genomföra exakt ett av dessa dragen:",
     "draw": "Dra kort",
-    "drawDescription": "Dra ett kort från leken. Om du redan har åtta kort på handen får du inte dra fler kort. Om du inte har fler kort i leken kan du passa turen till motståndaren. Tre pass i rad avslutar spelet oavgjort",
-    "points": "Points",
-    "pointsDescription": "Spela ett numrerat kort från din hand. Det är värt sin rank i poäng och ligger kvar tills det slängs.",
+    "drawDescription": "Dra ett kort från leken. Om du redan har åtta kort på handen får du inte dra fler kort. Om du inte har fler kort i leken kan du passa turen till motståndaren. Tre pass i rad avslutar spelet oavgjort.",
+    "points": "Poäng",
+    "pointsDescription": "Spela ett numrerat kort från din hand. Det är värt sin rank i poäng och ligger kvar i spel så länge det inte slängs.",
     "scuttle": "Scuttle",
     "scuttleDescription": "Förstör en motståndares poäng-kort genom att spela ett högre kort från din hand. Högst kort av två med samma rank baseras på färgtillhörighet:",
     "royal": "Kungligheter",
-    "royalDescription": "Spela en kunglighet för en bestående fördel så länge korten ligger kvar i spel",
+    "royalDescription": "Spela en kunglighet för en bestående fördel så länge kortet ligger kvar i spel.",
     "oneoff": "One-Off",
     "oneoffDescription": "Släng ett numrerat kort för en effekt baserat på kortets rank.",
     "glasses": "Glasögon",
@@ -412,27 +412,27 @@
       "queenDescription2": "Skyddar inte mot ess, 6:or eller scuttling.",
       "jack": "Knekt",
       "jackDescription": "Spela för att stjäla motståndarens poäng-kort. Poäng-kortet återvänder till motståndaren om knekten slängs eller om en annan knekt stjäl tillbaka kortet.",
-      "eight": "Eight",
+      "eight": "Åtta",
       "eightDescription": "Spela en \"glasögon-åtta\" för att titta på korten i din motståndares hand. Kortet räknas som en kunglighet och effekten består så länge kortet ligger kvar i spel."
     },
     "oneoffs": {
-      "title": "One-Offs",
+      "title": "One-offs",
       "text": "Numrerade kort (utom 8:or och 10:or) kan spelas för en one-off-effekt baserat på rank och färgtillhörighet. Närhelt en one-off spelas kan motståndaren kontra effekten genom att spela en 2:a.",
       "ace": "Ess",
       "aceDescription": "Släng alla poäng-kort som ligger i spel.",
-      "two": "Tvåor – multi-effekt",
-      "twoE1Description": "Effekt 1: Kontra en one-off effekt. Kontringar får spelas i motståndarens tur.",
+      "two": "Tvåor",
+      "twoE1Description": "Effekt 1: Kontra en one-off-effekt. Kontringar får spelas i motståndarens tur.",
       "twoE2Description": "Effekt 2: Släng vald kunglighet eller glasögon-åtta.",
       "three": "Treor",
-      "threeDescription": "Välj ett av de slängda korten och ta det till handen.",
+      "threeDescription": "Välj ett i högen av slängda kort och ta det till handen.",
       "four": "Fyror",
-      "fourDescription": "Din motståndare väljer två från sin hand kort att slänga.",
+      "fourDescription": "Din motståndare måste välja två kort från sin hand att slänga.",
       "five": "Femmor",
-      "fiveDescription": "Släng ett kort, dra sedan upp till tre nya kort från din lek, utan att du får fler än åtta kort på handen.",
+      "fiveDescription": "Släng ett kort och dra sedan upp till tre nya kort (du kan inte ha fler än åtta kort på handen).",
       "six": "Sexor",
       "sixDescription": "Släng alla kungligheter och glasögon-åttor som ligger i spel.",
       "seven": "Sjuor",
-      "sevenDescription": "Visa de två översta korten på leken för dig och din motståndare och välj ett att spela hur du vill (som poäng eller för en effekt).",
+      "sevenDescription": "Visa de två översta korten på leken för dig och din motståndare och välj ett kort att spela hur du vill (som poäng eller för en one-off-effekt).",
       "nine": "Nior",
       "nineDescription": "Välj ett kort på motståndarens spelplan som den måste ta tillbaka till handen. Motståndaren kan inte spela korten förrän nästa tur.",
       "ten": "Tior",
@@ -494,7 +494,7 @@
       "title": "Turneringar",
       "competitiveCuttle1": "Tävlingsinriktad Cuttle är indelad i fyra säsonger per år, en per färgtillhörighet: Klöver, Ruter, Hjärter och Spader. Vid slutet av varje säsong möts de åtta bästa spelarna i en elimineringsturnering och mästarna blir permanent hedrade på sidan.",
       "competitiveCuttle2": "Varje säsong är indelad i tretton veckor. Varje vecka räknar vi antalet 2/3 rankade matcher vardera spelare vinner mot unika motståndare (utan att räkna oavgjorda matcher) och delar ut poäng till spelare baserat på deras veckorankning.",
-      "championPlayer": "Champion-spelare",
+      "championPlayer": "Mästerspelare",
       "secondPlacePlayer": "Andra plats-spelare",
       "thirdPlacePlayer": "Tredje plats-spelare",
       "exampleImgExplanation": "Exempel på stats / turneringssida",
@@ -539,7 +539,7 @@
       "displayName": "1 poäng | {count} poäng",
       "seasonDescription1a": "ävlingsinriktad Cuttle är indelad i fyra säsonger per år, en per färgtillhörighet: Klöver, Ruter, Hjärter och Spader. Vid slutet av varje säsong möts de åtta bästa spelarna i en elimineringsturnering och",
       "seasonDescription1b": "mästarna blir permanent hedrade på sidan.",
-      "award1": "Mästare",
+      "award1": "Första plats",
       "award2": "Andra plats",
       "award3": "Tredje plats",
       "seasonDescription2": "Varje säsong är indelad i tretton veckor. Varje vecka räknar vi antalet 2/3 rankade matcher vardera spelare vinner mot unika motståndare (utan att räkna oavgjorda matcher) och delar ut poäng till spelare baserat på deras veckorankning.",
@@ -552,7 +552,7 @@
       },
       "seasonDescription3": "På den här sidan kan du se statistik och rakning för varje säsong. Vid varje säsongsslut möts de åtta bästa spelarna i en mästerskapsturnering. Vid årsslutet möts de åtta bästa spelarna från säsongernas turneringar i Cuttle världsmästerskap! Har du vad som krävs för att bli",
       "lordOfDeep": "djupets härskare?",
-      "gotIt": "Got It!"
+      "gotIt": "Jag fattar!"
     }
   },
   "error": {
