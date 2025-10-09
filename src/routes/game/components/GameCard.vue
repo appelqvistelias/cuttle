@@ -157,7 +157,7 @@ export default {
       default: null,
     },
     cardId: {
-      type: Number,
+      type: String,
       default: null,
     },
   },
