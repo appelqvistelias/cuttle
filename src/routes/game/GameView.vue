@@ -525,8 +525,7 @@ export default {
       topCardIsSelected: false,
       secondCardIsSelected: false,
       showHistoryDrawer: false,
-      hoveredIndex: null,
-      isMouseOverOverlay: false,
+      hoveredIndex: null, // when card is hovered, sets this value
     };
   },
   computed: {
@@ -699,6 +698,8 @@ export default {
     hoveredCard() {
       return this.hoveredIndex !== null ? this.gameStore.player.hand[this.hoveredIndex] : null;
     },
+    // Checks whether card is currently selected or hovered and uses the variable activeCard instead of 
+    // selectedCard throughout the code to account for this
     activeCard() {
       return this.selectedCard || this.hoveredCard;
     },
@@ -863,9 +864,7 @@ export default {
     },
     clearHover() {
       setTimeout(() => {
-        if (!this.isMouseOverOverlay) {
-          this.hoveredIndex = null;
-        }
+        this.hoveredIndex = null;
       }, 50);
     }, // Small delay
     selectTopCard() {
