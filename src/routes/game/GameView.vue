@@ -305,12 +305,7 @@
             </h3>
             <v-divider />
             <div id="history-logs" ref="logsContainer" class="d-flex flex-column">
-              <p 
-                v-for="(log, index) in logs" 
-                :key="index" 
-                class="my-2" 
-                data-cy="history-log"
-              >
+              <p v-for="(log, index) in logs" :key="index" class="my-2" data-cy="history-log">
                 {{ log }}
               </p>
             </div>
@@ -363,14 +358,27 @@
                       :key="card.id"
                       :suit="card.suit"
                       :rank="card.rank"
+                      :card-id="card.id"
                       :is-selected="selectedCard && card.id === selectedCard.id"
                       :is-frozen="card.isFrozen"
                       class="mt-2 transition-all"
                       :is-hand-card="true"
                       :show-move-buttons="gameStore.isExpertMode"
+                      :is-players-turn="gameStore.isPlayersTurn"
+                      :opponent-queen-count="gameStore.opponentQueenCount"
+                      :frozen-id="gameStore.player.frozenId"
+                      :playing-from-deck="gameStore.resolvingSeven"
+                      :card-selected-from-deck="cardSelectedFromDeck"
                       :data-player-hand-card="`${card.rank}-${card.suit}`"
                       @click="selectCard(index)"
-                      @card-action="handleCardAction(card, index, $event)"
+                      @points="playPoints"
+                      @scuttle="beginTargeting({ eventName: 'scuttle', displayName: 'Scuttle' })"
+                      @one-off="playOneOff"
+                      @targeted-one-off="
+                        beginTargeting({ eventName: 'targetedOneOff', displayName: 'One-Off' })
+                      "
+                      @face-card="playFaceCard"
+                      @jack="beginTargeting({ eventName: 'jack', displayName: 'Jack' })"
                     />
                   </v-slide-group-item>
                 </v-slide-group>
@@ -381,15 +389,26 @@
                   :key="card.id"
                   :suit="card.suit"
                   :rank="card.rank"
+                  :card-id="card.id"
                   :is-selected="selectedCard && card.id === selectedCard.id"
                   :is-frozen="card.isFrozen"
                   class="mt-2 transition-all"
                   :class="{ 'card-hovered': hoveredIndex === index }"
                   :is-hand-card="true"
                   :show-move-buttons="gameStore.isExpertMode"
+                  :is-players-turn="gameStore.isPlayersTurn"
+                  :opponent-queen-count="gameStore.opponentQueenCount"
+                  :frozen-id="gameStore.player.frozenId"
+                  :playing-from-deck="gameStore.resolvingSeven"
+                  :card-selected-from-deck="cardSelectedFromDeck"
                   :data-player-hand-card="`${card.rank}-${card.suit}`"
                   @click="selectCard(index)"
-                  @card-action="handleCardAction(card, index, $event)"
+                  @points="playPoints"
+                  @scuttle="beginTargeting({ eventName: 'scuttle', displayName: 'Scuttle' })"
+                  @one-off="playOneOff"
+                  @targeted-one-off="beginTargeting({ eventName: 'targetedOneOff', displayName: 'One-Off' })"
+                  @face-card="playFaceCard"
+                  @jack="beginTargeting({ eventName: 'jack', displayName: 'Jack' })"
                   @mouseover="hoverCard(index)"
                   @mouseleave="clearHover()"
                 />
@@ -1153,10 +1172,7 @@ export default {
         return;
       }
 
-      this.gameStore
-        .requestPlayOneOff(this.activeCard.id)
-        .then(this.clearSelection)
-        .catch(this.handleError);
+      this.gameStore.requestPlayOneOff(this.activeCard.id).then(this.clearSelection).catch(this.handleError);
     },
     scrollToLastLog() {
       if (this.$refs.logsContainer) {

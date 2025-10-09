@@ -21,7 +21,7 @@
     <v-overlay :model-value="isValidTarget" contained class="valid-move target-overlay" />
     <Transition :name="scuttledByTransition">
       <template v-if="scuttledBy">
-        <img :class="scuttledByClass" :src="`/img/cards/card-${scuttledBy.suit}-${scuttledBy.rank}.svg`" />
+        <img :class="scuttledByClass" :src="`/img/cards/card-${scuttledBy.suit}-${scuttledBy.rank}.svg`">
       </template>
     </Transition>
     <Transition name="card-flip">
@@ -29,28 +29,56 @@
         v-if="isGlasses"
         :src="`/img/cards/glasses-${suitName.toLowerCase()}.png`"
         :alt="`Glasses - $${cardName}`"
-      />
-      <img v-else-if="isBack" src="/img/cards/card-back.png" class="opponent-card-back" alt="card back" />
-      <img v-else :src="`/img/cards/card-${suit}-${rank}.svg`" :alt="cardName" class="face-card" />
+      >
+      <img
+        v-else-if="isBack"
+        src="/img/cards/card-back.png"
+        class="opponent-card-back"
+        alt="card back"
+      >
+      <img
+        v-else
+        :src="`/img/cards/card-${suit}-${rank}.svg`"
+        :alt="cardName"
+        class="face-card"
+      >
     </Transition>
 
-    <div v-if="isHandCard && showMoveButtons" class="card-action-buttons">
-      <v-btn
-        v-for="button in moveButtons"
-        :key="button.icon"
-        size="x-small"
-        icon
-        variant="flat"
-        :color="button.color"
-        @click.stop="$emit('card-action', button.action)"
+
+    <div v-if="isHandCard && showMoveButtons && moveChoices.length > 0" class="card-action-buttons">
+      <v-tooltip 
+        v-for="move in moveChoices"
+        :key="move.eventName"
+        :disabled="!move.disabledExplanation"
+        location="top"  
       >
-        <v-icon :icon="button.icon" size="small" />
-      </v-btn>
+        <template #activator="{ props }">
+          <span v-bind="props">
+            <v-btn
+              :key="move.eventName"
+              size="x-small"
+              icon
+              variant="flat"
+              :color="move.disabled ? 'grey-darken-2' : 'primary'"
+              :disabled="move.disabled"
+              :aria-label="`Choose move: ${move.displayName}`"
+              @click.stop="handleMoveClick(move)"
+            >
+              <v-icon v-if="iconForMove(move.eventName)" size="large" :icon="iconForMove(move.eventName)" />
+            </v-btn>
+          </span>
+        </template>
+        {{ move.disabledExplanation }}
+      </v-tooltip>
     </div>
   </v-card>
 </template>
 
 <script>
+import { useI18n } from 'vue-i18n';
+import { mapStores } from 'pinia';
+import { useGameStore } from '@/stores/game';
+
 export default {
   name: 'GameCard',
   props: {
@@ -93,7 +121,7 @@ export default {
     controlledBy: {
       type: String,
       default: '',
-      validator: (val) => ['', 'player', 'opponent'].includes(val),
+      validator: (val) => [ '', 'player', 'opponent' ].includes(val),
     },
     highElevation: {
       type: Boolean,
@@ -107,9 +135,39 @@ export default {
       type: Boolean,
       default: false,
     },
+    // Nya props som behövs för moveChoices logiken
+    isPlayersTurn: {
+      type: Boolean,
+      default: true,
+    },
+    opponentQueenCount: {
+      type: Number,
+      default: 0,
+    },
+    frozenId: {
+      type: Number,
+      default: null,
+    },
+    playingFromDeck: {
+      type: Boolean,
+      default: false,
+    },
+    cardSelectedFromDeck: {
+      type: Object,
+      default: null,
+    },
+    cardId: {
+      type: Number,
+      default: null,
+    },
   },
-  emits: ['card-action'],
+  emits: [ 'points', 'faceCard', 'scuttle', 'jack', 'oneOff', 'targetedOneOff' ],
+  setup() {
+    const { t } = useI18n();
+    return { t };
+  },
   computed: {
+    ...mapStores(useGameStore),
     suitName() {
       switch (this.suit) {
         case 0:
@@ -191,41 +249,223 @@ export default {
           return '';
       }
     },
-    // these could be inefficiently implemented. Might consider refractor this part.
-    moveButtons() {
-      if (!this.rank) return [];
 
-      const buttons = [];
+    allMovesAreDisabled() {
+      return (
+        !this.isPlayersTurn ||
+        this.frozenId === this.cardId ||
+        this.isFrozen ||
+        (this.playingFromDeck && !this.cardSelectedFromDeck)
+      );
+    },
+    disabledText() {
+      if (this.playingFromDeck && !this.cardSelectedFromDeck) {
+        return this.t('game.moves.disabledMove.topTwo');
+      } else if (this.allMovesAreDisabled) {
+        return this.t(
+          !this.isPlayersTurn ? 'game.moves.disabledMove.notTurn' : 'game.moves.disabledMove.frozenCard',
+        );
+      }
+      return '';
+    },
+    pointsMove() {
+      const pointsDescription = this.t('game.moves.points.description', { count: this.rank });
+      return {
+        displayName: this.t('game.moves.points.displayName'),
+        eventName: 'points',
+        moveDescription: pointsDescription,
+        disabled: this.allMovesAreDisabled,
+        disabledExplanation: this.disabledText,
+      };
+    },
+    scuttleMove() {
+      const scuttleDisabled = this.allMovesAreDisabled || !this.hasValidScuttleTarget;
+      let scuttleDisabledExplanation = this.t('game.moves.scuttle.disabled');
+      if (this.gameStore.opponent.points.length === 0) {
+        scuttleDisabledExplanation = this.t('game.moves.scuttle.disabledNoPoints');
+      }
+      if (this.allMovesAreDisabled) {
+        scuttleDisabledExplanation = this.disabledText;
+      }
+      return {
+        displayName: 'Scuttle',
+        eventName: 'scuttle',
+        moveDescription: this.t('game.moves.scuttle.description'),
+        disabled: scuttleDisabled,
+        disabledExplanation: scuttleDisabledExplanation,
+      };
+    },
+    oneOffMove() {
+      let oneOffDisabled = this.allMovesAreDisabled;
+      let oneOffDisabledExplanation = this.disabledText;
+      const noTopCard = !this.gameStore.topCard;
+      const playingTopCard = this.cardId === this.gameStore.topCard?.id;
+      const noSecondCard = !this.gameStore.secondCard;
 
-      if (this.rank <= 10) {
-        buttons.push({ icon: 'mdi-numeric', action: 'points', color: '' });
+      switch (this.rank) {
+        case 5:
+          if (noTopCard) {
+            oneOffDisabled = true;
+            oneOffDisabledExplanation = this.t('game.moves.disabledMove.emptyDeck');
+          }
+          break;
+        case 7:
+          if (noTopCard || (playingTopCard && noSecondCard)) {
+            oneOffDisabled = true;
+            oneOffDisabledExplanation = this.t('game.moves.disabledMove.emptyDeck');
+          }
+          break;
       }
 
-      if (this.rank <= 10) {
-        buttons.push({ icon: 'mdi-skull-crossbones', action: 'scuttle', color: '' });
+      return {
+        displayName: 'One-Off',
+        eventName: 'oneOff',
+        moveDescription: this.t(`game.moves.effects[${this.rank}]`),
+        disabled: oneOffDisabled,
+        disabledExplanation: oneOffDisabledExplanation,
+      };
+    },
+    targetedOneOffMove() {
+      let oneOffDisabled = this.allMovesAreDisabled;
+      let oneOffDisabledExplanation = this.disabledText;
+      if (!this.allMovesAreDisabled) {
+        if (this.opponentQueenCount >= 2) {
+          oneOffDisabled = true;
+          oneOffDisabledExplanation = this.t('game.moves.disabledMove.multipleQueens', {
+            rank: this.rank,
+          });
+        } else {
+          let validTargetExists;
+          if (this.rank === 2) {
+            const numOpFaceCards = this.gameStore.opponent.faceCards.length;
+            const numOpJacks = this.gameStore.opponent.points.reduce((jackCount, pointCard) => {
+              return jackCount + pointCard.attachments.length;
+            }, 0);
+            const numTotalTargets = numOpFaceCards + numOpJacks;
+            validTargetExists = numTotalTargets >= 1;
+            if (!validTargetExists) {
+              oneOffDisabled = true;
+              oneOffDisabledExplanation = this.t('game.moves.disabledMove.noRoyals');
+            }
+          } else {
+            const numValidTargets =
+              this.gameStore.opponent.points.length + this.gameStore.opponent.faceCards.length;
+            if (numValidTargets === 0) {
+              oneOffDisabled = true;
+              oneOffDisabledExplanation = this.t('game.moves.disabledMove.noRoyalsOrPoints');
+            }
+          }
+        }
       }
-
-      if (this.rank >= 1 && this.rank <= 7) {
-        buttons.push({ icon: 'mdi-delete', action: 'oneOff', color: '' });
+      return {
+        displayName: 'One-Off',
+        eventName: 'targetedOneOff',
+        moveDescription: this.t(`game.moves.effects[${this.rank}]`),
+        disabled: oneOffDisabled,
+        disabledExplanation: oneOffDisabledExplanation,
+      };
+    },
+    jackMove() {
+      let ableToJack = false;
+      let disabledExplanation = '';
+      if (!this.allMovesAreDisabled) {
+        ableToJack = this.opponentQueenCount === 0 && this.gameStore.opponent.points.length > 0;
+        if (this.gameStore.opponent.points.length === 0) {
+          disabledExplanation = this.t('game.moves.jack.disabled');
+        }
+      } else {
+        disabledExplanation = this.disabledText;
       }
+      return {
+        displayName: this.t('game.moves.royal.displayName'),
+        eventName: 'jack',
+        moveDescription: this.t('game.moves.jack.description'),
+        disabled: !ableToJack || this.allMovesAreDisabled,
+        disabledExplanation,
+      };
+    },
+    moveChoices() {
+      if (!this.rank) {return [];}
 
-      if (this.rank === 2 || this.rank === 9) {
-        buttons.push({ icon: 'mdi-target', action: 'targetedOneOff', color: '' });
+      switch (this.rank) {
+        case 1:
+        case 3:
+        case 4:
+        case 5:
+        case 6:
+        case 7:
+          return [ this.pointsMove, this.scuttleMove, this.oneOffMove ];
+        case 2:
+        case 9:
+          return [ this.pointsMove, this.scuttleMove, this.targetedOneOffMove ];
+        case 8:
+          return [
+            this.pointsMove,
+            this.scuttleMove,
+            {
+              displayName: this.t('game.moves.glasses.displayName'),
+              eventName: 'faceCard',
+              moveDescription: this.t('game.moves.glasses.description'),
+              disabled: this.allMovesAreDisabled,
+              disabledExplanation: this.disabledText,
+            },
+          ];
+        case 10:
+          return [ this.pointsMove, this.scuttleMove ];
+        case 11:
+          return [ this.jackMove ];
+        case 12:
+        case 13:
+          return [
+            {
+              displayName: this.t('game.moves.royal.displayName'),
+              eventName: 'faceCard',
+              moveDescription: this.t(`game.moves.effects[${this.rank}]`),
+              disabled: this.allMovesAreDisabled,
+              disabledExplanation: this.disabledText,
+            },
+          ];
       }
-
-      if (this.rank === 8) {
-        buttons.push({ icon: 'mdi-sunglasses', action: 'faceCard', color: '' });
+      return [];
+    },
+    hasValidScuttleTarget() {
+      if (this.rank >= 11) {
+        return false;
       }
+      return this.gameStore.opponent.points.some((opponentPointCard) => {
+        return (
+          this.rank > opponentPointCard.rank ||
+          (this.rank === opponentPointCard.rank && this.suit > opponentPointCard.suit)
+        );
+      });
+    },
+    iconForMove() {
+      return (action) => {
+        switch (action) {
+          case 'points':
+            return 'mdi-numeric';
+          case 'scuttle':
+            return 'mdi-skull-crossbones';
+          case 'oneOff':
+            return 'mdi-auto-fix';
+          case 'targetedOneOff':
+            return 'mdi-target';
+          case 'faceCard':
+            return 'mdi-crown-outline';
+          case 'jack':
+            return 'mdi-shield-sword';
+          default:
+            return null;
+        }
+      };
+    },
+  },
+  methods: {
+    handleMoveClick(move) {
+      if (move.disabled) {return;}
 
-      if (this.rank === 11) {
-        buttons.push({ icon: 'mdi-crown', action: 'jack', color: '' });
-      }
-
-      if (this.rank === 12 || this.rank === 13) {
-        buttons.push({ icon: 'mdi-crown', action: 'faceCard', color: '' });
-      }
-
-      return buttons;
+      // Emita eventet med move.eventName
+      this.$emit(move.eventName);
     },
   },
 };
@@ -269,25 +509,37 @@ export default {
 
 .card-action-buttons {
   position: absolute;
-  bottom: 40%;
+  bottom: 35%;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
-  gap: 2px;
-  background: rgba(0, 0, 0, 0.7);
+  gap: 4px;
+  background: rgba(0, 0, 0, 0.85);
   z-index: 20;
   justify-content: center;
-  width: calc(100% - 16px);
-  padding: 4px;
-  border-radius: 4px;
+  width: calc(100% - 8px);
+  padding: 6px 4px;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
 :deep(.v-btn) {
-  min-width: 24px !important;
-  width: 24px !important;
-  height: 24px !important;
+  min-width: 32px !important;
+  width: 32px !important;
+  height: 32px !important;
   padding: 0 !important;
-  border-radius: 2px !important;
+  border-radius: 4px !important;
+
+  &:not(:disabled) {
+    &:hover {
+      transform: scale(1.1);
+      transition: transform 0.2s ease;
+    }
+  }
+
+  &:disabled {
+    opacity: 0.5;
+  }
 }
 
 .player-card-icon {
@@ -393,6 +645,18 @@ export default {
   .jack {
     margin-bottom: -60%;
     width: calc(10vh / 1.85);
+  }
+
+  .card-action-buttons {
+    bottom: 30%;
+    gap: 2px;
+    padding: 4px 2px;
+  }
+
+  :deep(.v-btn) {
+    min-width: 24px !important;
+    width: 24px !important;
+    height: 24px !important;
   }
 }
 </style>
