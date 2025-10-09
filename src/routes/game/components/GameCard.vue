@@ -135,7 +135,7 @@ export default {
       type: Boolean,
       default: false,
     },
-    // Nya props som behövs för moveChoices logiken
+    // New props to enable the buttons to be pressed on the card
     isPlayersTurn: {
       type: Boolean,
       default: true,

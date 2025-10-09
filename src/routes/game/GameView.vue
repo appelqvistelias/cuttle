@@ -444,7 +444,6 @@
       <GameOverlays
         :targeting="targeting"
         :selected-card="selectedCard"
-        :hovered-card="hoveredCard"
         :card-selected-from-deck="cardSelectedFromDeck"
         @clear-selection="clearSelection"
         @face-card="playFaceCard"
@@ -468,8 +467,6 @@
       {{ gameStore.currentMode }}
     </div>
   </div>
-  <div>hovered card: {{ hoveredCard }}</div>
-  <div>selected card: {{ selectedCard }}</div>
 </template>
 
 <script>
@@ -869,7 +866,7 @@ export default {
         if (!this.isMouseOverOverlay) {
           this.hoveredIndex = null;
         }
-      }, 5000);
+      }, 50);
     }, // Small delay
     selectTopCard() {
       if (!this.gameStore.waitingForOpponentToPlayFromDeck) {

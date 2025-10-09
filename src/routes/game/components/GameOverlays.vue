@@ -154,12 +154,8 @@ export default {
       type: Object,
       default: null,
     },
-    hoveredCard: {
-      type: Object,
-      default: null,
-    },
   },
-  emits: ['points', 'face-card', 'one-off', 'clear-selection', 'target'],
+  emits: [ 'points', 'face-card', 'one-off', 'clear-selection', 'target' ],
   setup() {
     const { t } = useI18n();
     return { t };
