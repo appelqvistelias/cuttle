@@ -21,7 +21,7 @@
     <v-overlay :model-value="isValidTarget" contained class="valid-move target-overlay" />
     <Transition :name="scuttledByTransition">
       <template v-if="scuttledBy">
-        <img :class="scuttledByClass" :src="`/img/cards/card-${scuttledBy.suit}-${scuttledBy.rank}.svg`" />
+        <img :class="scuttledByClass" :src="`/img/cards/card-${scuttledBy.suit}-${scuttledBy.rank}.svg`">
       </template>
     </Transition>
     <Transition name="card-flip">
@@ -29,31 +29,47 @@
         v-if="isGlasses"
         :src="`/img/cards/glasses-${suitName.toLowerCase()}.png`"
         :alt="`Glasses - $${cardName}`"
-      />
-      <img v-else-if="isBack" src="/img/cards/card-back.png" class="opponent-card-back" alt="card back" />
-      <img v-else :src="`/img/cards/card-${suit}-${rank}.svg`" :alt="cardName" class="face-card" />
+      >
+      <img
+        v-else-if="isBack"
+        src="/img/cards/card-back.png"
+        class="opponent-card-back"
+        alt="card back"
+      >
+      <img
+        v-else
+        :src="`/img/cards/card-${suit}-${rank}.svg`"
+        :alt="cardName"
+        class="face-card"
+      >
     </Transition>
 
+
     <div v-if="isHandCard && showMoveButtons && moveChoices.length > 0" class="card-action-buttons">
-      <v-btn
+      <v-tooltip 
         v-for="move in moveChoices"
         :key="move.eventName"
-        size="x-small"
-        icon
-        variant="flat"
-        :color="move.disabled ? 'grey-darken-2' : 'primary'"
-        :disabled="move.disabled"
-        @click.stop="handleMoveClick(move)"
-        :aria-label="`Choose move: ${move.displayName}`"
+        :disabled="!move.disabledExplanation"
+        location="top"  
       >
-        <v-icon v-if="iconForMove(move.eventName)" size="large" :icon="iconForMove(move.eventName)" />
-        <v-tooltip
-          activator="parent"
-          location="top"
-          v-if="move.disabled && move.disabledExplanation"
-          :text="move.disabledExplanation"
-        />
-      </v-btn>
+        <template #activator="{ props }">
+          <span v-bind="props">
+            <v-btn
+              :key="move.eventName"
+              size="x-small"
+              icon
+              variant="flat"
+              :color="move.disabled ? 'grey-darken-2' : 'primary'"
+              :disabled="move.disabled"
+              :aria-label="`Choose move: ${move.displayName}`"
+              @click.stop="handleMoveClick(move)"
+            >
+              <v-icon v-if="iconForMove(move.eventName)" size="large" :icon="iconForMove(move.eventName)" />
+            </v-btn>
+          </span>
+        </template>
+        {{ move.disabledExplanation }}
+      </v-tooltip>
     </div>
   </v-card>
 </template>
@@ -105,7 +121,7 @@ export default {
     controlledBy: {
       type: String,
       default: '',
-      validator: (val) => ['', 'player', 'opponent'].includes(val),
+      validator: (val) => [ '', 'player', 'opponent' ].includes(val),
     },
     highElevation: {
       type: Boolean,
@@ -145,7 +161,7 @@ export default {
       default: null,
     },
   },
-  emits: ['points', 'faceCard', 'scuttle', 'jack', 'oneOff', 'targetedOneOff'],
+  emits: [ 'points', 'faceCard', 'scuttle', 'jack', 'oneOff', 'targetedOneOff' ],
   setup() {
     const { t } = useI18n();
     return { t };
@@ -369,7 +385,7 @@ export default {
       };
     },
     moveChoices() {
-      if (!this.rank) return [];
+      if (!this.rank) {return [];}
 
       switch (this.rank) {
         case 1:
@@ -378,10 +394,10 @@ export default {
         case 5:
         case 6:
         case 7:
-          return [this.pointsMove, this.scuttleMove, this.oneOffMove];
+          return [ this.pointsMove, this.scuttleMove, this.oneOffMove ];
         case 2:
         case 9:
-          return [this.pointsMove, this.scuttleMove, this.targetedOneOffMove];
+          return [ this.pointsMove, this.scuttleMove, this.targetedOneOffMove ];
         case 8:
           return [
             this.pointsMove,
@@ -395,9 +411,9 @@ export default {
             },
           ];
         case 10:
-          return [this.pointsMove, this.scuttleMove];
+          return [ this.pointsMove, this.scuttleMove ];
         case 11:
-          return [this.jackMove];
+          return [ this.jackMove ];
         case 12:
         case 13:
           return [
@@ -446,7 +462,7 @@ export default {
   },
   methods: {
     handleMoveClick(move) {
-      if (move.disabled) return;
+      if (move.disabled) {return;}
 
       // Emita eventet med move.eventName
       this.$emit(move.eventName);
