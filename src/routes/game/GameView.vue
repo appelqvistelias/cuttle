@@ -147,7 +147,9 @@
             @click="drawCard"
           >
             <template v-if="!gameStore.resolvingSeven">
-              <v-card-actions class="c-deck-count"> ({{ deckLength }}) </v-card-actions>
+              <v-card-actions class="c-deck-count">
+                ({{ deckLength }})
+              </v-card-actions>
               <h1 v-if="deckLength === 0" id="empty-deck-text">
                 {{ t('game.pass') }}
               </h1>
@@ -305,7 +307,12 @@
             </h3>
             <v-divider />
             <div id="history-logs" ref="logsContainer" class="d-flex flex-column">
-              <p v-for="(log, index) in logs" :key="index" class="my-2" data-cy="history-log">
+              <p
+                v-for="(log, index) in logs"
+                :key="index"
+                class="my-2"
+                data-cy="history-log"
+              >
                 {{ log }}
               </p>
             </div>
@@ -461,6 +468,8 @@
       {{ gameStore.currentMode }}
     </div>
   </div>
+  <div>hovered card: {{ hoveredCard }}</div>
+  <div>selected card: {{ selectedCard }}</div>
 </template>
 
 <script>
@@ -723,10 +732,10 @@ export default {
               opponentJackIds.push(card.attachments[card.attachments.length - 1].id);
             }
           });
-          return [...opponentFaceCardIds, ...opponentJackIds];
+          return [ ...opponentFaceCardIds, ...opponentJackIds ];
         }
         case 1:
-          return [this.gameStore.opponent.faceCards.find((card) => card.rank === 12).id];
+          return [ this.gameStore.opponent.faceCards.find((card) => card.rank === 12).id ];
         default:
           return [];
       }
@@ -746,10 +755,10 @@ export default {
           return this.gameStore.opponent.points.map((validTarget) => validTarget.id);
         case 'targetedOneOff': {
           // Twos and nines can target face cards
-          let res = [...this.validFaceCardTargetIds];
+          let res = [ ...this.validFaceCardTargetIds ];
           // Nines can additionally target points if opponent has no queens
           if (selectedCard.rank === 9 && this.gameStore.opponentQueenCount === 0) {
-            res = [...res, ...this.gameStore.opponent.points.map((validTarget) => validTarget.id)];
+            res = [ ...res, ...this.gameStore.opponent.points.map((validTarget) => validTarget.id) ];
           }
           return res;
         }
@@ -874,32 +883,32 @@ export default {
         this.secondCardIsSelected = !this.secondCardIsSelected;
       }
     },
-    handleCardAction(card, index, action) {
-      // Välj kortet först
-      this.selectCard(index);
+    // handleCardAction(card, index, action) {
+    //   // Välj kortet först
+    //   this.selectCard(index);
 
-      // Utför action baserat på vilken knapp som klickades
-      switch (action) {
-        case 'points':
-          this.playPoints();
-          break;
-        case 'scuttle':
-          this.beginTargeting({ eventName: 'scuttle', displayName: 'Scuttle' });
-          break;
-        case 'oneOff':
-          this.playOneOff();
-          break;
-        case 'targetedOneOff':
-          this.beginTargeting({ eventName: 'targetedOneOff', displayName: 'One-Off' });
-          break;
-        case 'faceCard':
-          this.playFaceCard();
-          break;
-        case 'jack':
-          this.beginTargeting({ eventName: 'jack', displayName: 'Jack' });
-          break;
-      }
-    },
+    //   // Utför action baserat på vilken knapp som klickades
+    //   switch (action) {
+    //     case 'points':
+    //       this.playPoints();
+    //       break;
+    //     case 'scuttle':
+    //       this.beginTargeting({ eventName: 'scuttle', displayName: 'Scuttle' });
+    //       break;
+    //     case 'oneOff':
+    //       this.playOneOff();
+    //       break;
+    //     case 'targetedOneOff':
+    //       this.beginTargeting({ eventName: 'targetedOneOff', displayName: 'One-Off' });
+    //       break;
+    //     case 'faceCard':
+    //       this.playFaceCard();
+    //       break;
+    //     case 'jack':
+    //       this.beginTargeting({ eventName: 'jack', displayName: 'Jack' });
+    //       break;
+    //   }
+    // },
     /**
      * Sets page data to configuring targeting for scuttle or one-off
      * @param move
@@ -1172,7 +1181,8 @@ export default {
         return;
       }
 
-      this.gameStore.requestPlayOneOff(this.activeCard.id).then(this.clearSelection).catch(this.handleError);
+      this.gameStore.requestPlayOneOff(this.activeCard.id).then(this.clearSelection)
+        .catch(this.handleError);
     },
     scrollToLastLog() {
       if (this.$refs.logsContainer) {
