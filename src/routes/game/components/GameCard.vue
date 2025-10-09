@@ -447,7 +447,7 @@ export default {
           case 'scuttle':
             return 'mdi-skull-crossbones';
           case 'oneOff':
-            return 'mdi-auto-fix';
+            return 'mdi-delete';
           case 'targetedOneOff':
             return 'mdi-target';
           case 'faceCard':
