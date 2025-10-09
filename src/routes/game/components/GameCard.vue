@@ -59,7 +59,7 @@
               size="x-small"
               icon
               variant="flat"
-              :color="move.disabled ? 'grey-darken-2' : 'primary'"
+              :color="move.disabled ? 'grey-darken-2' : 'newPrimary'"
               :disabled="move.disabled"
               :aria-label="`Choose move: ${move.displayName}`"
               @click.stop="handleMoveClick(move)"
@@ -507,28 +507,33 @@ export default {
   }
 }
 
+
+
 .card-action-buttons {
   position: absolute;
   bottom: 35%;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
-  gap: 4px;
-  background: rgba(0, 0, 0, 0.85);
+  gap: 2%; 
   z-index: 20;
   justify-content: center;
-  width: calc(100% - 8px);
-  padding: 6px 4px;
-  border-radius: 6px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  width: 90%; 
+  padding: 3% 2%;
+  background: rgba(0, 0, 0, 0.85);
+  box-sizing: border-box;
+  border-radius: 5px;
 }
 
 :deep(.v-btn) {
-  min-width: 32px !important;
-  width: 32px !important;
-  height: 32px !important;
+  min-width: max(20%, 28px) !important; 
+  width: max(20%, 28px) !important;
+  max-width: 40px !important; 
+  aspect-ratio: 1 !important;
   padding: 0 !important;
   border-radius: 4px !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  flex-shrink: 0;
 
   &:not(:disabled) {
     &:hover {
@@ -541,7 +546,6 @@ export default {
     opacity: 0.5;
   }
 }
-
 .player-card-icon {
   position: absolute;
   top: 0;
