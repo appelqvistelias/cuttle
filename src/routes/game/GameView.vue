@@ -1210,6 +1210,12 @@ export default {
 .your-card-class {
   transition: transform 0.2s ease-out;
 }
+
+.game-card {
+  container-type: inline-size;
+  container-name: card;
+}
+
 // All list transitions leave with position absolute
 .slide-below-leave-active,
 .slide-above-leave-active,
