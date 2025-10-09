@@ -1,6 +1,6 @@
 <template>
   <v-tooltip :disabled="!disabledExplanation" location="bottom">
-    <template v-slot:activator="{ props }">
+    <template #activator="{ props }">
       <span v-bind="props">
         <v-btn
           v-bind="props"  
@@ -53,7 +53,7 @@ export default {
       default: '30%',
     },
   },
-  emits: ['choose-move'],
+  emits: [ 'choose-move' ],
   computed: {
     /**
      * Returns string name of which icon to display
