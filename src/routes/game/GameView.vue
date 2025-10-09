@@ -370,7 +370,6 @@
                       :is-frozen="card.isFrozen"
                       class="mt-2 transition-all"
                       :is-hand-card="true"
-                      :show-move-buttons="gameStore.isExpertMode"
                       :is-players-turn="gameStore.isPlayersTurn"
                       :opponent-queen-count="gameStore.opponentQueenCount"
                       :frozen-id="gameStore.player.frozenId"
@@ -378,14 +377,6 @@
                       :card-selected-from-deck="cardSelectedFromDeck"
                       :data-player-hand-card="`${card.rank}-${card.suit}`"
                       @click="selectCard(index)"
-                      @points="playPoints"
-                      @scuttle="beginTargeting({ eventName: 'scuttle', displayName: 'Scuttle' })"
-                      @one-off="playOneOff"
-                      @targeted-one-off="
-                        beginTargeting({ eventName: 'targetedOneOff', displayName: 'One-Off' })
-                      "
-                      @face-card="playFaceCard"
-                      @jack="beginTargeting({ eventName: 'jack', displayName: 'Jack' })"
                     />
                   </v-slide-group-item>
                 </v-slide-group>
