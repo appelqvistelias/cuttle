@@ -587,6 +587,14 @@ export default {
   opacity: 0.6;
 }
 
+span {
+  display: flex;
+flex-direction: column;
+  width: fit-content;
+  align-items: center;
+
+}
+
 .frozen {
   &:after {
     content: '';
