@@ -21,7 +21,7 @@
         </v-list-item>
 
         <!-- MODE SELECTOR -->
-        <v-list-item>
+        <v-list-item v-if="!$vuetify.display.xs">
           <div class="mode-selector-container">
             <v-btn
               color="surface-1"

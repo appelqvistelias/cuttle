@@ -370,7 +370,6 @@
                       :is-frozen="card.isFrozen"
                       class="mt-2 transition-all"
                       :is-hand-card="true"
-                      :show-move-buttons="gameStore.isExpertMode"
                       :is-players-turn="gameStore.isPlayersTurn"
                       :opponent-queen-count="gameStore.opponentQueenCount"
                       :frozen-id="gameStore.player.frozenId"
@@ -378,14 +377,6 @@
                       :card-selected-from-deck="cardSelectedFromDeck"
                       :data-player-hand-card="`${card.rank}-${card.suit}`"
                       @click="selectCard(index)"
-                      @points="playPoints"
-                      @scuttle="beginTargeting({ eventName: 'scuttle', displayName: 'Scuttle' })"
-                      @one-off="playOneOff"
-                      @targeted-one-off="
-                        beginTargeting({ eventName: 'targetedOneOff', displayName: 'One-Off' })
-                      "
-                      @face-card="playFaceCard"
-                      @jack="beginTargeting({ eventName: 'jack', displayName: 'Jack' })"
                     />
                   </v-slide-group-item>
                 </v-slide-group>
@@ -444,7 +435,6 @@
       <GameOverlays
         :targeting="targeting"
         :selected-card="selectedCard"
-        :hovered-card="hoveredCard"
         :card-selected-from-deck="cardSelectedFromDeck"
         @clear-selection="clearSelection"
         @face-card="playFaceCard"
@@ -526,8 +516,7 @@ export default {
       topCardIsSelected: false,
       secondCardIsSelected: false,
       showHistoryDrawer: false,
-      hoveredIndex: null,
-      isMouseOverOverlay: false,
+      hoveredIndex: null, // when card is hovered, sets this value
     };
   },
   computed: {
@@ -700,6 +689,8 @@ export default {
     hoveredCard() {
       return this.hoveredIndex !== null ? this.gameStore.player.hand[this.hoveredIndex] : null;
     },
+    // Checks whether card is currently selected or hovered and uses the variable activeCard instead of 
+    // selectedCard throughout the code to account for this
     activeCard() {
       return this.selectedCard || this.hoveredCard;
     },
@@ -864,10 +855,8 @@ export default {
     },
     clearHover() {
       setTimeout(() => {
-        if (!this.isMouseOverOverlay) {
-          this.hoveredIndex = null;
-        }
-      }, 5000);
+        this.hoveredIndex = null;
+      }, 50);
     }, // Small delay
     selectTopCard() {
       if (!this.gameStore.waitingForOpponentToPlayFromDeck) {
@@ -881,32 +870,32 @@ export default {
         this.secondCardIsSelected = !this.secondCardIsSelected;
       }
     },
-    handleCardAction(card, index, action) {
-      // Välj kortet först
-      this.selectCard(index);
+    // handleCardAction(card, index, action) {
+    //   // Välj kortet först
+    //   this.selectCard(index);
 
-      // Utför action baserat på vilken knapp som klickades
-      switch (action) {
-        case 'points':
-          this.playPoints();
-          break;
-        case 'scuttle':
-          this.beginTargeting({ eventName: 'scuttle', displayName: 'Scuttle' });
-          break;
-        case 'oneOff':
-          this.playOneOff();
-          break;
-        case 'targetedOneOff':
-          this.beginTargeting({ eventName: 'targetedOneOff', displayName: 'One-Off' });
-          break;
-        case 'faceCard':
-          this.playFaceCard();
-          break;
-        case 'jack':
-          this.beginTargeting({ eventName: 'jack', displayName: 'Jack' });
-          break;
-      }
-    },
+    //   // Utför action baserat på vilken knapp som klickades
+    //   switch (action) {
+    //     case 'points':
+    //       this.playPoints();
+    //       break;
+    //     case 'scuttle':
+    //       this.beginTargeting({ eventName: 'scuttle', displayName: 'Scuttle' });
+    //       break;
+    //     case 'oneOff':
+    //       this.playOneOff();
+    //       break;
+    //     case 'targetedOneOff':
+    //       this.beginTargeting({ eventName: 'targetedOneOff', displayName: 'One-Off' });
+    //       break;
+    //     case 'faceCard':
+    //       this.playFaceCard();
+    //       break;
+    //     case 'jack':
+    //       this.beginTargeting({ eventName: 'jack', displayName: 'Jack' });
+    //       break;
+    //   }
+    // },
     /**
      * Sets page data to configuring targeting for scuttle or one-off
      * @param move
